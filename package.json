@@ -1,0 +1,36 @@
+{
+  "name": "rn-base-project-typescript",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/saigon-technology/rn-base-project-typescript.git",
+  "author": "React Native Team <SaiGon Technology Solutions>",
+  "license": "MIT",
+  "keywords": [
+    "project base",
+    "react native",
+    "react native project base",
+    "react native project base typescript",
+    "react native structure",
+    "react native structure typescript",
+    "react native base",
+    "react native base typescript",
+    "react native template",
+    "react native template typescript",
+    "saigon technology solutions"
+  ],
+  "bugs": "https://github.com/saigon-technology/rn-base-project-typescript/issues",
+  "scripts": {
+    "release": "yarn publish"
+  },
+  "devDependencies": {
+    "@tsconfig/react-native": "^2.0.2",
+    "@types/jest": "^29.2.3",
+    "@types/react": "^18.0.25",
+    "@types/react-native": "^0.70.7",
+    "@types/react-test-renderer": "^18.0.0",
+    "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "i18n-ts": "^1.0.5"
+  }
+}
