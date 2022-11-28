@@ -1,6 +1,6 @@
 {
   "name": "rn-base-project-typescript",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "index.js",
   "repository": "https://github.com/saigon-technology/rn-base-project-typescript.git",
   "author": "React Native Team <SaiGon Technology Solutions>",
