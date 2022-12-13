@@ -1,23 +1,27 @@
-import React from 'react'
-import {Provider} from 'react-redux'
-import {store} from './src/store/store'
-import MainLayout from './src/MainLayout'
-import {SafeAreaProvider} from 'react-native-safe-area-context'
-import {TextProps, Text, TextInput, LogBox} from 'react-native'
+import React from 'react';
+import {LogBox, Text} from 'react-native';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {Provider} from 'react-redux';
+import MainLayout from './src/MainLayout';
+import {store} from './src/store/store';
 
 interface TextWithDefaultProps extends Text {
-  defaultProps?: {allowFontScaling?: boolean; underlineColorAndroid?: 'transparent'}
+  defaultProps?: {
+    allowFontScaling?: boolean;
+    underlineColorAndroid?: 'transparent';
+  };
 }
 
 (Text as unknown as TextWithDefaultProps).defaultProps =
   (Text as unknown as TextWithDefaultProps).defaultProps || {};
-(Text as unknown as TextWithDefaultProps).defaultProps!.allowFontScaling = false;
+(Text as unknown as TextWithDefaultProps).defaultProps!.allowFontScaling =
+  false;
 (Text as unknown as TextWithDefaultProps).defaultProps = {
   ...(Text as unknown as TextWithDefaultProps).defaultProps,
   allowFontScaling: false,
   underlineColorAndroid: 'transparent',
-}
-LogBox.ignoreAllLogs(true)
+};
+LogBox.ignoreAllLogs(true);
 
 function App() {
   return (
@@ -26,7 +30,7 @@ function App() {
         <MainLayout />
       </SafeAreaProvider>
     </Provider>
-  )
+  );
 }
 
-export default App
+export default App;
