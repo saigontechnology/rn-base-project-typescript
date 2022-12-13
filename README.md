@@ -7,7 +7,7 @@ This project is a template for [React Native](https://reactnative.dev/) that can
 - Init project
 
 ```bash
-npx react-native init ProjectName --template rn-base-project-typescript
+npx react-native init ProjectName --template rn-base-project-ts
 ```
 
 ## iOS config
