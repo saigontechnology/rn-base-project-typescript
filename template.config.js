@@ -1,8 +1,8 @@
 module.exports = {
 
-  placeholderName: "RNBaseProjectTypescript",
+  placeholderName: "RNBaseProjectTypeScript",
 
-  titlePlaceholder: "RNBaseProjectTypescript",
+  titlePlaceholder: "RNBaseProjectTypeScript",
 
   templateDir: "./template",
 };
