@@ -1,4 +1,4 @@
-import {IActionDispatch} from './ActionInterface'
+import {ActionCreatorWithPayload} from '@reduxjs/toolkit'
 
 export interface IUserInfo {}
 
@@ -12,19 +12,19 @@ export interface IUser {
 }
 
 export interface IUserActions {
-  userLogin: IActionDispatch
-  userSignUp: IActionDispatch
-  logout: IActionDispatch
-  userLoginHandle: IActionDispatch
-  userLoginSuccess: IActionDispatch
-  userLoginFailure: IActionDispatch
-  userSignUpHandle: IActionDispatch
-  userSignUpSuccess: IActionDispatch
-  userSignUpFailure: IActionDispatch
-  userLogoutHandle: IActionDispatch
-  userLogoutSuccess: IActionDispatch
-  userLogoutFailure: IActionDispatch
-  updateUserInfoHandle: IActionDispatch
-  updateUserInfoSuccess: IActionDispatch
-  updateUserInfoFailure: IActionDispatch
+  userLogin: ActionCreatorWithPayload<any>
+  userSignUp: ActionCreatorWithPayload<any>
+  logout: ActionCreatorWithPayload<any>
+  userLoginHandle: ActionCreatorWithPayload<any>
+  userLoginSuccess: ActionCreatorWithPayload<any>
+  userLoginFailure: ActionCreatorWithPayload<any>
+  userSignUpHandle: ActionCreatorWithPayload<any>
+  userSignUpSuccess: ActionCreatorWithPayload<any>
+  userSignUpFailure: ActionCreatorWithPayload<any>
+  userLogoutHandle: ActionCreatorWithPayload<any>
+  userLogoutSuccess: ActionCreatorWithPayload<any>
+  userLogoutFailure: ActionCreatorWithPayload<any>
+  updateUserInfoHandle: ActionCreatorWithPayload<any>
+  updateUserInfoSuccess: ActionCreatorWithPayload<any>
+  updateUserInfoFailure: ActionCreatorWithPayload<any>
 }

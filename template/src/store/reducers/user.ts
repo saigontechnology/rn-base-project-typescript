@@ -1,7 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
-import {IAction} from '../../constants/interface/redux/ActionInterface'
 import {IUser, IUserActions} from '../../constants/interface/redux/UserInterface'
-import {APP_CONSTANTS_ACTIONS} from '../constants/app'
 import {USER_CONSTANTS_ACTIONS} from '../constants/user'
 
 const initialState: IUser = {
@@ -29,11 +27,11 @@ export const userSlice = createSlice({
     [USER_CONSTANTS_ACTIONS.UPDATE_USER_INFO_ACTIONS.FAILURE]: () => {},
     userLogin: () => {},
     userSignUp: () => {},
-    userLoginSuccess: (state: IUser, action: IAction) => {},
-    logout(state: IUser) {},
-    updateUserInfo(state: IUser, action: IAction) {},
+    userLoginSuccess: () => {},
+    logout: () => {},
+    updateUserInfo: () => {},
   },
-  extraReducers: builder => {},
+  extraReducers: () => {},
 })
 
 export const userActions: IUserActions = {

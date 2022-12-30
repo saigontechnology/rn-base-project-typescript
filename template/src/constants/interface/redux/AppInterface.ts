@@ -1,21 +1,21 @@
-import {IRouteKey} from '../common/CommonInterface'
-import {IActionDispatch} from './ActionInterface'
+import {ActionCreatorWithPayload} from '@reduxjs/toolkit'
 
 export interface IApp {
   showGlobalIndicator?: boolean
-  appState: string 
+  appState: string
   showSearchBar?: boolean
+  appSettings: {}
 }
 
 export interface IAppActions {
-  getSettings: IActionDispatch
-  setAppStack: IActionDispatch
-  getSettingsSuccess: IActionDispatch
-  setShowGlobalIndicator: IActionDispatch
-  setSettingAppHandle: IActionDispatch
-  setSettingAppSuccess: IActionDispatch
-  setSettingAppFailure: IActionDispatch
-  loginHandle: IActionDispatch
-  loginSuccess: IActionDispatch
-  loginFailure: IActionDispatch
+  getSettings?: ActionCreatorWithPayload<any>
+  setAppStack?: ActionCreatorWithPayload<any>
+  getSettingsSuccess?: ActionCreatorWithPayload<any>
+  setShowGlobalIndicator?: ActionCreatorWithPayload<any>
+  setSettingAppHandle?: ActionCreatorWithPayload<any>
+  setSettingAppSuccess?: ActionCreatorWithPayload<any>
+  setSettingAppFailure?: ActionCreatorWithPayload<any>
+  loginHandle?: ActionCreatorWithPayload<any>
+  loginSuccess?: ActionCreatorWithPayload<any>
+  loginFailure?: ActionCreatorWithPayload<any>
 }

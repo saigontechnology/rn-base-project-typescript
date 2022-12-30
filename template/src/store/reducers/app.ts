@@ -1,5 +1,4 @@
-import {createSlice} from '@reduxjs/toolkit'
-import {IAction} from '../../constants/interface/redux/ActionInterface'
+import {createSlice, PayloadAction} from '@reduxjs/toolkit'
 import {IApp, IAppActions} from '../../constants/interface/redux/AppInterface'
 import RouteKey from '../../navigation/RouteKey'
 import {APP_CONSTANTS_ACTIONS} from '../constants/app'
@@ -8,24 +7,26 @@ const initialState: IApp = {
   showGlobalIndicator: false,
   appState: RouteKey.SplashScreen,
   showSearchBar: false,
+  appSettings: {},
 }
 
 const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.HANDLER]: (state: IApp, action: IAction): void => {},
-    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.SUCCESS]: (state: IApp, action: IAction): void => {},
-    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.FAILURE]: (state: IApp, action: IAction): void => {},
-    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.HANDLER]: (state: IApp, action: IAction): void => {},
-    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.SUCCESS]: (state: IApp, action: IAction): void => {},
-    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.FAILURE]: (state: IApp, action: IAction): void => {},
-    getSettings: (state: IApp, action: IAction): void => {},
-    setAppStack: (state: IApp, action: IAction): void => {
+    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.HANDLER]: (state): string => {
+      return state.appState
+    },
+    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.SUCCESS]: () => {},
+    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.FAILURE]: () => {},
+    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.HANDLER]: () => {},
+    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.SUCCESS]: () => {},
+    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.FAILURE]: () => {},
+    getSettings: () => {},
+    setAppStack: (state, action: PayloadAction<string>) => {
       state: state.appState = action.payload
     },
-    getSettingsSuccess: (state: IApp, action: IAction): void => {},
-    setShowGlobalIndicator: (state: IApp, action: IAction): void => {
+    setShowGlobalIndicator: (state, action: PayloadAction<boolean>) => {
       state: state.showGlobalIndicator = action.payload
     },
   },
