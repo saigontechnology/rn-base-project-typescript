@@ -4,7 +4,7 @@ import {IApp, IAppActions} from '../../constants/interface/redux/AppInterface'
 import RouteKey from '../../navigation/RouteKey'
 import {APP_CONSTANTS_ACTIONS} from '../constants/app'
 
-const initialState: IApp = {
+export const appInitialState: IApp = {
   showGlobalIndicator: false,
   appState: RouteKey.SplashScreen,
   showSearchBar: false,
@@ -12,7 +12,7 @@ const initialState: IApp = {
 
 const appSlice = createSlice({
   name: 'app',
-  initialState,
+  initialState: appInitialState,
   reducers: {
     [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.HANDLER]: (state: IApp, action: IAction): void => {},
     [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.SUCCESS]: (state: IApp, action: IAction): void => {},
