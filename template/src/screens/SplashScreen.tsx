@@ -24,31 +24,33 @@ const SplashScreen = () => {
         switch (status) {
           case CodePush.SyncStatus.UP_TO_DATE:
           case CodePush.SyncStatus.UNKNOWN_ERROR:
-            dispatch(appActions.getSettings())
+            dispatch(appActions.getSettings(''))
             break
         }
       },
-      ({bytes, totalBytes}) => {
+      ({receivedBytes, totalBytes}) => {
         if (totalBytes > 0) {
-          setUpdatePercent(bytes / totalBytes)
+          setUpdatePercent(receivedBytes / totalBytes)
         }
       },
     ).catch(() => {
-      dispatch(appActions.getSettings())
+      dispatch(appActions.getSettings(''))
     })
   }, [dispatch])
 
   return (
     <ScreenContainer style={styles.container}>
-      {!!updatePercent > 0 && (
+      {updatePercent > 0 ? (
         <View style={styles.progressBar}>
           <Progress.Bar
             progress={updatePercent}
             color={colors.primary}
-            showsText
+            // showsText={true}
             width={deviceWidth() * 0.6}
           />
         </View>
+      ) : (
+        <></>
       )}
     </ScreenContainer>
   )

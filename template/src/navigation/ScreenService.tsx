@@ -2,7 +2,7 @@ import RouteKey from './RouteKey'
 import {LoginScreen, SignUpScreen} from '../screens'
 import HomeScreen from '../screens/HomeComponent/HomeScreen'
 
-export const screenMatch = (screen: string): Element | string => {
+export const screenMatch = (screen: string): any => {
   switch (screen) {
     case RouteKey.LoginScreen:
       return LoginScreen

@@ -1,4 +1,4 @@
-import React, {FC, ReactElement, ReactNode} from 'react'
+import React, {ReactElement} from 'react'
 import {View, StyleSheet} from 'react-native'
 import {ViewProps} from 'react-native'
 
