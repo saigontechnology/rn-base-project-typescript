@@ -1,28 +1,34 @@
-import I18n from 'i18n-js'
+import i18n from 'i18next'
+import {getI18n, initReactI18next} from 'react-i18next'
+
 import en from './en'
 
-export function configuration() {
-  I18n.locale = 'en'
-  I18n.fallbacks = true
-  I18n.translations = {
-    en: en,
-  }
+export const configureLocalization = (locale: string, fallback = 'en') => {
+  return i18n.use(initReactI18next).init({
+    lng: locale,
+    fallbackLng: fallback,
+
+    resources: {
+      en: {
+        translation: en,
+      },
+    },
+
+    debug: false,
+
+    cache: {
+      enabled: true,
+    },
+
+    interpolation: {
+      escapeValue: false, // not needed for react as it does escape per default to prevent xss!
+    },
+  })
 }
 
-I18n.missingTranslation = function (scope, options): string {
+export const getString = (key: keyof typeof en, params?: any) => {
+  if (getI18n()) {
+    return getI18n().t(key, params)
+  }
   return ''
 }
-
-export function setLocale(locale: string) {
-  I18n.locale = locale
-}
-
-export function getLocale() {
-  return I18n.locale
-}
-
-export function localize(text, custom) {
-  return I18n.t(text, custom)
-}
-
-export default I18n

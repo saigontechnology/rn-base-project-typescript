@@ -1,6 +1,6 @@
 import {IApp} from '../../constants/interface/redux/AppInterface'
 
-const getAppData = (state): IApp => state.app
+const getAppData = (state: any): IApp => state.app
 
-export const getLoadingIndicator = state => getAppData(state).showGlobalIndicator
-export const getAppStackState = (state): string => getAppData(state).appState
+export const getLoadingIndicator = (state: any) => getAppData(state).showGlobalIndicator
+export const getAppStackState = (state: any): string => getAppData(state).appState
