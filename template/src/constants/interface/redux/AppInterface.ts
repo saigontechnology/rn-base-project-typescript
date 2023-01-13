@@ -2,7 +2,7 @@ import {IRouteKey} from '../common/CommonInterface'
 import {IActionDispatch} from './ActionInterface'
 
 export interface IApp {
-  showGlobalIndicator?: boolean
+  showGlobalIndicator: boolean
   appState: string 
   showSearchBar?: boolean
 }

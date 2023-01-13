@@ -6,15 +6,15 @@ const DESIGN_WIDTH = 375
 const DESIGN_HEIGHT = 812
 const {width, height} = Dimensions.get('window')
 
-function responsiveWidth(value: number = 0): number {
+function responsiveWidth(value = 0): number {
   return (width * value) / DESIGN_WIDTH
 }
 
-function responsiveHeight(value: number = 0): number {
+function responsiveHeight(value = 0): number {
   return (height * value) / DESIGN_HEIGHT
 }
 
-function responsiveFont(value: number = 0): number {
+function responsiveFont(value = 0): number {
   return (width * value) / DESIGN_WIDTH
 }
 

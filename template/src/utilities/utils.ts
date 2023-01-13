@@ -1,7 +1,8 @@
+/* eslint-disable no-useless-escape */
 import {Appearance, Dimensions, Platform, StatusBar} from 'react-native'
 import {isIOS} from '../themes'
 
-export function getStatusBarHeight(skipAndroid: boolean = false): number {
+export function getStatusBarHeight(skipAndroid = false): number {
   if (isIOS) {
     return isIphoneX() ? 65 : 30
   }

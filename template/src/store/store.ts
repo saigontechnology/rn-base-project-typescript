@@ -9,7 +9,9 @@ const middlewareEnhancer = applyMiddleware(sagaMiddleware)
 
 const store = configureStore({
   reducer: reducers,
-  middleware: getDefaultMiddleware => getDefaultMiddleware({serializableCheck: false, thunk: false}),
+  middleware: getDefaultMiddleware => {
+    return getDefaultMiddleware({serializableCheck: false, thunk: false})
+  },
   enhancers: [middlewareEnhancer],
 })
 

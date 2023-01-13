@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import {createSlice} from '@reduxjs/toolkit'
 import {IAction} from '../../constants/interface/redux/ActionInterface'
 import {IApp, IAppActions} from '../../constants/interface/redux/AppInterface'
@@ -22,11 +23,11 @@ const appSlice = createSlice({
     [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.FAILURE]: (state: IApp, action: IAction): void => {},
     getSettings: (state: IApp, action: IAction): void => {},
     setAppStack: (state: IApp, action: IAction): void => {
-      state: state.appState = action.payload
+      state.appState = action.payload
     },
     getSettingsSuccess: (state: IApp, action: IAction): void => {},
     setShowGlobalIndicator: (state: IApp, action: IAction): void => {
-      state: state.showGlobalIndicator = action.payload
+      state.showGlobalIndicator = action.payload
     },
   },
 })

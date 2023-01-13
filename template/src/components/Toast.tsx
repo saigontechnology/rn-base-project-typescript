@@ -174,12 +174,14 @@ const styles = StyleSheet.create<IStyleSheet | any>({
     left: 0,
     right: 0,
   },
-  messageContainer: (backgroundColor: string): ViewStyle => ({
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    backgroundColor,
-  }),
+  messageContainer: (backgroundColor: string): ViewStyle => {
+    return {
+      flex: 1,
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      backgroundColor,
+    }
+  },
   textStyle: {
     fontSize: FontSizes.span,
     marginBottom: metrics.marginVertical,

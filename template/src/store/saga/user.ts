@@ -29,8 +29,7 @@ function* userSignUpSaga(action): IterableIterator<void> {
 }
 
 function* userLogout() {
-  try {
-  } catch (e) {}
+  // try {} catch (e) {}
 }
 
 export default [

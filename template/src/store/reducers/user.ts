@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 import {createSlice} from '@reduxjs/toolkit'
 import {IAction} from '../../constants/interface/redux/ActionInterface'
 import {IUser, IUserActions} from '../../constants/interface/redux/UserInterface'

@@ -1,6 +1,5 @@
 import React, {FC, ReactElement, ReactNode} from 'react'
-import {View, StyleSheet} from 'react-native'
-import {ViewProps} from 'react-native'
+import {View, StyleSheet, ViewProps} from 'react-native'
 
 interface IRowProps {
   children: ReactElement

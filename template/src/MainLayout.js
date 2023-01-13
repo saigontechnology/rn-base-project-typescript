@@ -14,8 +14,8 @@ function MainLayout() {
 
   const handleAppState = useCallback(() => {
     AppState.addEventListener('change', nextAppState => {
-      if (appStateRef.current.match(/inactive|background/) && nextAppState === 'active') {
-      }
+      // if (appStateRef.current.match(/inactive|background/) && nextAppState === 'active') {
+      // }
       appStateRef.current = nextAppState
     })
   }, [])
@@ -23,12 +23,12 @@ function MainLayout() {
   const handleDeepLink = useCallback(() => {
     Linking.getInitialURL().then(res => {
       //This function only work when disable debug mode.
-      if (res) {
-      }
+      // if (res) {
+      // }
     })
     Linking.addEventListener('url', res => {
-      if (res?.url) {
-      }
+      // if (res?.url) {
+      // }
     })
   }, [])
 
