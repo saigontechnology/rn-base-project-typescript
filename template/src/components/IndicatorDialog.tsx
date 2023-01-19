@@ -1,10 +1,10 @@
 import React from 'react'
 import {View, StyleSheet, Dimensions, ActivityIndicator} from 'react-native'
-import {ViewProps, ActivityIndicatorProps} from 'react-native'
+import {ViewStyle, ActivityIndicatorProps} from 'react-native'
 
 interface IIndicatorDialogProps {
-  containerStyle: ViewProps
-  activityIndicatorStyle: ActivityIndicatorProps
+  containerStyle?: ViewStyle
+  activityIndicatorStyle?: ActivityIndicatorProps
 }
 
 const {width, height} = Dimensions.get('screen')

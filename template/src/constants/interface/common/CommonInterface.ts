@@ -13,19 +13,7 @@ export interface IActionTypes {
 }
 
 export interface IRouteKey {
-  /** Screen */
-  SplashScreen: string
-  LoginScreen: string
-  SignUpScreen: string
-  HomeScreen: string
-
-  /** Stack */
-  AuthStack: string
-  MainStack: string
-  HomeStack: string
-
-  /** Tab */
-  MainTab: string
+  [key: string]: string
 }
 
 export interface IError {

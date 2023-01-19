@@ -2,8 +2,9 @@ import {takeLatest, call, put} from 'redux-saga/effects'
 import {appActions} from '../reducers'
 import RouteKey from '../../navigation/RouteKey'
 import {getData} from '../../utilities/storage'
+import {AnyAction} from 'redux'
 
-function* getAppSettingSaga(): IterableIterator<void> {
+function* getAppSettingSaga(): IterableIterator<AnyAction> {
   try {
     const token = yield call(getData, 'token')
     if (!token) {

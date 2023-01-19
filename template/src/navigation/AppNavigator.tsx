@@ -6,12 +6,11 @@ import SplashScreen from '../screens/SplashScreen'
 import RouteKey from './RouteKey'
 import {getAppStackState} from '../store/selectors'
 import {AuthNavigator, MainStackNavigator} from './StackNavigation'
-import {IRouteKey} from '../constants/interface/common/CommonInterface'
 
-function AppNavigation(props): Element {
+function AppNavigation(props): React.ReactElement {
   const appState: string = useSelector(getAppStackState)
 
-  function renderStack(): Element {
+  function renderStack(): React.ReactNode {
     switch (appState) {
       case RouteKey.SplashScreen:
         return <SplashScreen />

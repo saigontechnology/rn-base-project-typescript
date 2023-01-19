@@ -13,7 +13,7 @@ export const setData = async (key: string, data: any): Promise<void> => {
   } catch (e) {}
 }
 
-export const getData = async (key: string): Promise<void> => {
+export const getData = async (key: string): Promise<string | null> => {
   const jsonValue = await AsyncStorage.getItem(key)
   try {
     return jsonValue !== null ? JSON.parse(jsonValue) : null

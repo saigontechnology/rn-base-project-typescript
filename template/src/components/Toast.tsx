@@ -33,15 +33,15 @@ class Toast extends React.PureComponent<IToastProps, IToastState> {
   opacity: Animated.Value
   animated: Animated.AnimatedProps<any> | null
   // Static methods
-  static success(text) {
+  static success(text: string) {
     Emitter.emit('SHOW_TOAST_MESSAGE', {message: text, type: EToastType.SUCCESS})
   }
 
-  static error(text) {
+  static error(text: string) {
     Emitter.emit('SHOW_TOAST_ERROR', {message: text, type: 'error'})
   }
 
-  static info(text) {
+  static info(text: string) {
     Emitter.emit('SHOW_TOAST_INFO', {message: text, type: 'info'})
   }
 
@@ -68,11 +68,13 @@ class Toast extends React.PureComponent<IToastProps, IToastState> {
     Emitter.rm('SHOW_TOAST_INFO')
   }
 
-  displayMessage = ({message, type}): void => {
+  displayMessage = ({message, type}: any): void => {
+    // @ts-ignore
     window.cancelAnimationFrame(this.frameID)
 
     this.offset.setValue(HEIGHT * -1)
     this.setState({message, type})
+    // @ts-ignore
     this.frameID = window.requestAnimationFrame(() => {
       this.animated = Animated.sequence([
         Animated.delay(100),

@@ -3,8 +3,9 @@ import {appActions, userActions} from '../reducers'
 import RouteKey from '../../navigation/RouteKey'
 import Toast from '../../components/Toast'
 import {IError} from '../../constants/interface/common/CommonInterface'
+import {AnyAction} from 'redux'
 
-function* userLoginSaga(action): IterableIterator<void> {
+function* userLoginSaga(action): IterableIterator<AnyAction> {
   try {
     yield put(appActions.setShowGlobalIndicator(true))
     // TODO: login login
@@ -18,7 +19,7 @@ function* userLoginSaga(action): IterableIterator<void> {
   }
 }
 
-function* userSignUpSaga(action): IterableIterator<void> {
+function* userSignUpSaga(action): IterableIterator<AnyAction> {
   try {
     yield put(appActions.setShowGlobalIndicator(true))
   } catch (e: IError | any) {

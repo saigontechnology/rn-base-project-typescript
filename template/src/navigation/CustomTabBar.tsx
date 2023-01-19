@@ -6,8 +6,8 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import React from 'react'
 import {SafeAreaView} from 'react-native-safe-area-context'
 
-function CustomTabBar({routeName, navigation}) {
-  function renderItem(item, index) {
+function CustomTabBar({routeName, navigation}: any) {
+  function renderItem(item: any, index: number) {
     const {route, title} = item
     return (
       <TouchableOpacity
