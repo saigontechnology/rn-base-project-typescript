@@ -39,3 +39,7 @@ export function validateEmail(email: string): boolean {
 export function isDarkMode(): boolean {
   return Appearance.getColorScheme() === 'dark'
 }
+
+export function isObject(val: any): boolean {
+  return typeof val === 'object' && val.constructor !== FormData && val !== null
+}
