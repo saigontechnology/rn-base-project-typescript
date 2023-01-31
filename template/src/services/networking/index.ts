@@ -1,5 +1,5 @@
 import {AxiosError, AxiosRequestHeaders, AxiosResponse} from 'axios'
-import {IAxiosMethod, IError} from '../../constants/interface/services/axios'
+import {IAxiosMethod, IError, IParams} from '../../constants/interface/services/axios'
 import {isObject} from '../../utilities/utils'
 import instance from './axios'
 
@@ -11,24 +11,14 @@ const AxiosMethod: IAxiosMethod = {
   patch: 'PATCH',
 }
 
-async function axiosAPI<T>({
-  url,
-  method,
-  data,
-  config,
-}: {
-  url: string
-  method: string
-  data?: T | string
-  config?: AxiosRequestHeaders
-}): Promise<AxiosResponse<T>> {
-  if (isObject(data)) {
-    data = JSON.stringify(data)
+async function axiosAPI<T>({url, method, body, config}: IParams<T>): Promise<AxiosResponse<T>> {
+  if (isObject(body)) {
+    body = JSON.stringify(body)
   }
   return instance({
     url,
     method,
-    data,
+    data: body,
     headers: {...config},
   })
     .then((response: AxiosResponse) => {
@@ -39,25 +29,17 @@ async function axiosAPI<T>({
     })
 }
 
-export function getRequest<T>(url: string, config?: AxiosRequestHeaders): Promise<AxiosResponse<T>> {
+export function getRequest<T>({url, config}: IParams<T>): Promise<AxiosResponse<T>> {
   return axiosAPI<T>({url, method: AxiosMethod.get, config})
 }
 
-export function postRequest<T>(
-  url: string,
-  data: T,
-  config?: AxiosRequestHeaders,
-): Promise<AxiosResponse<T>> {
-  return axiosAPI<T>({url, method: AxiosMethod.post, data, config})
+export function postRequest<T>({url, body, config}: IParams<T>): Promise<AxiosResponse<T>> {
+  return axiosAPI<T>({url, method: AxiosMethod.post, body, config})
 }
 
-export function postFormDataRequest<T>(
-  url: string,
-  data: T,
-  config: AxiosRequestHeaders,
-): Promise<AxiosResponse<T>> | IError {
+export function postFormDataRequest<T>({url, body, config}: IParams<T>): Promise<AxiosResponse<T>> | IError {
   try {
-    if (data?.constructor !== FormData) {
+    if (body?.constructor !== FormData) {
       throw new Error('Unrecognized FormData part')
     }
     const headers: AxiosRequestHeaders = {
@@ -67,21 +49,21 @@ export function postFormDataRequest<T>(
       ...config,
       ...headers,
     }
-    return axiosAPI<T>({url, method: AxiosMethod.post, data, config})
+    return axiosAPI<T>({url, method: AxiosMethod.post, body, config})
   } catch (error: unknown) {
     const err = error as AxiosError<Error>
     return {error: err.response?.data.message || err.message}
   }
 }
 
-export function putRequest<T>(url: string, data: T, config?: AxiosRequestHeaders): Promise<AxiosResponse<T>> {
-  return axiosAPI<T>({url, method: AxiosMethod.put, data, config})
+export function putRequest<T>({url, body, config}: IParams<T>): Promise<AxiosResponse<T>> {
+  return axiosAPI<T>({url, method: AxiosMethod.put, body, config})
 }
 
-export function patchRequest<T>(url: string, data: T, config?: AxiosRequestHeaders) {
-  return axiosAPI<T>({url, method: AxiosMethod.patch, data, config})
+export function patchRequest<T>({url, body, config}: IParams<T>): Promise<AxiosResponse<T>> {
+  return axiosAPI<T>({url, method: AxiosMethod.patch, body, config})
 }
 
-export function deleteRequest(url: string, config?: AxiosRequestHeaders) {
+export function deleteRequest({url, config}: IParams) {
   return axiosAPI({url, method: AxiosMethod.delete, config})
 }
