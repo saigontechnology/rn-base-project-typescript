@@ -1,9 +1,11 @@
 import RouteKey from './RouteKey'
 import {LoginScreen, SignUpScreen} from '../screens'
+// Screen Import
 import HomeScreen from '../screens/HomeComponent/HomeScreen'
 
 export const screenMatch = (screen: string): any => {
   switch (screen) {
+    // Screen Match
     case RouteKey.LoginScreen:
       return LoginScreen
     case RouteKey.SignUpScreen:
@@ -17,6 +19,7 @@ export const screenMatch = (screen: string): any => {
 
 export const optionsMatch = (screen: string): any => {
   switch (screen) {
+    // Screen Options
     case RouteKey.HomeScreen:
     case RouteKey.HomeStack:
       return {

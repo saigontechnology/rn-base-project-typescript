@@ -13,6 +13,7 @@ export const componentMatch = (stackName: string): Element | string => {
 }
 
 export type HomeStackParamList = {
+  // Screen Params
   HomeScreen: undefined
 }
 
@@ -30,6 +31,7 @@ interface IProps {}
 export const HomeNavigator = (props: IProps) => {
   return (
     <Stack.Navigator>
+      {/* Plop screen */}
       <Stack.Screen
         name={'HomeScreen'}
         component={screenMatch(RouteKey.HomeScreen)}

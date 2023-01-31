@@ -1,11 +1,11 @@
 import {takeLatest, call, put} from 'redux-saga/effects'
 import {appActions, {{camelCase name}}Actions} from '../reducers'
+import {AnyAction} from 'redux'
 import Toast from '../../components/Toast'
 
-function* {{camelCase name}}Saga(action) {
+function* {{camelCase name}}Saga(action: any): IterableIterator<AnyAction> {
   try {
     yield put(appActions.setShowGlobalIndicator(true))
-    yield call('', '')
     //  TODO:
   } catch (e) {
     Toast.error(e.message)
@@ -14,4 +14,4 @@ function* {{camelCase name}}Saga(action) {
   }
 }
 
-export default [takeLatest({{camelCase name}}Actions.{{camelCase name}}Handler, {{camelCase name}}Saga)]
+export default [takeLatest({{camelCase name}}Actions.{{camelCase name}}Handle, {{camelCase name}}Saga)]

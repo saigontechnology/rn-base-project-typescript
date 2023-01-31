@@ -40,7 +40,13 @@ module.exports = function (plop) {
       path: 'src/navigation/StackNavigation.tsx',
       pattern: /\{\/\* Plop screen \*\/}/gi,
       template:
-        '{/* Plop screen */}\r\n      <Stack.Screen\r\n        name={RouteKey.{{properCase name}}Screen}\r\n        component={screenMatch(RouteKey.{{properCase name}}Screen)}\r\n        options={optionsMatch(RouteKey.{{properCase name}}Screen)}\r\n      />',
+        '{/* Plop screen */}\r\n      <Stack.Screen\r\n        name={`{{properCase name}}Screen`}\r\n        component={screenMatch(RouteKey.{{properCase name}}Screen)}\r\n        options={optionsMatch(RouteKey.{{properCase name}}Screen)}\r\n      />',
+    },
+    {
+      type: 'modify',
+      path: 'src/navigation/StackNavigation.tsx',
+      pattern: /\/\/ Screen Params/gi,
+      template: '// Screen Params\r\n  {{properCase name}}Screen: undefined',
     },
     {
       type: 'modify',
@@ -64,6 +70,11 @@ module.exports = function (plop) {
     },
   ]
   const store = [
+    {
+      type: 'add',
+      path: 'src/constants/interface/redux/{{properCase name}}Interface.ts',
+      templateFile: 'generators/redux/interface.js.hbs',
+    },
     {
       type: 'add',
       path: 'src/store/constants/{{camelCase name}}.ts',
@@ -112,7 +123,7 @@ module.exports = function (plop) {
     {
       type: 'add',
       path: 'src/store/selectors/{{camelCase name}}.ts',
-      template: '// export const actionSelector = state => state.{{camelCase name}}\n',
+      templateFile: 'generators/redux/selectors.js.hbs',
     },
     {
       type: 'modify',
