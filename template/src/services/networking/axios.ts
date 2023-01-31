@@ -1,9 +1,9 @@
-import { AnyAction, Store } from '@reduxjs/toolkit'
-import axios, {AxiosError, AxiosRequestConfig, AxiosRequestHeaders, AxiosResponse, HeadersDefaults} from 'axios'
+import {AnyAction, Store} from '@reduxjs/toolkit'
+import axios, {AxiosError, AxiosRequestConfig, AxiosResponse} from 'axios'
 import Config from 'react-native-config'
 import {AXIOS_TIMEOUT, RESPONSE_CODE, TOKEN, TOKEN_TYPE} from '../../constants'
-import { userActions } from '../../store/reducers'
-import { AppDispatch, RootState } from '../../store/store'
+import {userActions} from '../../store/reducers'
+import {RootState} from '../../store/store'
 import {getData, setData, clearAllData} from '../../utilities/storage'
 import {AUTH_API} from '../api/api'
 

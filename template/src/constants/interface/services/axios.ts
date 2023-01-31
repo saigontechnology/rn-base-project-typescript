@@ -28,7 +28,7 @@ export interface IAxiosMethod {
   patch: string
 }
 
-export interface IError {
+export interface IAxiosError {
   error: string | undefined
 }
 
