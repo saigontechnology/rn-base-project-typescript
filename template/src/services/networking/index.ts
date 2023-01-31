@@ -1,5 +1,5 @@
 import {AxiosError, AxiosRequestHeaders, AxiosResponse} from 'axios'
-import {IAxiosMethod} from '../../constants/interface/services/axios'
+import {IAxiosMethod, IError} from '../../constants/interface/services/axios'
 import {isObject} from '../../utilities/utils'
 import instance from './axios'
 
@@ -35,7 +35,7 @@ async function axiosAPI<T>({
       return {...response.data, status: response.status}
     })
     .catch((error: AxiosError<T>) => {
-      return {data: error?.response?.data, status: error?.response?.status}
+      return {error: error?.response?.data, status: error?.response?.status}
     })
 }
 
@@ -55,7 +55,7 @@ export function postFormDataRequest<T>(
   url: string,
   data: T,
   config: AxiosRequestHeaders,
-): Promise<AxiosResponse<T>> | any {
+): Promise<AxiosResponse<T>> | IError {
   try {
     if (data?.constructor !== FormData) {
       throw new Error('Unrecognized FormData part')
@@ -70,7 +70,7 @@ export function postFormDataRequest<T>(
     return axiosAPI<T>({url, method: AxiosMethod.post, data, config})
   } catch (error: unknown) {
     const err = error as AxiosError<Error>
-    return {error: err.response?.data.message}
+    return {error: err.response?.data.message || err.message}
   }
 }
 

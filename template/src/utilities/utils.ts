@@ -40,6 +40,6 @@ export function isDarkMode(): boolean {
   return Appearance.getColorScheme() === 'dark'
 }
 
-export function isObject(val: any): boolean {
-  return typeof val === 'object' && val.constructor !== FormData && val !== null
+export function isObject<T>(val: T): boolean {
+  return typeof val === 'object' && val?.constructor !== FormData && val !== null
 }

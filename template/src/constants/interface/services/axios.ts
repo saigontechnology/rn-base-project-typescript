@@ -1,4 +1,4 @@
-import {AxiosResponse, HeadersDefaults} from 'axios'
+import {HeadersDefaults} from 'axios'
 
 export interface IToken {
   token: string
@@ -26,4 +26,8 @@ export interface IAxiosMethod {
   put: string
   delete: string
   patch: string
+}
+
+export interface IError {
+  error: string | undefined
 }
