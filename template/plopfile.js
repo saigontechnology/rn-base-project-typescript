@@ -40,7 +40,7 @@ module.exports = function (plop) {
       path: 'src/navigation/StackNavigation.tsx',
       pattern: /\{\/\* Plop screen \*\/}/gi,
       template:
-        '{/* Plop screen */}\r\n      <Stack.Screen\r\n        name={`{{properCase name}}Screen`}\r\n        component={screenMatch(RouteKey.{{properCase name}}Screen)}\r\n        options={optionsMatch(RouteKey.{{properCase name}}Screen)}\r\n      />',
+        '{/* Plop screen */}\r\n      <Stack.Screen\r\n        name={"{{properCase name}}Screen"}\r\n        component={screenMatch(RouteKey.{{properCase name}}Screen)}\r\n        options={optionsMatch(RouteKey.{{properCase name}}Screen)}\r\n      />',
     },
     {
       type: 'modify',
