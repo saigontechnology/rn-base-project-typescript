@@ -37,19 +37,6 @@ module.exports = function (plop) {
     },
     {
       type: 'modify',
-      path: 'src/navigation/StackNavigation.tsx',
-      pattern: /\{\/\* Plop screen \*\/}/gi,
-      template:
-        '{/* Plop screen */}\r\n      <Stack.Screen\r\n        name={"{{properCase name}}Screen"}\r\n        component={screenMatch(RouteKey.{{properCase name}}Screen)}\r\n        options={optionsMatch(RouteKey.{{properCase name}}Screen)}\r\n      />',
-    },
-    {
-      type: 'modify',
-      path: 'src/navigation/StackNavigation.tsx',
-      pattern: /\/\/ Screen Params/gi,
-      template: '// Screen Params\r\n  {{properCase name}}Screen: undefined',
-    },
-    {
-      type: 'modify',
       path: 'src/navigation/ScreenService.tsx',
       pattern: /\/\/ Screen Import/gi,
       template:
