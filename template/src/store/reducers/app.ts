@@ -1,8 +1,7 @@
-import {createSlice} from '@reduxjs/toolkit'
-import {IAction} from '../../constants/interface/redux/ActionInterface'
-import {IApp, IAppActions} from '../../constants/interface/redux/AppInterface'
+import { ActionCreator, AnyAction, PayloadAction, createSlice } from '@reduxjs/toolkit'
 import RouteKey from '../../navigation/RouteKey'
-import {APP_CONSTANTS_ACTIONS} from '../constants/app'
+import { APP_CONSTANTS_ACTIONS } from '../constants/app'
+import { IApp } from '../types/app'
 
 const initialState: IApp = {
   showGlobalIndicator: false,
@@ -14,24 +13,25 @@ const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.HANDLER]: (state: IApp, action: IAction): void => {},
-    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.SUCCESS]: (state: IApp, action: IAction): void => {},
-    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.FAILURE]: (state: IApp, action: IAction): void => {},
-    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.HANDLER]: (state: IApp, action: IAction): void => {},
-    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.SUCCESS]: (state: IApp, action: IAction): void => {},
-    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.FAILURE]: (state: IApp, action: IAction): void => {},
-    getSettings: (state: IApp, action: IAction): void => {},
-    setAppStack: (state: IApp, action: IAction): void => {
+    // TODO: custom any in PayloadAction<any> depend on action type
+    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.HANDLER]: (state, action: PayloadAction<any>): void => { },
+    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.SUCCESS]: (state, action: PayloadAction<any>): void => { },
+    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.FAILURE]: (state, action: PayloadAction<any>): void => { },
+    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.HANDLER]: (state, action: PayloadAction<any>): void => { },
+    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.SUCCESS]: (state, action: PayloadAction<any>): void => { },
+    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.FAILURE]: (state, action: PayloadAction<any>): void => { },
+    getSettings: (state, action: PayloadAction<any>): void => { },
+    setAppStack: (state, action: PayloadAction<string>): void => {
       state: state.appState = action.payload
     },
-    getSettingsSuccess: (state: IApp, action: IAction): void => {},
-    setShowGlobalIndicator: (state: IApp, action: IAction): void => {
+    getSettingsSuccess: (state, action: PayloadAction<any>): void => { },
+    setShowGlobalIndicator: (state, action: PayloadAction<boolean>): void => {
       state: state.showGlobalIndicator = action.payload
     },
   },
 })
 
-export const appActions: IAppActions = {
+export const appActions: Record<string, ActionCreator<AnyAction>> = {
   ...appSlice.actions,
   setSettingAppHandle: appSlice.actions[APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.HANDLER],
   setSettingAppSuccess: appSlice.actions[APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.SUCCESS],

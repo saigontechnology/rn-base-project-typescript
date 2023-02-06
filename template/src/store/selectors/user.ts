@@ -1,6 +1,4 @@
-import {IInitialState} from '../../constants/interface/redux/InitialStateInterface'
-import {IUser, IUserInfo} from '../../constants/interface/redux/UserInterface'
+import { IInitialState, IUser, IUserInfo } from "../types"
 
-const getUserData = (state: IInitialState): IUser => state.user
-
+export const getUserData = (state: IInitialState): IUser => state.user
 export const getUserInfo = (state: IInitialState): IUserInfo => getUserData(state).userInfo

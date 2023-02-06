@@ -1,15 +1,15 @@
+import { NavigationContainerRef, StackActions } from '@react-navigation/native'
 import * as React from 'react'
-import {StackActions} from '@react-navigation/native'
-import {INavigationParams} from '../constants/interface/navigation/NavigationInterface'
+import { INavigationParams } from './types'
 
-export const navigationRef: React.RefObject<any> = React.createRef()
+export const navigationRef: React.RefObject<NavigationContainerRef<ReactNavigation.RootParamList>> = React.createRef()
 
 export function navigate(name: string, params: INavigationParams): void {
-  navigationRef.current?.navigate(name, params)
+  navigationRef.current?.navigate(name as never, params as never)
 }
 
 export const checkRouteOrigin = () => {
-  return navigationRef.current.getRootState().routeNames[0]
+  return navigationRef.current?.getRootState().routeNames[0]
 }
 
 export function navigationPop() {

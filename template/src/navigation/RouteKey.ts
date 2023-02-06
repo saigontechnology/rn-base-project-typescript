@@ -1,6 +1,4 @@
-import {IRouteKey} from '../constants/interface/common/CommonInterface'
-
-const RouteKey: IRouteKey = {
+const RouteKey: Record<string, string> = {
   /** Screen */
   SplashScreen: 'SplashScreen',
   LoginScreen: 'LoginScreen',

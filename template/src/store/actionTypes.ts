@@ -1,4 +1,4 @@
-import {IActionTypes} from '../constants/interface/common/CommonInterface'
+import { IActionTypes } from "./types";
 
 export const actionTypes = (actionName: string): IActionTypes => ({
   ORIGIN: actionName,

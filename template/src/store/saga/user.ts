@@ -1,11 +1,11 @@
-import {takeLatest, delay, put} from 'redux-saga/effects'
-import {appActions, userActions} from '../reducers'
-import RouteKey from '../../navigation/RouteKey'
+import { AnyAction } from 'redux'
+import { delay, put, takeLatest } from 'redux-saga/effects'
 import Toast from '../../components/Toast'
-import {IError} from '../../constants/interface/common/CommonInterface'
-import {AnyAction} from 'redux'
+import RouteKey from '../../navigation/RouteKey'
+import { appActions, userActions } from '../reducers'
+import { IError } from '../types'
 
-function* userLoginSaga(action): IterableIterator<AnyAction> {
+function* userLoginSaga(): IterableIterator<AnyAction> {
   try {
     yield put(appActions.setShowGlobalIndicator(true))
     // TODO: login login
@@ -19,7 +19,7 @@ function* userLoginSaga(action): IterableIterator<AnyAction> {
   }
 }
 
-function* userSignUpSaga(action): IterableIterator<AnyAction> {
+function* userSignUpSaga(): IterableIterator<AnyAction> {
   try {
     yield put(appActions.setShowGlobalIndicator(true))
   } catch (e: IError | any) {
@@ -31,11 +31,11 @@ function* userSignUpSaga(action): IterableIterator<AnyAction> {
 
 function* userLogout() {
   try {
-  } catch (e) {}
+  } catch (e) { }
 }
 
 export default [
-  takeLatest(userActions.userLogin.type, userLoginSaga),
-  takeLatest(userActions.userSignUp.type, userSignUpSaga),
-  takeLatest(userActions.logout.type, userLogout),
+  takeLatest(userActions.userLogin().type, userLoginSaga),
+  takeLatest(userActions.userSignUp().type, userSignUpSaga),
+  takeLatest(userActions.logout().type, userLogout),
 ]

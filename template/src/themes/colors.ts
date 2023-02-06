@@ -1,5 +1,6 @@
-import {IBaseColor} from '../constants/interface/themes/ColorsInterface'
-const baseColor: IBaseColor = {
+import { IColor } from "./types"
+
+const colors: IColor = {
   primary: '#65c8c6',
   black: '#1F1F1F',
   white: '#ffffff',
@@ -7,16 +8,16 @@ const baseColor: IBaseColor = {
   red: '#ff0009',
 }
 
-const colors = {
-  ...baseColor,
-}
-
-const getColorOpacity = (color: string, opacity: number): string | null | undefined => {
+const getColorOpacity = (color: string, opacity: number): string => {
   if (opacity >= 0 && opacity <= 1 && color.includes('#')) {
     const hexValue = Math.round(opacity * 255).toString(16)
     return `${color.slice(0, 7)}${hexValue.padStart(2, '0').toUpperCase()}`
   }
-  return color || null || undefined
+  return color
 }
 
-export {colors, getColorOpacity}
+export {
+  colors,
+  getColorOpacity
+}
+

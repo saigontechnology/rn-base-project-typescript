@@ -1,7 +1,7 @@
-import {combineReducers} from '@reduxjs/toolkit'
-import user from './user'
+import { combineReducers } from '@reduxjs/toolkit'
 import app from './app'
 import loading from './loading'
+import user from './user'
 export * from './app'
 export * from './user'
 

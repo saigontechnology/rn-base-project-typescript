@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from 'react'
-import {StyleSheet, View} from 'react-native'
-import ScreenContainer from '../components/ScreenContainer'
-import {deviceWidth, responsiveHeight, colors} from '../themes'
-import {useDispatch} from 'react-redux'
+import React, { useEffect, useState } from 'react'
+import { StyleSheet, View } from 'react-native'
 import CodePush from 'react-native-code-push'
 import Progress from 'react-native-progress'
+import { useDispatch } from 'react-redux'
+import ScreenContainer from '../components/ScreenContainer'
 import configs from '../constants/configs'
-import {appActions} from '../store/reducers'
+import { appActions } from '../store/reducers/app'
+import { colors, deviceWidth, responsiveHeight } from '../themes'
 
 const codePushOptions = {
   installMode: CodePush.InstallMode.IMMEDIATE,
@@ -28,7 +28,7 @@ const SplashScreen = () => {
             break
         }
       },
-      ({receivedBytes, totalBytes}) => {
+      ({ receivedBytes, totalBytes }) => {
         if (totalBytes > 0) {
           setUpdatePercent(receivedBytes / totalBytes)
         }

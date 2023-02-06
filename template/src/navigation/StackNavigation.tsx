@@ -1,7 +1,8 @@
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React from 'react'
-import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import {screenMatch, optionsMatch} from './ScreenService'
 import RouteKey from './RouteKey'
+import { optionsMatch, screenMatch } from './ScreenService'
+import { AppStackParamList } from './types'
 
 export const componentMatch = (stackName: string): Element | string => {
   switch (stackName) {
@@ -12,22 +13,9 @@ export const componentMatch = (stackName: string): Element | string => {
   }
 }
 
-export type HomeStackParamList = {
-  HomeScreen: undefined
-}
-
-export type AuthStackParamList = {
-  LoginScreen: undefined
-  SignUpScreen: undefined
-}
-
-export type AppStackParamList = AuthStackParamList & HomeStackParamList
-
 const Stack = createNativeStackNavigator<AppStackParamList>()
 
-interface IProps {}
-
-export const HomeNavigator = (props: IProps) => {
+export const HomeNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -39,7 +27,7 @@ export const HomeNavigator = (props: IProps) => {
   )
 }
 
-export const AuthNavigator = (props: IProps) => {
+export const AuthNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -51,23 +39,6 @@ export const AuthNavigator = (props: IProps) => {
         name={'SignUpScreen'}
         component={screenMatch(RouteKey.SignUpScreen)}
         options={optionsMatch(RouteKey.SignUpScreen)}
-      />
-    </Stack.Navigator>
-  )
-}
-
-export const MainStackNavigator = (props: IProps) => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        // @ts-ignore
-        name={RouteKey.HomeStack}
-        component={HomeNavigator}
-      />
-      <Stack.Screen
-        // @ts-ignore
-        name={RouteKey.AuthStack}
-        component={AuthNavigator}
       />
     </Stack.Navigator>
   )

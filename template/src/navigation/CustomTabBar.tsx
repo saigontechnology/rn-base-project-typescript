@@ -2,13 +2,20 @@
  * Created by Hong HP on 11/17/19.
  */
 
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
-import React from 'react'
-import {SafeAreaView} from 'react-native-safe-area-context'
+import { NavigationProp, ParamListBase } from '@react-navigation/native';
+import React from 'react';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { IItemTabBar } from './types';
 
-function CustomTabBar({routeName, navigation}: any) {
-  function renderItem(item: any, index: number) {
-    const {route, title} = item
+interface CustomTabBarProps {
+  routeName: string;
+  navigation: NavigationProp<ParamListBase>;
+}
+
+function CustomTabBar({ routeName, navigation }: CustomTabBarProps) {
+  function renderItem(item: IItemTabBar, index: number) {
+    const { route, title } = item
     return (
       <TouchableOpacity
         activeOpacity={1}

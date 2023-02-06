@@ -1,8 +1,8 @@
-import {IActionDispatch} from './ActionInterface'
+import { IActionDispatch } from './action'
 
-export interface IUserInfo {}
+export interface IUserInfo { }
 
-export interface ITokenData {}
+export interface ITokenData { }
 
 export interface IUser {
   userInfo: IUserInfo
