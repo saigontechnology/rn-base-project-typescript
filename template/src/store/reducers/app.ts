@@ -14,17 +14,18 @@ const appSlice = createSlice({
   initialState,
   reducers: {
     // TODO: custom any in PayloadAction<any> depend on action type
-    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.HANDLER]: (state, action: PayloadAction<any>): void => { },
+    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.HANDLER]: (state): string => {
+      return state.appState;
+    },
     [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.SUCCESS]: (state, action: PayloadAction<any>): void => { },
     [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.FAILURE]: (state, action: PayloadAction<any>): void => { },
     [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.HANDLER]: (state, action: PayloadAction<any>): void => { },
     [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.SUCCESS]: (state, action: PayloadAction<any>): void => { },
     [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.FAILURE]: (state, action: PayloadAction<any>): void => { },
-    getSettings: (state, action: PayloadAction<any>): void => { },
+    getSettings: (): void => { },
     setAppStack: (state, action: PayloadAction<string>): void => {
       state: state.appState = action.payload
     },
-    getSettingsSuccess: (state, action: PayloadAction<any>): void => { },
     setShowGlobalIndicator: (state, action: PayloadAction<boolean>): void => {
       state: state.showGlobalIndicator = action.payload
     },
