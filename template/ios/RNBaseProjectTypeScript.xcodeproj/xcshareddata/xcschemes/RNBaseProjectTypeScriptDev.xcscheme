@@ -5,6 +5,15 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <PreActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# Type a script or drag a script file from your workspace to insert its path.&#10;cp &quot;${PROJECT_DIR}/../.env.development&quot; &quot;${PROJECT_DIR}/../.env&quot;&#10;">
+            </ActionContent>
+         </ExecutionAction>
+      </PreActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "YES"
@@ -15,7 +24,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "BaseDev.app"
+               BuildableName = "Base.app"
                BlueprintName = "RNBaseProjectTypeScript"
                ReferencedContainer = "container:RNBaseProjectTypeScript.xcodeproj">
             </BuildableReference>
@@ -50,7 +59,7 @@
                   <BuildableReference
                      BuildableIdentifier = "primary"
                      BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-                     BuildableName = "BaseDev.app"
+                     BuildableName = "Base.app"
                      BlueprintName = "RNBaseProjectTypeScript"
                      ReferencedContainer = "container:RNBaseProjectTypeScript.xcodeproj">
                   </BuildableReference>
@@ -63,7 +72,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "BaseDev.app"
+            BuildableName = "Base.app"
             BlueprintName = "RNBaseProjectTypeScript"
             ReferencedContainer = "container:RNBaseProjectTypeScript.xcodeproj">
          </BuildableReference>
@@ -80,7 +89,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "BaseDev.app"
+            BuildableName = "Base.app"
             BlueprintName = "RNBaseProjectTypeScript"
             ReferencedContainer = "container:RNBaseProjectTypeScript.xcodeproj">
          </BuildableReference>

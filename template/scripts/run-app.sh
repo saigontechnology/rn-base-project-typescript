@@ -30,9 +30,9 @@ fi
 
 prompt_ios="Please select variant for ios: "
 OPTIONS_IOS=(
-    "RNBaseTypescriptProjectDev" 
-    "RNBaseTypescriptProjectStg" 
-    "RNBaseTypescriptProject" 
+    "RNBaseProjectTypeScriptDev" 
+    "RNBaseProjectTypeScriptStg" 
+    "RNBaseProjectTypeScript" 
     "quit"
 )
 
