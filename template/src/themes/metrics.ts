@@ -74,7 +74,7 @@ const metrics: IMetrics = {
   icon: responsiveHeight(30),
 }
 
-const fontSizes: IFontSize = {
+const FontSizes: IFontSize = {
   small: responsiveFont(12),
   span: responsiveFont(14),
   body: responsiveFont(16),
@@ -84,7 +84,7 @@ const fontSizes: IFontSize = {
 
 export {
   metrics,
-  fontSizes,
+  FontSizes,
   isIOS,
   shadow,
   hitSlop,

@@ -1,8 +1,8 @@
 import React from 'react'
-import { Animated, StyleSheet, Text, TextProps, TouchableOpacity, ViewProps, ViewStyle } from 'react-native'
-import { colors, fontSizes, metrics } from '../themes'
+import {Animated, StyleSheet, Text, TextProps, TouchableOpacity, ViewProps, ViewStyle} from 'react-native'
+import {FontSizes, colors, metrics} from '../themes'
 import Emitter from '../utilities/Emitter'
-import { getStatusBarHeight } from '../utilities/utils'
+import {getStatusBarHeight} from '../utilities/utils'
 
 const HEIGHT = getStatusBarHeight() + metrics.marginVertical
 
@@ -183,7 +183,7 @@ const styles = StyleSheet.create<IStyleSheet | any>({
     backgroundColor,
   }),
   textStyle: {
-    fontSize: fontSizes.span,
+    fontSize: FontSizes.span,
     marginBottom: metrics.marginVertical,
     textAlign: 'center',
   },
