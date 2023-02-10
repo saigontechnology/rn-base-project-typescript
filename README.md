@@ -19,7 +19,6 @@ npx react-native init ProjectName --template rn-base-project-ts
 ## Libraries used:
 ```text
     - redux-persist
-    - @react-native-async-storage/async-storage
     - @react-navigation/bottom-tabs
     - @react-navigation/native
     - @react-navigation/native-stack
@@ -33,8 +32,11 @@ npx react-native init ProjectName --template rn-base-project-ts
     - react-redux
     - redux-saga
     - i18n-js
+    - react-native-mmkv
 ```
 
+## mmkv storage
+- [Config mmkv](/docs/mmkv.md)
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
