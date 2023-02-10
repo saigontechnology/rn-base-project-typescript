@@ -1,8 +1,8 @@
-import { AnyAction } from 'redux'
-import { call, put, takeLatest } from 'redux-saga/effects'
+import {AnyAction} from 'redux'
+import {call, put, takeLatest} from 'redux-saga/effects'
 import RouteKey from '../../navigation/RouteKey'
-import { getData } from '../../utilities/storage'
-import { appActions } from '../reducers'
+import {getData} from '../../utilities/storage'
+import {appActions} from '../reducers'
 
 function* getAppSettingSaga(): IterableIterator<AnyAction> {
   try {
@@ -16,4 +16,4 @@ function* getAppSettingSaga(): IterableIterator<AnyAction> {
   }
 }
 
-export default [takeLatest(appActions.getSettings().type, getAppSettingSaga)]
+export default [takeLatest(appActions.getSettings.type, getAppSettingSaga)]

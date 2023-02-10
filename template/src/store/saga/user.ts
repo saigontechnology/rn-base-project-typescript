@@ -1,9 +1,9 @@
-import { AnyAction } from 'redux'
-import { delay, put, takeLatest } from 'redux-saga/effects'
+import {AnyAction} from 'redux'
+import {delay, put, takeLatest} from 'redux-saga/effects'
 import Toast from '../../components/Toast'
 import RouteKey from '../../navigation/RouteKey'
-import { appActions, userActions } from '../reducers'
-import { IError } from '../types'
+import {appActions, userActions} from '../reducers'
+import {IError} from '../types'
 
 function* userLoginSaga(): IterableIterator<AnyAction> {
   try {
@@ -35,7 +35,7 @@ function* userLogout() {
 }
 
 export default [
-  takeLatest(userActions.userLogin().type, userLoginSaga),
-  takeLatest(userActions.userSignUp().type, userSignUpSaga),
-  takeLatest(userActions.logout().type, userLogout),
+  takeLatest(userActions.userLogin.type, userLoginSaga),
+  takeLatest(userActions.userSignUp.type, userSignUpSaga),
+  takeLatest(userActions.logout.type, userLogout),
 ]

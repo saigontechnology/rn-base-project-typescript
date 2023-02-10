@@ -1,6 +1,6 @@
-import { ActionCreator, AnyAction, PayloadAction, createSlice } from '@reduxjs/toolkit'
-import { USER_CONSTANTS_ACTIONS } from '../constants/user'
-import { IUser, IUserInfo } from '../types'
+import {PayloadAction, createSlice} from '@reduxjs/toolkit'
+import {USER_CONSTANTS_ACTIONS} from '../constants/user'
+import {IUser, IUserInfo} from '../types'
 
 const initialState: IUser = {
   userInfo: {},
@@ -33,7 +33,7 @@ export const userSlice = createSlice({
   extraReducers: builder => { },
 })
 
-export const userActions: Record<string, ActionCreator<AnyAction>> = {
+export const userActions = {
   ...userSlice.actions,
   userLoginHandle: userSlice.actions[USER_CONSTANTS_ACTIONS.USER_LOGIN_ACTIONS.HANDLER],
   userLoginSuccess: userSlice.actions[USER_CONSTANTS_ACTIONS.USER_LOGIN_ACTIONS.FAILURE],

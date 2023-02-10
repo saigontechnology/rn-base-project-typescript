@@ -1,7 +1,7 @@
-import { ActionCreator, AnyAction, PayloadAction, createSlice } from '@reduxjs/toolkit'
+import {PayloadAction, createSlice} from '@reduxjs/toolkit'
 import RouteKey from '../../navigation/RouteKey'
-import { APP_CONSTANTS_ACTIONS } from '../constants/app'
-import { IApp } from '../types/app'
+import {APP_CONSTANTS_ACTIONS} from '../constants/app'
+import {IApp} from '../types/app'
 
 const initialState: IApp = {
   showGlobalIndicator: false,
@@ -32,7 +32,7 @@ const appSlice = createSlice({
   },
 })
 
-export const appActions: Record<string, ActionCreator<AnyAction>> = {
+export const appActions = {
   ...appSlice.actions,
   setSettingAppHandle: appSlice.actions[APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.HANDLER],
   setSettingAppSuccess: appSlice.actions[APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.SUCCESS],
