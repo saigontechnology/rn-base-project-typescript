@@ -2,7 +2,6 @@ import {takeLatest, delay, put} from 'redux-saga/effects'
 import {appActions, userActions} from '../reducers'
 import RouteKey from '../../navigation/RouteKey'
 import Toast from '../../components/Toast'
-import {IError} from '../../constants/interface/common/CommonInterface'
 
 function* userLoginSaga(action): IterableIterator<void> {
   try {

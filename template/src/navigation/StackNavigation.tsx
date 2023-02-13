@@ -14,8 +14,7 @@ export const componentMatch = (stackName: string): Element | string => {
 
 const Stack = createNativeStackNavigator()
 
-export const HomeNavigator = (): Element => {
-  return (
+export const HomeNavigator = (): Element => (
     <Stack.Navigator>
       <Stack.Screen
         name={RouteKey.HomeScreen}
@@ -24,10 +23,8 @@ export const HomeNavigator = (): Element => {
       />
     </Stack.Navigator>
   )
-}
 
-export const AuthNavigator = (): Element => {
-  return (
+export const AuthNavigator = (): Element => (
     <Stack.Navigator>
       <Stack.Screen
         name={RouteKey.LoginScreen}
@@ -41,12 +38,9 @@ export const AuthNavigator = (): Element => {
       />
     </Stack.Navigator>
   )
-}
 
-export const MainStackNavigator = (): Element => {
-  return (
+export const MainStackNavigator = (): Element => (
     <Stack.Navigator>
       <Stack.Screen name={RouteKey.HomeStack} component={HomeNavigator} />
     </Stack.Navigator>
   )
-}

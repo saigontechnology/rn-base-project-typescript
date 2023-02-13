@@ -4,7 +4,7 @@ export const clearAllData = async (): Promise<void> => {
   try {
     await AsyncStorage.clear()
   } catch (e) {
-    console.log('clearAllData error', e)
+    // Do something if there is error
   }
 }
 
@@ -13,7 +13,7 @@ export const setData = async (key: string, data: any): Promise<void> => {
   try {
     await AsyncStorage.setItem(key, stringValue)
   } catch (e) {
-    console.log('setData error', e)
+    // Do something if there is error
   }
 }
 
@@ -30,6 +30,6 @@ export const removeData = async (key: string): Promise<void> => {
   try {
     await AsyncStorage.removeItem(key)
   } catch (e) {
-    console.log('removeData error', e)
+    // Do something if there is error
   }
 }

@@ -2,7 +2,6 @@
 import {createSlice} from '@reduxjs/toolkit'
 import {IAction} from '../../constants/interface/redux/ActionInterface'
 import {IUser, IUserActions} from '../../constants/interface/redux/UserInterface'
-import {APP_CONSTANTS_ACTIONS} from '../constants/app'
 import {USER_CONSTANTS_ACTIONS} from '../constants/user'
 
 const initialState: IUser = {

@@ -5,9 +5,10 @@
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import React from 'react'
 import {SafeAreaView} from 'react-native-safe-area-context'
+import {NavigationProp} from '@react-navigation/native'
 
-function CustomTabBar({routeName, navigation}: unknown) {
-  function renderItem(item, index) {
+function CustomTabBar({navigation}: {navigation: NavigationProp<ReactNavigation.RootParamList>}) {
+  function renderItem(item) {
     const {route, title} = item
     return (
       <TouchableOpacity

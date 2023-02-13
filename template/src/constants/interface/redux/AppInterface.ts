@@ -1,4 +1,3 @@
-import {IRouteKey} from '../common/CommonInterface'
 import {IActionDispatch} from './ActionInterface'
 
 export interface IApp {
