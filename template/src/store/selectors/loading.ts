@@ -1,4 +1,4 @@
-import { IInitialState } from "../types"
+import {IInitialState} from '../types'
 
 export const getLoadingSelector = (state: IInitialState, actionTypes: [string]): boolean => {
   if (Array.isArray(actionTypes)) {

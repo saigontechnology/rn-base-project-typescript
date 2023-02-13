@@ -1,4 +1,4 @@
-const RouteKey: Record<string, string> = {
+const RouteKey: Record<string, any> = {
   /** Screen */
   SplashScreen: 'SplashScreen',
   LoginScreen: 'LoginScreen',

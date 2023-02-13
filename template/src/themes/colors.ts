@@ -1,4 +1,4 @@
-import { IColor } from "./types"
+import {IColor} from './types'
 
 const colors: IColor = {
   primary: '#65c8c6',
@@ -16,8 +16,4 @@ const getColorOpacity = (color: string, opacity: number): string => {
   return color
 }
 
-export {
-  colors,
-  getColorOpacity
-}
-
+export {colors, getColorOpacity}

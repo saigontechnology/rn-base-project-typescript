@@ -1,9 +1,9 @@
-import { Dimensions, Platform } from 'react-native';
-import { IFontSize, IHitSlop, IMetrics, IShadow } from './types';
+import {Dimensions, Platform} from 'react-native'
+import {IFontSize, IHitSlop, IMetrics, IShadow} from './types'
 
 const DESIGN_WIDTH = 375
 const DESIGN_HEIGHT = 812
-const { width, height } = Dimensions.get('window')
+const {width, height} = Dimensions.get('window')
 
 function responsiveWidth(value: number = 0): number {
   return (width * value) / DESIGN_WIDTH
@@ -32,7 +32,7 @@ const shadow: IShadow = {
   shadowRadius: 5,
   elevation: 5,
   shadowOpacity: 0.2,
-  shadowOffset: { width: 0, height: 3 },
+  shadowOffset: {width: 0, height: 3},
 }
 const hitSlop: IHitSlop = {
   top: 10,
@@ -93,5 +93,4 @@ export {
   responsiveWidth,
   deviceWidth,
   deviceHeight,
-};
-
+}

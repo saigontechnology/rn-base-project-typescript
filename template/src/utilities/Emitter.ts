@@ -1,9 +1,9 @@
-import { EmitterListener } from "./types"
+import {EmitterListener} from './types'
 
 class EventRegister {
   static _Listeners: EmitterListener = {
     count: 0,
-    refs: { key: { eventName: '', callback: () => { } } },
+    refs: {key: {eventName: '', callback: () => {}}},
   }
 
   static addEventListener(eventName: string, callback: (param: any) => void): string {

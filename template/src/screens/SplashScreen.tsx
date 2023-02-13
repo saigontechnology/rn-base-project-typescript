@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import React, {useEffect, useState} from 'react'
+import {StyleSheet, View} from 'react-native'
 import CodePush from 'react-native-code-push'
 import Progress from 'react-native-progress'
-import { useDispatch } from 'react-redux'
+import {useDispatch} from 'react-redux'
 import ScreenContainer from '../components/ScreenContainer'
 import configs from '../constants/configs'
-import { appActions } from '../store/reducers/app'
-import { colors, deviceWidth, responsiveHeight } from '../themes'
+import {appActions} from '../store/reducers/app'
+import {colors, deviceWidth, responsiveHeight} from '../themes'
 
 const codePushOptions = {
   installMode: CodePush.InstallMode.IMMEDIATE,
@@ -24,17 +24,17 @@ const SplashScreen = () => {
         switch (status) {
           case CodePush.SyncStatus.UP_TO_DATE:
           case CodePush.SyncStatus.UNKNOWN_ERROR:
-            dispatch(appActions.getSettings(''))
+            dispatch(appActions.getSettings())
             break
         }
       },
-      ({ receivedBytes, totalBytes }) => {
+      ({receivedBytes, totalBytes}) => {
         if (totalBytes > 0) {
           setUpdatePercent(receivedBytes / totalBytes)
         }
       },
     ).catch(() => {
-      dispatch(appActions.getSettings(''))
+      dispatch(appActions.getSettings())
     })
   }, [dispatch])
 
@@ -42,12 +42,7 @@ const SplashScreen = () => {
     <ScreenContainer style={styles.container}>
       {updatePercent > 0 ? (
         <View style={styles.progressBar}>
-          <Progress.Bar
-            progress={updatePercent}
-            color={colors.primary}
-            // showsText={true}
-            width={deviceWidth() * 0.6}
-          />
+          <Progress.Bar progress={updatePercent} color={colors.primary} width={deviceWidth() * 0.6} />
         </View>
       ) : (
         <></>

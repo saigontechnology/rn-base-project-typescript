@@ -1,8 +1,16 @@
-import React from 'react';
-import ScreenContainer from '../../components/ScreenContainer';
-import { HomeScreenProps } from '../../navigation/types';
+import React from 'react'
+import ScreenContainer from '../../components/ScreenContainer'
+import {HomeStackParamList} from '../../navigation/types'
+import {StackNavigationProp} from '@react-navigation/stack'
+import {RouteProp} from '@react-navigation/native'
 
-const HomeScreen = (props: HomeScreenProps<'HomeScreen'>): JSX.Element => {
+interface IProps {
+  navigation: StackNavigationProp<HomeStackParamList, 'HomeScreen'>
+  route: RouteProp<HomeStackParamList, 'HomeScreen'>
+}
+
+const HomeScreen = (props: IProps) => {
+  const {navigation, route} = props
   return <ScreenContainer children={<></>} style={{}} />
 }
 

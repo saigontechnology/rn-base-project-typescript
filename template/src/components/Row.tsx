@@ -1,13 +1,12 @@
 import React, {ReactElement} from 'react'
-import {View, StyleSheet} from 'react-native'
-import {ViewProps} from 'react-native'
+import {View, StyleSheet, StyleProp, ViewStyle} from 'react-native'
 
 interface IRowProps {
   children: ReactElement
-  style: ViewProps
+  style: StyleProp<ViewStyle>
 }
 
-const Row = ({style, children, ...props}: IRowProps) => {
+const Row = ({style, children}: IRowProps) => {
   return <View style={[styles.row, style]}>{children}</View>
 }
 

@@ -1,11 +1,11 @@
-import { NavigationContainer } from '@react-navigation/native'
+import {NavigationContainer} from '@react-navigation/native'
 import React from 'react'
-import { useSelector } from 'react-redux'
+import {useSelector} from 'react-redux'
 import SplashScreen from '../screens/SplashScreen'
-import { getAppStackState } from '../store/selectors'
-import { navigationRef } from './NavigationService'
+import {getAppStackState} from '../store/selectors'
+import {navigationRef} from './NavigationService'
 import RouteKey from './RouteKey'
-import { AuthNavigator, HomeNavigator } from './StackNavigation'
+import {AuthNavigator, HomeNavigator} from './StackNavigation'
 
 function AppNavigation(): React.ReactElement {
   const appState: string = useSelector(getAppStackState)

@@ -1,5 +1,14 @@
 import React from 'react'
-import {Animated, StyleSheet, Text, TextProps, TouchableOpacity, ViewProps, ViewStyle} from 'react-native'
+import {
+  Animated,
+  StyleSheet,
+  Text,
+  TextProps,
+  TouchableOpacity,
+  ViewProps,
+  ViewStyle,
+  StyleProp,
+} from 'react-native'
 import {FontSizes, colors, metrics} from '../themes'
 import Emitter from '../utilities/Emitter'
 import {getStatusBarHeight} from '../utilities/utils'
@@ -14,7 +23,7 @@ interface IToastState {
 }
 
 interface IStyleSheet {
-  container: ViewProps
+  container: StyleProp<ViewStyle>
   messageContainer: () => ViewProps
   textStyle: TextProps
 }
@@ -34,15 +43,15 @@ class Toast extends React.PureComponent<IToastProps, IToastState> {
   animated: Animated.AnimatedProps<any> | null
   // Static methods
   static success(text: string) {
-    Emitter.emit('SHOW_TOAST_MESSAGE', { message: text, type: EToastType.SUCCESS })
+    Emitter.emit('SHOW_TOAST_MESSAGE', {message: text, type: EToastType.SUCCESS})
   }
 
   static error(text: string) {
-    Emitter.emit('SHOW_TOAST_ERROR', { message: text, type: 'error' })
+    Emitter.emit('SHOW_TOAST_ERROR', {message: text, type: 'error'})
   }
 
   static info(text: string) {
-    Emitter.emit('SHOW_TOAST_INFO', { message: text, type: 'info' })
+    Emitter.emit('SHOW_TOAST_INFO', {message: text, type: 'info'})
   }
 
   constructor(props: IToastProps, IState: IToastState, offset: any) {
@@ -68,12 +77,12 @@ class Toast extends React.PureComponent<IToastProps, IToastState> {
     Emitter.rm('SHOW_TOAST_INFO')
   }
 
-  displayMessage = ({ message, type }: any): void => {
+  displayMessage = ({message, type}: IToastState): void => {
     // @ts-ignore
     window.cancelAnimationFrame(this.frameID)
 
     this.offset.setValue(HEIGHT * -1)
-    this.setState({ message, type })
+    this.setState({message, type})
     // @ts-ignore
     this.frameID = window.requestAnimationFrame(() => {
       this.animated = Animated.sequence([
@@ -129,7 +138,7 @@ class Toast extends React.PureComponent<IToastProps, IToastState> {
   }
 
   messageColor = (): string => {
-    const { type } = this.state
+    const {type} = this.state
 
     if (type === 'success') {
       return colors.primary
@@ -141,13 +150,13 @@ class Toast extends React.PureComponent<IToastProps, IToastState> {
   }
 
   render() {
-    const { message, type } = this.state
+    const {message, type} = this.state
     return (
       <Animated.View
         style={[
           styles.container,
           {
-            transform: [{ translateY: this.offset }],
+            transform: [{translateY: this.offset}],
             opacity: this.opacity,
             backgroundColor: this.messageColor(),
           },
@@ -158,7 +167,7 @@ class Toast extends React.PureComponent<IToastProps, IToastState> {
           onPress={() => {
             this.dismiss()
           }}>
-          <Text style={[styles.textStyle, { color: type === 'error' ? colors.red : colors.primary }]}>
+          <Text style={[styles.textStyle, {color: type === 'error' ? colors.red : colors.primary}]}>
             {message}
           </Text>
         </TouchableOpacity>

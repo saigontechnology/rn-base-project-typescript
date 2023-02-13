@@ -1,4 +1,4 @@
-import { IActionDispatch } from './action'
+import {IActionDispatch} from './action'
 
 export interface IApp {
   showGlobalIndicator?: boolean

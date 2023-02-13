@@ -1,49 +1,47 @@
-import { BottomTabScreenProps } from "@react-navigation/bottom-tabs"
-import { CompositeScreenProps } from "@react-navigation/native"
-import { StackScreenProps } from "@react-navigation/stack"
+import {BottomTabScreenProps} from '@react-navigation/bottom-tabs'
+import {CompositeScreenProps} from '@react-navigation/native'
+import {StackScreenProps} from '@react-navigation/stack'
 
 export interface INavigationParams {
-    params?: INavigationOnlyParams | INavigationScreenAndParams
+  params?: INavigationOnlyParams | INavigationScreenAndParams
 }
 
 export type INavigationOnlyParams = object
 export type INavigationScreenAndParams = {
-    screen?: string
-    params?: INavigationOnlyParams | INavigationScreenAndParams
+  screen?: string
+  params?: INavigationOnlyParams | INavigationScreenAndParams
 }
 
 export type HomeStackParamList = {
-    HomeScreen: undefined
+  HomeScreen: undefined
 }
 
 export type AuthStackParamList = {
-    LoginScreen: undefined
-    SignUpScreen: undefined
+  LoginScreen: undefined
+  SignUpScreen: undefined
 }
 
 export type AppStackParamList = AuthStackParamList & HomeStackParamList
 
-export type AppStackScreenProps<T extends keyof AppStackParamList> = StackScreenProps<AppStackParamList, T>;
+export type AppStackScreenProps<T extends keyof AppStackParamList> = StackScreenProps<AppStackParamList, T>
 
-export type HomeScreenProps<T extends keyof HomeStackParamList> =
-    CompositeScreenProps<
-        BottomTabScreenProps<HomeStackParamList, T>,
-        AppStackScreenProps<keyof AppStackParamList>
-    >;
+export type HomeScreenProps<T extends keyof HomeStackParamList> = CompositeScreenProps<
+  BottomTabScreenProps<HomeStackParamList, T>,
+  AppStackScreenProps<keyof AppStackParamList>
+>
 
-export type AuthScreenProps<T extends keyof AuthStackParamList> =
-    CompositeScreenProps<
-        BottomTabScreenProps<AuthStackParamList, T>,
-        AppStackScreenProps<keyof AppStackParamList>
-    >;
+export type AuthScreenProps<T extends keyof AuthStackParamList> = CompositeScreenProps<
+  BottomTabScreenProps<AuthStackParamList, T>,
+  AppStackScreenProps<keyof AppStackParamList>
+>
 
 export type IItemTabBar = {
-    route: string;
-    title: string
+  route: string
+  title: string
 }
 
 declare global {
-    namespace ReactNavigation {
-        interface RootParamList extends AppStackParamList { }
-    }
-} 
+  namespace ReactNavigation {
+    interface RootParamList extends AppStackParamList {}
+  }
+}

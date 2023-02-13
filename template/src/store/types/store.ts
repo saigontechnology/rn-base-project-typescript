@@ -1,6 +1,6 @@
-import { IApp } from './app'
-import { ILoading } from './loading'
-import { IUser } from './user'
+import {IApp} from './app'
+import {ILoading} from './loading'
+import {IUser} from './user'
 
 export interface IInitialState {
   app: IApp
@@ -9,6 +9,6 @@ export interface IInitialState {
 }
 
 export interface IError {
-  code: number;
-  message: string;
+  code: number
+  message: string
 }

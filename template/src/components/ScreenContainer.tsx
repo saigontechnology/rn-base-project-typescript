@@ -1,9 +1,9 @@
 import React, {ReactElement} from 'react'
-import {StyleSheet, View, ViewStyle} from 'react-native'
+import {StyleSheet, View, ViewStyle, StyleProp} from 'react-native'
 
 interface IRowProps {
   children: ReactElement
-  style: ViewStyle
+  style: StyleProp<ViewStyle>
 }
 
 const ScreenContainer = ({children, style, ...rest}: IRowProps) => {

@@ -1,8 +1,8 @@
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import React from 'react'
 import RouteKey from './RouteKey'
-import { optionsMatch, screenMatch } from './ScreenService'
-import { AppStackParamList } from './types'
+import {optionsMatch, screenMatch} from './ScreenService'
+import {AppStackParamList} from './types'
 
 export const componentMatch = (stackName: string): Element | string => {
   switch (stackName) {

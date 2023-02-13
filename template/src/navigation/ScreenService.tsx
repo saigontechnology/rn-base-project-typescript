@@ -1,5 +1,5 @@
-import { NativeStackNavigationOptions } from '@react-navigation/native-stack'
-import { LoginScreen, SignUpScreen } from '../screens'
+import {NativeStackNavigationOptions} from '@react-navigation/native-stack'
+import {LoginScreen, SignUpScreen} from '../screens'
 import HomeScreen from '../screens/HomeComponent/HomeScreen'
 import RouteKey from './RouteKey'
 

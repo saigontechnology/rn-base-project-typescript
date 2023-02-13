@@ -27,8 +27,5 @@ export const configureLocalization = (locale: string, fallback = 'en') => {
 }
 
 export const getString = (key: keyof typeof en, params?: any) => {
-  if (getI18n()) {
-    return getI18n().t(key, params)
-  }
-  return ''
+  return getI18n() ? getI18n().t(key, params) : ''
 }

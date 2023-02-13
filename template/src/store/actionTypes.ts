@@ -1,4 +1,4 @@
-import { IActionTypes } from "./types";
+import {IActionTypes} from './types'
 
 export const actionTypes = (actionName: string): IActionTypes => ({
   ORIGIN: actionName,
