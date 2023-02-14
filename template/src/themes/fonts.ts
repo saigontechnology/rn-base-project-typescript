@@ -1,5 +1,3 @@
-const fonts = {
-  RobotoRegular: 'Roboto-Regular',
-}
+const fonts = {}
 
 export default fonts
