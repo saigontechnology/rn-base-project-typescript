@@ -145,39 +145,18 @@ buildTypes {
 
 ### Android Change App name and App Icon
 
-Just copy the `android/app/main` folder and rename it to the referring names placed in the flavors in our case we put it
-**development** and **staging**.
+Edit file `android/app/src/main/res/values/string.xml`.
 
-- To change the app icons, just add it inside the specific mipmap of the build development, staging or main(production).
-
-- To change app name, open file and rename
-
-`android/app/src/main/AndroidManifest.xml`
+- Change `app_name` using env:
 
 ```bash
-    <application
-      android:name=".MainApplication"
-      android:label="@string/APP_NAME" // change this line
-      android:icon="@mipmap/ic_launcher"
-      android:roundIcon="@mipmap/ic_launcher_round"
-      android:allowBackup="false"
-      android:theme="@style/AppTheme">
-      <activity
-        android:name=".MainActivity"
-        android:label="@string/APP_NAME" // change this line
-        android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
-        android:launchMode="singleTask"
-        android:windowSoftInputMode="adjustResize"
-        android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-      </activity>
-    </application>
+<resources>
+    <string name="app_name">@string/APP_NAME</string>
+    <string moduleConfig="true" name="CodePushDeploymentKey">@string/CODEPUSH_KEY_ANDROID</string>
+</resources>
 ```
 
-- Value `APP_NAME` in env
+- Value `APP_NAME` and `CODEPUSH_KEY_ANDROID` in file env
 
 ```bash
 API_URL=
