@@ -1,4 +1,4 @@
-import {AxiosRequestHeaders, HeadersDefaults} from 'axios'
+import {AxiosRequestHeaders, HeadersDefaults, RawAxiosRequestHeaders} from 'axios'
 
 export interface IToken {
   token: string
@@ -36,5 +36,5 @@ export interface IParams<T = undefined> {
   url: string
   method?: string
   body?: T | string
-  config?: AxiosRequestHeaders
+  config?: AxiosRequestHeaders | RawAxiosRequestHeaders
 }

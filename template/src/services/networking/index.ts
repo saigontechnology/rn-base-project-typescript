@@ -1,4 +1,12 @@
-import {AxiosError, AxiosRequestHeaders, AxiosResponse} from 'axios'
+import {
+  AxiosError,
+  AxiosHeaders,
+  AxiosRequestConfig,
+  AxiosRequestHeaders,
+  AxiosResponse,
+  MethodsHeaders,
+  RawAxiosRequestHeaders,
+} from 'axios'
 import {IAxiosMethod, IAxiosError, IParams} from '../../constants/interface/services/axios'
 import {isObject} from '../../utilities/utils'
 import instance from './axios'
@@ -48,12 +56,10 @@ export function postFormDataRequest<T>(params: IParams<T>): Promise<AxiosRespons
     if (body?.constructor !== FormData) {
       throw new Error('Unrecognized FormData part')
     }
-    const headers: AxiosRequestHeaders = {
-      'content-type': 'multipart/form-data',
-    }
+
     const customConfig = {
       ...config,
-      ...headers,
+      'Content-Type': 'multipart/form-data',
     }
     return axiosAPI<T>({url, method: AxiosMethod.post, body, config: customConfig})
   } catch (error: unknown) {

@@ -70,7 +70,7 @@ instance.interceptors.request.use(
     // Do something before request is sent
     return config
   },
-  error => {
+  (error: AxiosError) => {
     // Do something with request error
     return Promise.reject(error)
   },
