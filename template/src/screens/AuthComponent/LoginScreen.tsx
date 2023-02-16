@@ -1,15 +1,13 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack'
 import React from 'react'
 import ScreenContainer from '../../components/ScreenContainer'
-import {AuthStackParamList} from '../../navigation/types'
-import {StackNavigationProp} from '@react-navigation/stack'
-import {RouteProp} from '@react-navigation/native'
+import RouteKey from '../../navigation/RouteKey'
+import {AppStackParamList} from '../../navigation/types'
 
-interface IProps {
-  navigation: StackNavigationProp<AuthStackParamList, 'LoginScreen'>
-  route: RouteProp<AuthStackParamList, 'LoginScreen'>
-}
 
-export const LoginScreen = (props: IProps) => {
+type Props = NativeStackScreenProps<AppStackParamList, RouteKey.LoginScreen>
+
+export const LoginScreen: React.FC<Props> = (props) => {
   const {navigation, route} = props
   return <ScreenContainer children={<></>} style={{}} />
 }

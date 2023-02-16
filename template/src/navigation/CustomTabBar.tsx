@@ -2,17 +2,11 @@
  * Created by Hong HP on 11/17/19.
  */
 
-import {NavigationProp, ParamListBase} from '@react-navigation/native'
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs'
 import React from 'react'
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import {IItemTabBar} from './types'
-
-interface CustomTabBarProps {
-  routeName: string
-  navigation: NavigationProp<ParamListBase>
-}
 
 function CustomTabBar(props: BottomTabBarProps) {
   const {navigation} = props
