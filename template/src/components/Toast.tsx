@@ -1,13 +1,13 @@
 import React from 'react'
 import {
   Animated,
+  StyleProp,
   StyleSheet,
   Text,
   TextProps,
   TouchableOpacity,
   ViewProps,
   ViewStyle,
-  StyleProp,
 } from 'react-native'
 import {FontSizes, colors, metrics} from '../themes'
 import Emitter from '../utilities/Emitter'
