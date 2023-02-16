@@ -2,10 +2,10 @@ import React, {useEffect, useState} from 'react'
 import {StyleSheet, View} from 'react-native'
 import CodePush from 'react-native-code-push'
 import Progress from 'react-native-progress'
-import {useDispatch} from 'react-redux'
 import ScreenContainer from '../components/ScreenContainer'
 import configs from '../constants/configs'
 import {appActions} from '../store/reducers/app'
+import {useAppDispatch} from '../store/store'
 import {colors, deviceWidth, responsiveHeight} from '../themes'
 
 const codePushOptions = {
@@ -14,7 +14,7 @@ const codePushOptions = {
 }
 
 const SplashScreen = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const [updatePercent, setUpdatePercent] = useState(0)
 
   useEffect(() => {
