@@ -8,5 +8,5 @@ type Props = NativeStackScreenProps<AppStackParamList, RouteKey.SignUpScreen>
 
 export const SignUpScreen: React.FC<Props> = props => {
   const {navigation, route} = props
-  return <ScreenContainer children={<></>} style={{}} />
+  return <ScreenContainer children={<></>} />
 }

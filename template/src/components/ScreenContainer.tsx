@@ -3,7 +3,7 @@ import {StyleSheet, View, ViewStyle, StyleProp} from 'react-native'
 
 interface IRowProps {
   children: ReactElement | null
-  style: StyleProp<ViewStyle>
+  style?: StyleProp<ViewStyle>
 }
 
 const ScreenContainer = ({children, style, ...rest}: IRowProps) => {
