@@ -14,4 +14,4 @@ export enum RouteKey {
   MainTab = 'MainTab',
 }
 
-export default RouteKey;
+export default RouteKey
