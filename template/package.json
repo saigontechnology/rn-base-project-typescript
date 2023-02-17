@@ -12,7 +12,9 @@
     "pretty": "prettier --write \"./**/*.{js,jsx,json}\"",
     "prepare": "husky install",
     "postinstall": "bash ./scripts/post-install.sh",
-    "reverse": "adb reverse tcp:8081 tcp:8081"
+    "reverse": "adb reverse tcp:8081 tcp:8081",
+    "codepush": "bash ./scripts/code-push.sh",
+    "build": "bash ./scripts/build-app.sh"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.10",
