@@ -3,7 +3,7 @@ import React from 'react'
 import {useSelector} from 'react-redux'
 import SplashScreen from '../screens/SplashScreen'
 import {getAppStackState} from '../store/selectors'
-import {navigation} from './NavigationService'
+import {navigationRef} from './NavigationService'
 import RouteKey from './RouteKey'
 import {AuthNavigator, HomeNavigator} from './StackNavigation'
 
@@ -21,7 +21,7 @@ function AppNavigation(): React.ReactElement {
     }
   }
 
-  return <NavigationContainer ref={navigation.ref}>{renderStack()}</NavigationContainer>
+  return <NavigationContainer ref={navigationRef}>{renderStack()}</NavigationContainer>
 }
 
 export default AppNavigation
