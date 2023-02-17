@@ -1,114 +1,22 @@
-import {
-  createNavigationContainerRef,
-  NavigationAction,
-  NavigationProp,
-  NavigationState,
-  StackActions,
-} from '@react-navigation/native'
-
+import {NavigationContainerRef, StackActions} from '@react-navigation/native'
+import * as React from 'react'
 import {AppStackParamList} from './types'
 
-export const navigationRef = createNavigationContainerRef<AppStackParamList>()
+export const navigationRef: React.RefObject<NavigationContainerRef<AppStackParamList>> =
+  React.createRef()
 
-const createNavigation = () => {
-  const canGoBack = (): boolean => navigationRef.isReady() && navigationRef.canGoBack()
-
-  const getState = (): NavigationState | null => (navigationRef.isReady() ? navigationRef.getState() : null)
-
-  const getParent = (): NavigationProp<AppStackParamList> | null =>
-    navigationRef.isReady() ? navigationRef.getParent() : null
-
-  const navigate = (name: keyof AppStackParamList, params: AppStackParamList[keyof AppStackParamList]) => {
-    if (navigationRef.isReady()) {
-      navigationRef.navigate(name as never, params as never)
-    }
-  }
-
-  const pop = (count?: number) => {
-    if (navigationRef.isReady()) {
-      navigationRef.dispatch(StackActions.pop(count))
-    }
-  }
-
-  const popToTop = () => {
-    if (navigationRef.isReady()) {
-      navigationRef.dispatch(StackActions.popToTop())
-    }
-  }
-
-  const push = (name: keyof AppStackParamList, params: AppStackParamList[keyof AppStackParamList]) => {
-    if (navigationRef.isReady()) {
-      navigationRef.dispatch(StackActions.push(name as string, params as object | undefined))
-    }
-  }
-
-  const replace = (name: keyof AppStackParamList, params: AppStackParamList[keyof AppStackParamList]) => {
-    if (navigationRef.isReady()) {
-      navigationRef.dispatch(StackActions.replace(name as string, params as never))
-    }
-  }
-
-  const reset = (state: NavigationState) => {
-    if (navigationRef.isReady()) {
-      navigationRef.reset(state)
-    }
-  }
-
-  const resetTo = (name: string) => {
-    if (navigationRef.isReady()) {
-      navigationRef.reset({
-        index: 0,
-        routes: [{name}],
-      })
-    }
-  }
-
-  const goBack = () => {
-    if (canGoBack()) {
-      navigationRef.goBack()
-    }
-  }
-
-  const setParams = (params: AppStackParamList[keyof AppStackParamList]) => {
-    if (navigationRef.isReady()) {
-      navigationRef.setParams(params as never)
-    }
-  }
-
-  const dispatch = (action: NavigationAction | ((state: NavigationState) => NavigationAction)) => {
-    if (navigationRef.isReady()) {
-      navigationRef.dispatch(action)
-    }
-  }
-
-  const getCurrentRouteName = () => {
-    if (navigationRef.isReady()) {
-      return navigationRef?.getCurrentRoute()?.name
-    }
-    return ''
-  }
-
-  return {
-    pop,
-    popToTop,
-    push,
-    canGoBack,
-    getState,
-    getParent,
-    navigate,
-    reset,
-    resetTo,
-    goBack,
-    setParams,
-    dispatch,
-    replace,
-    getCurrentRouteName,
-    ref: navigationRef,
-  }
+export function navigate(name: keyof AppStackParamList, params: AppStackParamList[keyof AppStackParamList]): void {
+  navigationRef.current?.navigate(name as never, params as never)
 }
 
-export const navigation = createNavigation()
+export const checkRouteOrigin = () => {
+  return navigationRef.current?.getRootState().routeNames[0]
+}
 
-navigation.ref.navigate('', {
-  userId: '',
-})
+export function navigationPop() {
+  navigationRef.current?.dispatch(StackActions.pop(1))
+}
+
+export function popToTop() {
+  navigationRef.current?.dispatch(StackActions.popToTop())
+}
