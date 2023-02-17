@@ -1,6 +1,6 @@
 const fonts = {
-  regular: null,
-  bold: null,
+  RobotoBold: 'Roboto-Bold',
+  RobotoRegular: 'Roboto-Regular',
 }
 
 export {fonts}
