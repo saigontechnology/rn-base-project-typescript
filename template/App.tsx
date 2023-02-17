@@ -2,8 +2,9 @@ import React from 'react';
 import {LogBox, Text} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
 import MainLayout from './src/MainLayout';
-import {store} from './src/store/store';
+import {persistor, store} from './src/store/store';
 
 interface TextWithDefaultProps extends Text {
   defaultProps?: {
@@ -26,9 +27,11 @@ LogBox.ignoreAllLogs(true);
 function App() {
   return (
     <Provider store={store}>
-      <SafeAreaProvider>
-        <MainLayout />
-      </SafeAreaProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <SafeAreaProvider>
+          <MainLayout />
+        </SafeAreaProvider>
+      </PersistGate>
     </Provider>
   );
 }

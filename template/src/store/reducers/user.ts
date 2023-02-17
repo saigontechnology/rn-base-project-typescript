@@ -4,7 +4,7 @@ import {IUser, IUserActions} from '../../constants/interface/redux/UserInterface
 import {APP_CONSTANTS_ACTIONS} from '../constants/app'
 import {USER_CONSTANTS_ACTIONS} from '../constants/user'
 
-const initialState: IUser = {
+export const userInitialState: IUser = {
   userInfo: {},
   isEndUser: false,
   tokenData: {},
@@ -13,7 +13,7 @@ const initialState: IUser = {
 
 export const userSlice = createSlice({
   name: 'auth',
-  initialState,
+  initialState: userInitialState,
   reducers: {
     [USER_CONSTANTS_ACTIONS.USER_LOGIN_ACTIONS.HANDLER]: () => {},
     [USER_CONSTANTS_ACTIONS.USER_LOGIN_ACTIONS.SUCCESS]: () => {},

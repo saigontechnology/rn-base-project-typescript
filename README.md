@@ -14,8 +14,11 @@ npx react-native init ProjectName --template rn-base-project-ts
 
 ## Android config
 
+## Documents
+- [Config redux persist](docs/config-redux-persist.md)
 ## Libraries used:
 ```text
+    - redux-persist
     - @react-native-async-storage/async-storage
     - @react-navigation/bottom-tabs
     - @react-navigation/native
