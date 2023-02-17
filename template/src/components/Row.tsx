@@ -3,7 +3,7 @@ import {View, StyleSheet, StyleProp, ViewStyle} from 'react-native'
 
 interface IRowProps {
   children: ReactElement
-  style: StyleProp<ViewStyle>
+  style?: StyleProp<ViewStyle>
 }
 
 const Row = ({style, children}: IRowProps) => {

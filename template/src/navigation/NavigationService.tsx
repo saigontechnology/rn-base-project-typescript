@@ -1,11 +1,12 @@
-import {NavigationContainerRef, StackActions} from '@react-navigation/native'
-import * as React from 'react'
+import {createNavigationContainerRef, StackActions} from '@react-navigation/native'
 import {AppStackParamList} from './types'
 
-export const navigationRef: React.RefObject<NavigationContainerRef<AppStackParamList>> =
-  React.createRef()
+export const navigationRef = createNavigationContainerRef<AppStackParamList>()
 
-export function navigate(name: keyof AppStackParamList, params: AppStackParamList[keyof AppStackParamList]): void {
+export function navigate(
+  name: keyof AppStackParamList,
+  params: AppStackParamList[keyof AppStackParamList],
+): void {
   navigationRef.current?.navigate(name as never, params as never)
 }
 
