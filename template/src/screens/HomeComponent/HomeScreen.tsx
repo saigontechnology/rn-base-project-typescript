@@ -6,7 +6,7 @@ import {AppStackParamList} from '../../navigation/types'
 
 type Props = NativeStackScreenProps<AppStackParamList, RouteKey.HomeScreen>
 
-const HomeScreen: React.FC<Props> = (props) => {
+const HomeScreen: React.FC<Props> = props => {
   const {navigation, route} = props
   return <ScreenContainer children={<></>} style={{}} />
 }

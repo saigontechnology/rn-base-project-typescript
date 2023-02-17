@@ -8,21 +8,17 @@ import {
 
 import {AppStackParamList} from './types'
 
-const createNavigation = () => {
-  const navigationRef = createNavigationContainerRef()
+export const navigationRef = createNavigationContainerRef<AppStackParamList>()
 
+const createNavigation = () => {
   const canGoBack = (): boolean => navigationRef.isReady() && navigationRef.canGoBack()
 
-  const getState = (): NavigationState | null =>
-    navigationRef.isReady() ? navigationRef.getState() : null
+  const getState = (): NavigationState | null => (navigationRef.isReady() ? navigationRef.getState() : null)
 
   const getParent = (): NavigationProp<AppStackParamList> | null =>
     navigationRef.isReady() ? navigationRef.getParent() : null
 
-  const navigate = (
-    name: keyof AppStackParamList,
-    params: AppStackParamList[keyof AppStackParamList],
-  ) => {
+  const navigate = (name: keyof AppStackParamList, params: AppStackParamList[keyof AppStackParamList]) => {
     if (navigationRef.isReady()) {
       navigationRef.navigate(name as never, params as never)
     }
@@ -40,21 +36,15 @@ const createNavigation = () => {
     }
   }
 
-  const push = (
-    name: keyof AppStackParamList,
-    params: AppStackParamList[keyof AppStackParamList],
-  ) => {
+  const push = (name: keyof AppStackParamList, params: AppStackParamList[keyof AppStackParamList]) => {
     if (navigationRef.isReady()) {
-      navigationRef.dispatch(StackActions.push(name as never, params as never))
+      navigationRef.dispatch(StackActions.push(name as string, params as object | undefined))
     }
   }
 
-  const replace = (
-    name: keyof AppStackParamList,
-    params: AppStackParamList[keyof AppStackParamList],
-  ) => {
+  const replace = (name: keyof AppStackParamList, params: AppStackParamList[keyof AppStackParamList]) => {
     if (navigationRef.isReady()) {
-      navigationRef.dispatch(StackActions.replace(name as never, params as never))
+      navigationRef.dispatch(StackActions.replace(name as string, params as never))
     }
   }
 
@@ -118,3 +108,7 @@ const createNavigation = () => {
 }
 
 export const navigation = createNavigation()
+
+navigation.ref.navigate('', {
+  userId: '',
+})

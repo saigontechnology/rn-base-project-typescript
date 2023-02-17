@@ -44,9 +44,7 @@ const SplashScreen = () => {
         <View style={styles.progressBar}>
           <Progress.Bar progress={updatePercent} color={colors.primary} width={deviceWidth() * 0.6} />
         </View>
-      ) : (
-        <></>
-      )}
+      ) : null}
     </ScreenContainer>
   )
 }

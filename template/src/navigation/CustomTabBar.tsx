@@ -1,7 +1,3 @@
-/**
- * Created by Hong HP on 11/17/19.
- */
-
 import {BottomTabBarProps} from '@react-navigation/bottom-tabs'
 import React from 'react'
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'

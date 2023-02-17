@@ -1,6 +1,8 @@
 import {ParamListBase} from '@react-navigation/native'
 
-type HomeScreenParams = {}
+type HomeScreenParams = {
+  userId: ''
+}
 type LoginScreenParams = {}
 type SignUpScreenParams = {}
 
