@@ -14,9 +14,9 @@ export function navigate(name: string, params: INavigationParams): void {
 
 export const checkRouteOrigin = () => navigationRef.getRootState().routeNames[0]
 
-export function navigationPop() {
+export function navigationPop(numberToPop = 1) {
   if (navigationRef.isReady()) {
-    navigationRef.dispatch(StackActions.pop(1))
+    navigationRef.dispatch(StackActions.pop(numberToPop))
   }
 }
 
