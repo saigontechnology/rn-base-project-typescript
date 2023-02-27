@@ -2,7 +2,7 @@ import {IActionDispatch} from './ActionInterface'
 
 export interface IApp {
   showGlobalIndicator: boolean
-  appState: string 
+  appState: string
   showSearchBar?: boolean
 }
 
@@ -11,10 +11,4 @@ export interface IAppActions {
   setAppStack: IActionDispatch
   getSettingsSuccess: IActionDispatch
   setShowGlobalIndicator: IActionDispatch
-  setSettingAppHandle: IActionDispatch
-  setSettingAppSuccess: IActionDispatch
-  setSettingAppFailure: IActionDispatch
-  loginHandle: IActionDispatch
-  loginSuccess: IActionDispatch
-  loginFailure: IActionDispatch
 }
