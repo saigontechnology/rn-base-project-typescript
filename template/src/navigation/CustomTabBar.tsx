@@ -4,7 +4,7 @@ import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
 import {IItemTabBar} from './types'
 
-function CustomTabBar(props: BottomTabBarProps) {
+const CustomTabBar: React.FC<BottomTabBarProps> = props => {
   const {navigation} = props
   function renderItem(item: IItemTabBar, index: number) {
     const {route, title} = item
