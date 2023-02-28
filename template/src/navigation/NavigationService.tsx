@@ -5,7 +5,6 @@ import {
   NavigationState,
   StackActions,
 } from '@react-navigation/native'
-
 import {AppStackParamList} from './types'
 
 export const navigationRef = createNavigationContainerRef<AppStackParamList>()
@@ -23,7 +22,7 @@ export const navigate = (
   params: AppStackParamList[keyof AppStackParamList],
 ) => {
   if (navigationRef.isReady()) {
-    navigationRef.navigate(name as never, params as never)
+    navigationRef.navigate(name as string, params as object | undefined)
   }
 }
 
@@ -39,12 +38,17 @@ export const popToTop = () => {
   }
 }
 
-export const push = (
-  name: keyof AppStackParamList,
-  params: AppStackParamList[keyof AppStackParamList],
-) => {
+export const push = (name: keyof AppStackParamList, params: AppStackParamList[keyof AppStackParamList]) => {
   if (navigationRef.isReady()) {
-    navigationRef.dispatch(StackActions.push(name as never, params as never))
+    navigationRef.dispatch(StackActions.push(name as string, params as object | undefined))
+  }
+}
+
+export const checkRouteOrigin = () => navigationRef.getRootState().routeNames[0]
+
+export function navigationPop(numberToPop = 1) {
+  if (navigationRef.isReady()) {
+    navigationRef.dispatch(StackActions.pop(numberToPop))
   }
 }
 
@@ -53,7 +57,7 @@ export const replace = (
   params: AppStackParamList[keyof AppStackParamList],
 ) => {
   if (navigationRef.isReady()) {
-    navigationRef.dispatch(StackActions.replace(name as never, params as never))
+    navigationRef.dispatch(StackActions.replace(name as string, params as object | undefined))
   }
 }
 
@@ -80,7 +84,7 @@ export const goBack = () => {
 
 export const setParams = (params: AppStackParamList[keyof AppStackParamList]) => {
   if (navigationRef.isReady()) {
-    navigationRef.setParams(params as never)
+    navigationRef.setParams(params as object | undefined)
   }
 }
 
@@ -91,8 +95,5 @@ export const dispatch = (action: NavigationAction | ((state: NavigationState) =>
 }
 
 export const getCurrentRouteName = () => {
-  if (navigationRef.isReady()) {
-    return navigationRef?.getCurrentRoute()?.name
-  }
-  return ''
+  return navigationRef.isReady() ? navigationRef?.getCurrentRoute()?.name : ''
 }
