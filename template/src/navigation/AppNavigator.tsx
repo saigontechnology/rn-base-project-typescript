@@ -1,24 +1,21 @@
 import {NavigationContainer} from '@react-navigation/native'
 import React from 'react'
 import {useSelector} from 'react-redux'
-import {navigationRef} from './NavigationService'
 import SplashScreen from '../screens/SplashScreen'
-import RouteKey from './RouteKey'
 import {getAppStackState} from '../store/selectors'
-import {AuthNavigator, MainStackNavigator} from './StackNavigation'
-import {IRouteKey} from '../constants/interface/common/CommonInterface'
+import {navigationRef} from './NavigationService'
+import RouteKey from './RouteKey'
+import {AuthNavigator, HomeNavigator} from './StackNavigation'
 
-function AppNavigation(props): Element {
+function AppNavigation(): React.ReactElement {
   const appState: string = useSelector(getAppStackState)
 
-  function renderStack(): Element {
+  function renderStack(): React.ReactNode {
     switch (appState) {
-      case RouteKey.SplashScreen:
-        return <SplashScreen />
       case RouteKey.AuthStack:
         return <AuthNavigator />
-      case RouteKey.MainStack:
-        return <MainStackNavigator />
+      case RouteKey.HomeStack:
+        return <HomeNavigator />
       default:
         return <SplashScreen />
     }

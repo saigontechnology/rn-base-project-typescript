@@ -1,5 +1,5 @@
 import {ActionCreatorWithoutPayload} from '@reduxjs/toolkit'
-import {IActionDispatch} from './ActionInterface'
+import {IActionDispatch} from './action'
 
 export interface IUserInfo {}
 

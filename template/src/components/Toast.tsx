@@ -1,6 +1,15 @@
 import React from 'react'
-import {Animated, StyleSheet, Text, TextProps, TouchableOpacity, ViewProps, ViewStyle} from 'react-native'
-import {colors, FontSizes, metrics} from '../themes'
+import {
+  Animated,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextProps,
+  TouchableOpacity,
+  ViewProps,
+  ViewStyle,
+} from 'react-native'
+import {FontSizes, colors, metrics} from '../themes'
 import Emitter from '../utilities/Emitter'
 import {getStatusBarHeight} from '../utilities/utils'
 
@@ -14,7 +23,7 @@ interface IToastState {
 }
 
 interface IStyleSheet {
-  container: ViewProps
+  container: StyleProp<ViewStyle>
   messageContainer: () => ViewProps
   textStyle: TextProps
 }
@@ -33,15 +42,15 @@ class Toast extends React.PureComponent<IToastProps, IToastState> {
   opacity: Animated.Value
   animated: Animated.AnimatedProps<any> | null
   // Static methods
-  static success(text) {
+  static success(text: string) {
     Emitter.emit('SHOW_TOAST_MESSAGE', {message: text, type: EToastType.SUCCESS})
   }
 
-  static error(text) {
+  static error(text: string) {
     Emitter.emit('SHOW_TOAST_ERROR', {message: text, type: 'error'})
   }
 
-  static info(text) {
+  static info(text: string) {
     Emitter.emit('SHOW_TOAST_INFO', {message: text, type: 'info'})
   }
 
@@ -68,11 +77,13 @@ class Toast extends React.PureComponent<IToastProps, IToastState> {
     Emitter.rm('SHOW_TOAST_INFO')
   }
 
-  displayMessage = ({message, type}): void => {
+  displayMessage = ({message, type}: IToastState): void => {
+    // @ts-ignore
     window.cancelAnimationFrame(this.frameID)
 
     this.offset.setValue(HEIGHT * -1)
     this.setState({message, type})
+    // @ts-ignore
     this.frameID = window.requestAnimationFrame(() => {
       this.animated = Animated.sequence([
         Animated.delay(100),
