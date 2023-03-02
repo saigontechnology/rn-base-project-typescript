@@ -6,7 +6,7 @@ import {IItemTabBar} from './types'
 
 const CustomTabBar: React.FC<BottomTabBarProps> = props => {
   const {navigation} = props
-  function renderItem(item: IItemTabBar, index: number) {
+  function renderItem(item: IItemTabBar) {
     const {route, title} = item
     return (
       <TouchableOpacity
