@@ -1,14 +1,12 @@
-/**
- * Created by Hong HP on 11/17/19.
- */
-
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
+import {BottomTabBarProps} from '@react-navigation/bottom-tabs'
 import React from 'react'
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native'
 import {SafeAreaView} from 'react-native-safe-area-context'
-import {NavigationProp} from '@react-navigation/native'
+import {IItemTabBar} from './types'
 
-function CustomTabBar({navigation}: {navigation: NavigationProp<ReactNavigation.RootParamList>}) {
-  function renderItem(item) {
+const CustomTabBar: React.FC<BottomTabBarProps> = props => {
+  const {navigation} = props
+  function renderItem(item: IItemTabBar) {
     const {route, title} = item
     return (
       <TouchableOpacity

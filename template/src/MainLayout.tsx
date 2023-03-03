@@ -1,11 +1,11 @@
 import React, {useCallback, useEffect, useRef} from 'react'
-import AppNavigation from './navigation/AppNavigator'
 import {AppState, Linking, StatusBar, StyleSheet, View} from 'react-native'
-import IndicatorDialog from './components/IndicatorDialog'
 import {useSelector} from 'react-redux'
+import IndicatorDialog from './components/IndicatorDialog'
 import Toast from './components/Toast'
-import {getAppStackState, getLoadingIndicator} from './store/selectors'
+import AppNavigation from './navigation/AppNavigator'
 import RouteKey from './navigation/RouteKey'
+import {getAppStackState, getLoadingIndicator} from './store/selectors'
 
 function MainLayout() {
   const appState = useSelector(getAppStackState)

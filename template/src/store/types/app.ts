@@ -1,7 +1,7 @@
-import {IActionDispatch} from './ActionInterface'
+import {IActionDispatch} from './action'
 
 export interface IApp {
-  showGlobalIndicator: boolean
+  showGlobalIndicator?: boolean
   appState: string
   showSearchBar?: boolean
 }

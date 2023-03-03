@@ -1,7 +1,6 @@
-import {createSlice} from '@reduxjs/toolkit'
-import {IAction} from '../../constants/interface/redux/ActionInterface'
-import {IApp, IAppActions} from '../../constants/interface/redux/AppInterface'
+import {PayloadAction, createSlice} from '@reduxjs/toolkit'
 import RouteKey from '../../navigation/RouteKey'
+import {IApp} from '../types/app'
 
 const initialState: IApp = {
   showGlobalIndicator: false,
@@ -13,22 +12,19 @@ const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    getSettings: (state: IApp, action: IAction): void => {
+    getSettings: () => {
       // TODO: add action when user get settings
     },
-    setAppStack: (state: IApp, action: IAction): void => {
+    setAppStack: (state, action: PayloadAction<string>): void => {
       state.appState = action.payload
     },
-    getSettingsSuccess: (state: IApp, action: IAction): void => {
-      // TODO: add action when user get settings success
-    },
-    setShowGlobalIndicator: (state: IApp, action: IAction): void => {
+    setShowGlobalIndicator: (state, action: PayloadAction<boolean>): void => {
       state.showGlobalIndicator = action.payload
     },
   },
 })
 
-export const appActions: IAppActions = {
+export const appActions = {
   ...appSlice.actions,
 }
 
