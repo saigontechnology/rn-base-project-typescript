@@ -1,5 +1,5 @@
-import {IActionTypes} from '../../constants/interface/common/CommonInterface'
 import {actionTypes} from '../actionTypes'
+import {IActionTypes} from '../types'
 
 const GET_SETTING_APP_ACTIONS: IActionTypes = actionTypes('GET_SETTING_APP_ACTIONS')
 

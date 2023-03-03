@@ -1,7 +1,16 @@
 apply plugin: "com.android.application"
 
+project.ext.envConfigFiles = [
+   development: ".env.development",
+   staging: ".env.staging",
+   production: ".env.production",
+]
+
+apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.gradle"
+
 import com.android.build.OutputFile
 import org.apache.tools.ant.taskdefs.condition.Os
+
 
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
@@ -83,6 +92,7 @@ project.ext.react = [
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 /**
  * Set this to true to create two separate APKs instead of one:
@@ -134,13 +144,22 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
+     // add this block
+    flavorDimensions "default"
+     productFlavors {
+        development {}
+        staging {}
+        production {}
+    }
+
     defaultConfig {
-        applicationId "com.saigontechnolgy.rnbaseprojecttypescript"
+        applicationId project.env.get("APP_ID")
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
+        resValue "string", "build_config_package", "com.saigontechnology.rnbaseprojecttypescript" // add this line
 
         if (isNewArchitectureEnabled()) {
             // We configure the CMake build only if you decide to opt-in for the New Architecture.
@@ -221,6 +240,7 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
+            matchingFallbacks = ['debug', 'release']
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -228,6 +248,18 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+    flavorDimensions "default"
+    productFlavors {
+        development {
+          applicationIdSuffix '.development'
+        }
+        staging {
+            applicationIdSuffix '.staging'
+        }
+        production {
+            applicationIdSuffix '.production'
         }
     }
 
