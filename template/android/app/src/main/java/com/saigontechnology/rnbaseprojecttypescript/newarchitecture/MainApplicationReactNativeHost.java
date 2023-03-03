@@ -1,4 +1,4 @@
-package com.saigontechnolgy.rnbaseprojecttypescript.newarchitecture;
+package com.saigontechnology.rnbaseprojecttypescript.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.saigontechnolgy.rnbaseprojecttypescript.BuildConfig;
-import com.saigontechnolgy.rnbaseprojecttypescript.newarchitecture.components.MainComponentsRegistry;
-import com.saigontechnolgy.rnbaseprojecttypescript.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.saigontechnology.rnbaseprojecttypescript.BuildConfig;
+import com.saigontechnology.rnbaseprojecttypescript.newarchitecture.components.MainComponentsRegistry;
+import com.saigontechnology.rnbaseprojecttypescript.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

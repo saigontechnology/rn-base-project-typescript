@@ -29,8 +29,5 @@
     "@types/react-native": "^0.70.7",
     "@types/react-test-renderer": "^18.0.0",
     "typescript": "^4.9.3"
-  },
-  "dependencies": {
-    "i18n-ts": "^1.0.5"
   }
 }
