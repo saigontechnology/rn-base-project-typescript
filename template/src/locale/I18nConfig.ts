@@ -3,26 +3,30 @@ import {getI18n, initReactI18next} from 'react-i18next'
 
 import en from './en'
 
-export const configureLocalization = (locale: string, fallback = 'en') =>
-  i18n.use(initReactI18next).init({
-    lng: locale,
-    fallbackLng: fallback,
+i18n.use(initReactI18next).init({
+  compatibilityJSON: 'v3', //https://stackoverflow.com/questions/70493788/i18nextpluralresolver-your-environment-seems-not-to-be-intl-api-compatible-u
+  lng: 'en',
+  fallbackLng: 'en',
 
-    resources: {
-      en: {
-        translation: en,
-      },
+  resources: {
+    en: {
+      translation: en,
     },
+  },
 
-    debug: false,
+  debug: false,
 
-    cache: {
-      enabled: true,
-    },
+  cache: {
+    enabled: true,
+  },
 
-    interpolation: {
-      escapeValue: false, // not needed for react as it does escape per default to prevent xss!
-    },
-  })
+  interpolation: {
+    escapeValue: false, // not needed for react as it does escape per default to prevent xss!
+  },
+})
 
-export const getString = (key: keyof typeof en, params?: any) => (getI18n() ? getI18n().t(key, params) : '')
+export const getString = (key: string, params?: any): string => {
+  return i18n.t(key, params)
+}
+
+export default i18n

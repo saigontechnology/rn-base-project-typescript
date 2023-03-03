@@ -6,6 +6,8 @@ import Toast from './components/Toast'
 import AppNavigation from './navigation/AppNavigator'
 import RouteKey from './navigation/RouteKey'
 import {getAppStackState, getLoadingIndicator} from './store/selectors'
+import configs from './constants/configs'
+import DebugMenu from './components/DebugMenu'
 
 function MainLayout() {
   const appState = useSelector(getAppStackState)
@@ -47,6 +49,7 @@ function MainLayout() {
       <StatusBar barStyle="light-content" />
       <AppNavigation />
       {showGlobalIndicator && <IndicatorDialog />}
+      {configs.DEBUG_ENABLED && <DebugMenu />}
       <Toast />
     </View>
   )
