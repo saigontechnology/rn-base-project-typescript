@@ -1,6 +1,15 @@
 import React from 'react'
-import {Animated, StyleSheet, Text, TextProps, TouchableOpacity, ViewProps, ViewStyle} from 'react-native'
-import {colors, FontSizes, metrics} from '../themes'
+import {
+  Animated,
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextProps,
+  TouchableOpacity,
+  ViewProps,
+  ViewStyle,
+} from 'react-native'
+import {FontSizes, colors, metrics} from '../themes'
 import Emitter from '../utilities/Emitter'
 import {getStatusBarHeight} from '../utilities/utils'
 
@@ -14,7 +23,7 @@ interface IToastState {
 }
 
 interface IStyleSheet {
-  container: ViewProps
+  container: StyleProp<ViewStyle>
   messageContainer: () => ViewProps
   textStyle: TextProps
 }
@@ -68,7 +77,7 @@ class Toast extends React.PureComponent<IToastProps, IToastState> {
     Emitter.rm('SHOW_TOAST_INFO')
   }
 
-  displayMessage = ({message, type}: any): void => {
+  displayMessage = ({message, type}: IToastState): void => {
     // @ts-ignore
     window.cancelAnimationFrame(this.frameID)
 

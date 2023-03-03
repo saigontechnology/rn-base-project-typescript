@@ -1,4 +1,6 @@
-export const getLoadingSelector = (state: any, actionTypes: [string]): boolean => {
+import {IInitialState} from '../types'
+
+export const getLoadingSelector = (state: IInitialState, actionTypes: [string]): boolean => {
   if (Array.isArray(actionTypes)) {
     // some of element of list actionTypes is dispatched in redux will return state loading
     return actionTypes.some(r => {

@@ -1,73 +1,37 @@
-import React from 'react'
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
-import {screenMatch, optionsMatch} from './ScreenService'
+import React from 'react'
+import {LoginScreen, SignUpScreen} from '../screens'
+import HomeScreen from '../screens/HomeComponent/HomeScreen'
 import RouteKey from './RouteKey'
-
-export const componentMatch = (stackName: string): Element | string => {
-  switch (stackName) {
-    case RouteKey.HomeStack:
-      return HomeNavigator
-    default:
-      return ''
-  }
-}
-
-export type HomeStackParamList = {
-  HomeScreen: undefined
-}
-
-export type AuthStackParamList = {
-  LoginScreen: undefined
-  SignUpScreen: undefined
-}
-
-export type AppStackParamList = AuthStackParamList & HomeStackParamList
+import {optionsMatch} from './ScreenService'
+import {AppStackParamList} from './types'
 
 const Stack = createNativeStackNavigator<AppStackParamList>()
 
-interface IProps {}
-
-export const HomeNavigator = (props: IProps) => {
+export const HomeNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name={'HomeScreen'}
-        component={screenMatch(RouteKey.HomeScreen)}
+        name={RouteKey.HomeScreen}
+        component={HomeScreen}
         options={optionsMatch(RouteKey.HomeScreen)}
       />
     </Stack.Navigator>
   )
 }
 
-export const AuthNavigator = (props: IProps) => {
+export const AuthNavigator = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name={'LoginScreen'}
-        component={screenMatch(RouteKey.LoginScreen)}
+        name={RouteKey.LoginScreen}
+        component={LoginScreen}
         options={optionsMatch(RouteKey.LoginScreen)}
       />
       <Stack.Screen
-        name={'SignUpScreen'}
-        component={screenMatch(RouteKey.SignUpScreen)}
+        name={RouteKey.SignUpScreen}
+        component={SignUpScreen}
         options={optionsMatch(RouteKey.SignUpScreen)}
-      />
-    </Stack.Navigator>
-  )
-}
-
-export const MainStackNavigator = (props: IProps) => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        // @ts-ignore
-        name={RouteKey.HomeStack}
-        component={HomeNavigator}
-      />
-      <Stack.Screen
-        // @ts-ignore
-        name={RouteKey.AuthStack}
-        component={AuthNavigator}
       />
     </Stack.Navigator>
   )

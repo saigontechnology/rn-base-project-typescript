@@ -1,9 +1,9 @@
 import React from 'react'
 import {View, StyleSheet, Dimensions, ActivityIndicator} from 'react-native'
-import {ViewStyle, ActivityIndicatorProps} from 'react-native'
+import {ViewStyle, ActivityIndicatorProps, StyleProp} from 'react-native'
 
 interface IIndicatorDialogProps {
-  containerStyle?: ViewStyle
+  containerStyle?: StyleProp<ViewStyle>
   activityIndicatorStyle?: ActivityIndicatorProps
 }
 

@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import {StyleSheet, View} from 'react-native'
-import ScreenContainer from '../components/ScreenContainer'
-import {deviceWidth, responsiveHeight, colors} from '../themes'
-import {useDispatch} from 'react-redux'
 import CodePush from 'react-native-code-push'
 import Progress from 'react-native-progress'
+import ScreenContainer from '../components/ScreenContainer'
 import configs from '../constants/configs'
-import {appActions} from '../store/reducers'
+import {appActions} from '../store/reducers/app'
+import {useAppDispatch} from '../store/store'
+import {colors, deviceWidth, responsiveHeight} from '../themes'
 
 const codePushOptions = {
   installMode: CodePush.InstallMode.IMMEDIATE,
@@ -14,7 +14,7 @@ const codePushOptions = {
 }
 
 const SplashScreen = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const [updatePercent, setUpdatePercent] = useState(0)
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const SplashScreen = () => {
         switch (status) {
           case CodePush.SyncStatus.UP_TO_DATE:
           case CodePush.SyncStatus.UNKNOWN_ERROR:
-            dispatch(appActions.getSettings(''))
+            dispatch(appActions.getSettings())
             break
         }
       },
@@ -34,7 +34,7 @@ const SplashScreen = () => {
         }
       },
     ).catch(() => {
-      dispatch(appActions.getSettings(''))
+      dispatch(appActions.getSettings())
     })
   }, [dispatch])
 
@@ -42,16 +42,9 @@ const SplashScreen = () => {
     <ScreenContainer style={styles.container}>
       {updatePercent > 0 ? (
         <View style={styles.progressBar}>
-          <Progress.Bar
-            progress={updatePercent}
-            color={colors.primary}
-            // showsText={true}
-            width={deviceWidth() * 0.6}
-          />
+          <Progress.Bar progress={updatePercent} color={colors.primary} width={deviceWidth() * 0.6} />
         </View>
-      ) : (
-        <></>
-      )}
+      ) : null}
     </ScreenContainer>
   )
 }

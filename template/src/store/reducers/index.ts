@@ -1,9 +1,7 @@
 import {combineReducers} from '@reduxjs/toolkit'
-// Reducer Imports
-import user from './user'
 import app from './app'
 import loading from './loading'
-// Reducer Export
+import user from './user'
 export * from './app'
 export * from './user'
 

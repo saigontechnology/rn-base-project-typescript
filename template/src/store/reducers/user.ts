@@ -1,8 +1,6 @@
-import {createSlice} from '@reduxjs/toolkit'
-import {IAction} from '../../constants/interface/redux/ActionInterface'
-import {IUser, IUserActions} from '../../constants/interface/redux/UserInterface'
-import {APP_CONSTANTS_ACTIONS} from '../constants/app'
+import {PayloadAction, createSlice} from '@reduxjs/toolkit'
 import {USER_CONSTANTS_ACTIONS} from '../constants/user'
+import {IUser, IUserInfo} from '../types'
 
 const initialState: IUser = {
   userInfo: {},
@@ -29,14 +27,13 @@ export const userSlice = createSlice({
     [USER_CONSTANTS_ACTIONS.UPDATE_USER_INFO_ACTIONS.FAILURE]: () => {},
     userLogin: () => {},
     userSignUp: () => {},
-    userLoginSuccess: (state: IUser, action: IAction) => {},
-    logout(state: IUser) {},
-    updateUserInfo(state: IUser, action: IAction) {},
+    logout(state) {},
+    updateUserInfo(state, action: PayloadAction<IUserInfo>) {},
   },
   extraReducers: builder => {},
 })
 
-export const userActions: IUserActions = {
+export const userActions = {
   ...userSlice.actions,
   userLoginHandle: userSlice.actions[USER_CONSTANTS_ACTIONS.USER_LOGIN_ACTIONS.HANDLER],
   userLoginSuccess: userSlice.actions[USER_CONSTANTS_ACTIONS.USER_LOGIN_ACTIONS.FAILURE],

@@ -3,6 +3,7 @@ import {LogBox, Text} from 'react-native'
 import {SafeAreaProvider} from 'react-native-safe-area-context'
 import {Provider} from 'react-redux'
 import MainLayout from './src/MainLayout'
+import {injectStore} from './src/services/networking/axios'
 import {store} from './src/store/store'
 
 interface TextWithDefaultProps extends Text {
@@ -21,6 +22,8 @@ interface TextWithDefaultProps extends Text {
   underlineColorAndroid: 'transparent',
 }
 LogBox.ignoreAllLogs(true)
+
+injectStore(store)
 
 function App() {
   return (

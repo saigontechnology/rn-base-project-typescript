@@ -1,6 +1,5 @@
 import {Dimensions, Platform} from 'react-native'
-import {IHitSlop} from '../constants/interface/common/CommonInterface'
-import {IFontSize, IMetrics, IShadow} from '../constants/interface/themes/MetricsInterface'
+import {IFontSize, IHitSlop, IMetrics, IShadow} from './types'
 
 const DESIGN_WIDTH = 375
 const DESIGN_HEIGHT = 812
