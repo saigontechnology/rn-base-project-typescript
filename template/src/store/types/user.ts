@@ -1,4 +1,5 @@
-import {IActionDispatch} from './ActionInterface'
+import {ActionCreatorWithoutPayload} from '@reduxjs/toolkit'
+import {IActionDispatch} from './action'
 
 export interface IUserInfo {}
 
@@ -14,7 +15,7 @@ export interface IUser {
 export interface IUserActions {
   userLogin: IActionDispatch
   userSignUp: IActionDispatch
-  logout: IActionDispatch
+  logout: ActionCreatorWithoutPayload
   userLoginHandle: IActionDispatch
   userLoginSuccess: IActionDispatch
   userLoginFailure: IActionDispatch

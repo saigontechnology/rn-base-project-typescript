@@ -1,4 +1,4 @@
-import {EmitterListener, IRefs} from '../constants/interface/utilities/EmitterInterface'
+import {EmitterListener} from './types'
 
 class EventRegister {
   static _Listeners: EmitterListener = {

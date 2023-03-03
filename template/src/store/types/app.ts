@@ -1,9 +1,8 @@
-import {IRouteKey} from '../common/CommonInterface'
-import {IActionDispatch} from './ActionInterface'
+import {IActionDispatch} from './action'
 
 export interface IApp {
   showGlobalIndicator?: boolean
-  appState: string 
+  appState: string
   showSearchBar?: boolean
 }
 
