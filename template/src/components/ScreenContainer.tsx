@@ -7,10 +7,10 @@ interface IRowProps {
 }
 
 const ScreenContainer = ({children, style, ...rest}: IRowProps) => (
-    <View style={[styles.container, style]} {...rest}>
-      {children}
-    </View>
-  )
+  <View style={[styles.container, style]} {...rest}>
+    {children}
+  </View>
+)
 
 const styles = StyleSheet.create({
   container: {
