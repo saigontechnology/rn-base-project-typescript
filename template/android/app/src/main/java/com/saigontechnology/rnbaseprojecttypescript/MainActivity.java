@@ -1,4 +1,4 @@
-package com.saigontechnolgy.rnbaseprojecttypescript;
+package com.saigontechnology.rnbaseprojecttypescript;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
