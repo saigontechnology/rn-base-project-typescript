@@ -27,7 +27,7 @@ const generate = () => {
   ${properties},
 }
 
-export default fonts
+export {fonts}
 `
   fs.writeFileSync('src/themes/fonts.ts', string, 'utf8')
 }

@@ -49,7 +49,7 @@ const {0} = {
 {1}
 }
 
-export default {0}\n`
+export {{0}}\n`
 
 const moduleName = argv.name || getFileName(outputName)
 fs.readdir(folder, (err, files) => {
