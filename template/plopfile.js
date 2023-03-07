@@ -114,7 +114,7 @@ module.exports = function (plop) {
       type: 'modify',
       path: 'src/store/types/store.ts',
       pattern: /\/\/ Import Type/gi,
-      template: "// Import Type\r\nimport {I{{properCase name}}} from './{{camelCase name}}'",
+      template: "// Import Type\r\nimport {I{{properCase name}} } from './{{camelCase name}}'",
     },
     {
       type: 'modify',

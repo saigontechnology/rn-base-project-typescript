@@ -8,7 +8,9 @@ function* {{camelCase name}}Saga(action: any): IterableIterator<AnyAction> {
     yield put(appActions.setShowGlobalIndicator(true))
     //  TODO:
   } catch (e) {
-    Toast.error(e.message)
+    if (e instanceof Error) {
+      Toast.error(e.message)
+    }
   } finally {
     yield put(appActions.setShowGlobalIndicator(false))
   }
