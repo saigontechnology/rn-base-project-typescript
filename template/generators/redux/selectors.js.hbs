@@ -1,5 +1,5 @@
 import {I{{properCase name}}, IInitialState} from '../types'
 
-const get{{camelCase name}}Data = (state: IInitialState): I{{properCase name}} => state.{{camelCase name}}
+const get{{properCase name}}Data = (state: IInitialState): I{{properCase name}} => state.{{camelCase name}}
 
-export const get{{properCase name}}StateData = (state: IInitialState): I{{properCase name}} => get{{camelCase name}}(state).data
+export const get{{properCase name}}StateData = (state: IInitialState): I{{properCase name}} => get{{properCase name}}Data(state).data
