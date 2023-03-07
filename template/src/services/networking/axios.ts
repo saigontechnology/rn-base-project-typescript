@@ -4,7 +4,7 @@ import Config from 'react-native-config'
 import {AXIOS_TIMEOUT, RESPONSE_CODE, TOKEN, TOKEN_TYPE} from '../../constants'
 import {userActions} from '../../store/reducers'
 import {RootState} from '../../store/store'
-import {getData, setData, clearAllData} from '../../utilities/storage'
+import {clearAllKeys, getString, setData} from '../../services/mmkv/storage'
 import {AUTH_API} from '../api/api'
 
 let store: Store<RootState, AnyAction>
@@ -60,7 +60,7 @@ const handleRefreshToken = async (
     })
     .catch(() => {
       // Remove all keys and back to login screen to get new token
-      clearAllData()
+      clearAllKeys()
       logout()
     })
 }
@@ -83,8 +83,8 @@ const interceptor = instance.interceptors.response.use(
   },
   async (error: AxiosError) => {
     const originalConfig = error?.config
-    const token = await getData<string>(TOKEN.token)
-    const refreshToken = await getData<string>(TOKEN.refreshToken)
+    const token = await getString(TOKEN.token)
+    const refreshToken = await getString(TOKEN.refreshToken)
     const isTokenExpired = token && RESPONSE_CODE.unauthorized.includes(error?.response?.status as number)
 
     if (isTokenExpired) {

@@ -17,11 +17,12 @@ npx react-native init ProjectName --template rn-base-project-ts
 ## Documents
 
 - [Networking](docs/networking.md)
+- [Config mmkv](/docs/mmkv.md)
+- [Config redux persist](docs/config-redux-persist.md)
 
 ## Libraries used:
 
 ```text
-    - @react-native-async-storage/async-storage
     - @react-navigation/bottom-tabs
     - @react-navigation/native
     - @react-navigation/native-stack
