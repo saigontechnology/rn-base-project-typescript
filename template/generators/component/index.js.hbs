@@ -1,9 +1,9 @@
 import React, {ReactElement} from 'react'
-import {StyleSheet, View, ViewStyle} from 'react-native'
+import {StyleSheet, View, ViewStyle, StyleProp} from 'react-native'
 
 interface IProps {
-  children: ReactElement
-  style: ViewStyle
+  children: ReactElement | null
+  style?: StyleProp<ViewStyle>
 }
 
 const {{properCase name}} = ({children, style, ...rest}: IProps) => {

@@ -1,11 +1,12 @@
-import {ActionCreatorWithPayload} from '@reduxjs/toolkit'
+import {IActionDispatch} from './action'
 
 export interface I{{properCase name}} {
   [key: string]: any
 }
 
 export interface I{{properCase name}}Actions {
-  {{camelCase name}}Handle: ActionCreatorWithPayload<any>
-  {{camelCase name}}Success: ActionCreatorWithPayload<any>
-  {{camelCase name}}Failure: ActionCreatorWithPayload<any>
+  {{camelCase name}}Handle: IActionDispatch
+  {{camelCase name}}Success: IActionDispatch
+  {{camelCase name}}Failure: IActionDispatch
+  getAction: IActionDispatch
 }

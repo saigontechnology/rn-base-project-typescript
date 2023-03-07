@@ -33,33 +33,25 @@ module.exports = function (plop) {
       type: 'modify',
       path: 'src/navigation/RouteKey.ts',
       pattern: /\/\** Screen \*\//g,
-      template: "/** Screen */\r\n  {{properCase name}}Screen: '{{properCase name}}Screen',",
+      template: "/** Screen */\r\n  {{properCase name}}Screen = '{{properCase name}}Screen',",
     },
     {
       type: 'modify',
-      path: 'src/navigation/ScreenService.tsx',
-      pattern: /\/\/ Screen Import/gi,
-      template:
-        "// Screen Import\r\nimport {{properCase name}}Screen from '../screens/{{properCase name}}Component/{{properCase name}}Screen'",
+      path: 'src/navigation/types.ts',
+      pattern: /\/\** Type \*\//g,
+      template: '/** Type */\r\ntype {{properCase name}}ScreenParams = {}',
     },
     {
       type: 'modify',
-      path: 'src/navigation/ScreenService.tsx',
-      pattern: /\/\/ Screen Match/gi,
-      template:
-        '// Screen Match\r\n    case RouteKey.{{properCase name}}Screen:\r\n      return {{properCase name}}Screen',
-    },
-    {
-      type: 'modify',
-      path: 'src/navigation/ScreenService.tsx',
-      pattern: /\/\/ Screen Options/gi,
-      template: '// Screen Options\r\n    case RouteKey.{{properCase name}}Screen:',
+      path: 'src/navigation/types.ts',
+      pattern: /\/\** Params \*\//g,
+      template: '/** Params */\r\n  [RouteKey.{{properCase name}}Screen]: {{properCase name}}ScreenParams',
     },
   ]
   const store = [
     {
       type: 'add',
-      path: 'src/constants/interface/redux/{{properCase name}}Interface.ts',
+      path: 'src/store/types/{{camelCase name}}.ts',
       templateFile: 'generators/redux/interface.js.hbs',
     },
     {
@@ -117,6 +109,24 @@ module.exports = function (plop) {
       path: 'src/store/selectors/index.ts',
       pattern: /\/\/ Selector/gi,
       template: "// Selector\r\nexport * from './{{camelCase name}}'",
+    },
+    {
+      type: 'modify',
+      path: 'src/store/types/store.ts',
+      pattern: /\/\/ Import Type/gi,
+      template: "// Import Type\r\nimport I{{properCase name}} from './{{camelCase name}}'",
+    },
+    {
+      type: 'modify',
+      path: 'src/store/types/store.ts',
+      pattern: /\/\/ State/gi,
+      template: '// State\r\n{{camelCase name}}: I{{properCase name}}',
+    },
+    {
+      type: 'modify',
+      path: 'src/store/types/index.ts',
+      pattern: /\/\/ Export Type/gi,
+      template: "// Export Type\r\nexport * from './{{camelCase name}}'",
     },
   ]
   plop.setGenerator('module', {

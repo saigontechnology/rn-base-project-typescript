@@ -4,7 +4,7 @@ export interface IApp {
   showGlobalIndicator?: boolean
   appState: string
   showSearchBar?: boolean
-  codePushKey: string
+  codePushKey?: string
   apiUrl?: string
 }
 
@@ -21,5 +21,4 @@ export interface IAppActions {
   setShowGlobalIndicator: IActionDispatch
   setCodePushKey: IActionDispatch
   setApiUrl: IActionDispatch
-
 }

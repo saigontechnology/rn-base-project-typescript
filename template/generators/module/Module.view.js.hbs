@@ -1,13 +1,14 @@
+import {NativeStackScreenProps} from '@react-navigation/native-stack'
 import React from 'react'
 import ScreenContainer from '../../components/ScreenContainer'
-import {StyleSheet} from 'react-native'
+import RouteKey from '../../navigation/RouteKey'
+import {AppStackParamList} from '../../navigation/types'
 
-const {{properCase name}}Screen = () => {
-  return <ScreenContainer children={<></>} style={styles.container} />
+type Props = NativeStackScreenProps<AppStackParamList, RouteKey.{{properCase name}}Screen>
+
+const {{properCase name}}Screen: React.FC<Props> = props => {
+  const {navigation, route} = props
+  return <ScreenContainer children={<></>} />
 }
-
-const styles = StyleSheet.create({
-  container: {},
-})
 
 export default {{properCase name}}Screen
