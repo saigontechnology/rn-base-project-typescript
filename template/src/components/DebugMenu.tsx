@@ -26,6 +26,7 @@ import {getApiUrl, getCodePushKey} from '../store/selectors'
 import {appActions} from '../store/reducers'
 import {BottomSheetMethods} from '@gorhom/bottom-sheet/lib/typescript/types'
 import {useTranslation} from 'react-i18next'
+import {getString} from '../locale/I18nConfig'
 
 interface Props {
   title: string
@@ -43,19 +44,19 @@ const AppInfoSection: FC = () => {
 
   const infos = useMemo(
     () => [
-      {key: '0', title: t('debug.deviceId'), description: deviceId},
-      {key: '1', title: t('debug.appName'), description: appName},
-      {key: '2', title: t('debug.buildNumber'), description: buildNumber},
-      {key: '3', title: t('debug.appVersion'), description: Config.appVersion},
-      {key: '4', title: t('debug.bundleId'), description: Config.appBundleID},
-      {key: '5', title: t('debug.appEnv'), description: Config.APP_ENV || 'N/A'},
+      {key: '0', title: getString('deviceId'), description: deviceId},
+      {key: '1', title: getString('appName'), description: appName},
+      {key: '2', title: getString('buildNumber'), description: buildNumber},
+      {key: '3', title: getString('appVersion'), description: Config.appVersion},
+      {key: '4', title: getString('bundleId'), description: Config.appBundleID},
+      {key: '5', title: getString('appEnv'), description: Config.APP_ENV || 'N/A'},
     ],
     [appName, buildNumber, deviceId],
   )
 
   return (
     <View style={styles.section}>
-      <Text style={styles.h3}>{t('debug.info')}</Text>
+      <Text style={styles.h3}>{getString('info')}</Text>
       <View style={styles.content}>
         {infos.map(({key, title, description}) => (
           <InfoMenuRow key={key} style={styles.infoMenu} title={title} description={description} />
@@ -158,37 +159,37 @@ const DebugMenu: FC = () => {
       <Modal animationType="fade" transparent={false} visible={modalVisible} onRequestClose={closeModal}>
         <SafeAreaView style={styles.container}>
           <View style={styles.header}>
-            <Button color={colors.primary} onPress={closeModal} title={t('debug.close')} />
+            <Button color={colors.primary} onPress={closeModal} title={getString('close')} />
           </View>
           <ScrollView contentContainerStyle={styles.scrollContent}>
             <AppInfoSection />
-            <EnvironmentSection title={t('debug.testingEnvironment')}>
+            <EnvironmentSection title={getString('testingEnvironment')}>
               {EXTRA_QA_ENVS.length ? (
                 <InfoMenuLink
                   style={styles.infoMenu}
-                  title={t('debug.current')}
+                  title={getString('current')}
                   description={currentApiUrl}
-                  linkTitle={t('debug.update')}
+                  linkTitle={getString('update')}
                   onPress={openEnvironmentBottomSheet}
                 />
               ) : (
-                <InfoMenu style={styles.infoMenu} title={t('debug.current')} description={currentApiUrl} />
+                <InfoMenu style={styles.infoMenu} title={getString('current')} description={currentApiUrl} />
               )}
             </EnvironmentSection>
 
-            <EnvironmentSection title={t('debug.codePush')}>
+            <EnvironmentSection title={getString('codePush')}>
               {CODEPUSH_KEYS.length ? (
                 <InfoMenuLink
                   style={styles.infoMenu}
-                  title={t('debug.current')}
+                  title={getString('current')}
                   description={codePush?.dev || CODEPUSH_KEYS[0].dev}
-                  linkTitle={t('debug.update')}
+                  linkTitle={getString('update')}
                   onPress={openCodePushBottomSheet}
                 />
               ) : (
                 <InfoMenu
                   style={styles.infoMenu}
-                  title={t('debug.current')}
+                  title={getString('current')}
                   description={codePush?.dev || CODEPUSH_KEYS[0].dev}
                 />
               )}

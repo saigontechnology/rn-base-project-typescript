@@ -6,6 +6,7 @@ import './src/locale/I18nConfig'
 import MainLayout from './src/MainLayout'
 import {injectStore} from './src/services/networking/axios'
 import {store} from './src/store/store'
+import {configureLocalization} from './src/locale/I18nConfig'
 
 interface TextWithDefaultProps extends Text {
   defaultProps?: {
@@ -22,6 +23,7 @@ interface TextWithDefaultProps extends Text {
 LogBox.ignoreAllLogs(true)
 
 injectStore(store)
+configureLocalization('en')
 
 function App() {
   return (
