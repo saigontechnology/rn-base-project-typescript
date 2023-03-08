@@ -12,7 +12,9 @@
     "pretty": "prettier --write \"./**/*.{js,jsx,json}\"",
     "prepare": "husky install",
     "postinstall": "bash ./scripts/post-install.sh",
-    "reverse": "adb reverse tcp:8081 tcp:8081"
+    "reverse": "adb reverse tcp:8081 tcp:8081",
+    "generateimages": "node scripts/genimg src/assets/images --output src/themes/images.ts --name Images",
+    "generatefonts": "node scripts/fonts"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^4.4.5",
