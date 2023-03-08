@@ -1,6 +1,5 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit'
 import RouteKey from '../../navigation/RouteKey'
-import {APP_CONSTANTS_ACTIONS} from '../constants/app'
 import {IApp} from '../types/app'
 import Config, {CODEPUSH_KEYS} from '../../constants/configs'
 
@@ -16,16 +15,9 @@ const appSlice = createSlice({
   name: 'app',
   initialState,
   reducers: {
-    // TODO: custom any in PayloadAction<any> depend on action type
-    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.HANDLER]: (state): string => {
-      return state.appState
+    getSettings: () => {
+      // TODO: add action when user get settings
     },
-    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.SUCCESS]: (state, action: PayloadAction<any>): void => {},
-    [APP_CONSTANTS_ACTIONS.GET_SETTING_APP_ACTIONS.FAILURE]: (state, action: PayloadAction<any>): void => {},
-    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.HANDLER]: (state, action: PayloadAction<any>): void => {},
-    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.SUCCESS]: (state, action: PayloadAction<any>): void => {},
-    [APP_CONSTANTS_ACTIONS.LOGIN_ACTIONS.FAILURE]: (state, action: PayloadAction<any>): void => {},
-    getSettings: () => {},
     setAppStack: (state, action: PayloadAction<string>): void => {
       state.appState = action.payload
     },

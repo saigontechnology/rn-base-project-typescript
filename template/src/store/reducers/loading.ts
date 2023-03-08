@@ -9,7 +9,9 @@ const loadingReducer = (state: ILoading = {}, action: PayloadAction<any>): ILoad
   const removeModule = type.slice(type.indexOf('/') + 1)
   const matches = /(.*)_(REQUEST|SUCCESS|FAILURE)/.exec(removeModule)
   // not a *_REQUEST / *_SUCCESS /  *_FAILURE actions, so we ignore them
-  if (!matches) return state
+  if (!matches) {
+    return state
+  }
 
   const [, requestName, requestState] = matches
   return {

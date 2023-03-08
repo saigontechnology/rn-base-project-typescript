@@ -3,6 +3,7 @@ import {EmitterListener} from './types'
 class EventRegister {
   static _Listeners: EmitterListener = {
     count: 0,
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
     refs: {key: {eventName: '', callback: () => {}}},
   }
 

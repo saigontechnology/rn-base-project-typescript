@@ -17,6 +17,7 @@ function MainLayout() {
   const handleAppState = useCallback(() => {
     AppState.addEventListener('change', nextAppState => {
       if (appStateRef.current.match(/inactive|background/) && nextAppState === 'active') {
+        // Update action when appState changes
       }
       appStateRef.current = nextAppState
     })
@@ -24,12 +25,14 @@ function MainLayout() {
 
   const handleDeepLink = useCallback(() => {
     Linking.getInitialURL().then(res => {
-      //This function only work when disable debug mode.
+      // This function only work when disable debug mode.
       if (res) {
+        // Do something if app is opened from an url
       }
     })
     Linking.addEventListener('url', res => {
       if (res?.url) {
+        // Do something if app is opened from an url
       }
     })
   }, [])
