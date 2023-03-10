@@ -15,4 +15,4 @@ export const TOKEN_TYPE: ITokenType = {
   Basic: 'Basic',
 }
 
-export const AXIOS_TIMEOUT: number = 6000
+export const AXIOS_TIMEOUT = 6000

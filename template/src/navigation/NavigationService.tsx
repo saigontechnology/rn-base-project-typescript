@@ -94,6 +94,5 @@ export const dispatch = (action: NavigationAction | ((state: NavigationState) =>
   }
 }
 
-export const getCurrentRouteName = () => {
-  return navigationRef.isReady() ? navigationRef?.getCurrentRoute()?.name : ''
-}
+export const getCurrentRouteName = () =>
+  navigationRef.isReady() ? navigationRef?.getCurrentRoute()?.name : ''

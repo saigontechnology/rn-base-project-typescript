@@ -8,31 +8,27 @@ import {AppStackParamList} from './types'
 
 const Stack = createNativeStackNavigator<AppStackParamList>()
 
-export const HomeNavigator = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name={RouteKey.HomeScreen}
-        component={HomeScreen}
-        options={optionsMatch(RouteKey.HomeScreen)}
-      />
-    </Stack.Navigator>
-  )
-}
+export const HomeNavigator = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name={RouteKey.HomeScreen}
+      component={HomeScreen}
+      options={optionsMatch(RouteKey.HomeScreen)}
+    />
+  </Stack.Navigator>
+)
 
-export const AuthNavigator = () => {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name={RouteKey.LoginScreen}
-        component={LoginScreen}
-        options={optionsMatch(RouteKey.LoginScreen)}
-      />
-      <Stack.Screen
-        name={RouteKey.SignUpScreen}
-        component={SignUpScreen}
-        options={optionsMatch(RouteKey.SignUpScreen)}
-      />
-    </Stack.Navigator>
-  )
-}
+export const AuthNavigator = () => (
+  <Stack.Navigator>
+    <Stack.Screen
+      name={RouteKey.LoginScreen}
+      component={LoginScreen}
+      options={optionsMatch(RouteKey.LoginScreen)}
+    />
+    <Stack.Screen
+      name={RouteKey.SignUpScreen}
+      component={SignUpScreen}
+      options={optionsMatch(RouteKey.SignUpScreen)}
+    />
+  </Stack.Navigator>
+)
