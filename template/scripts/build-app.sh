@@ -1,7 +1,5 @@
 #!bin/bash
 
-# Author: Le Duc Tung
-# Username: ledutu
 # Script will be showed below:
 
 # Reset

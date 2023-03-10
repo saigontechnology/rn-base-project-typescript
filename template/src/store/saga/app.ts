@@ -12,7 +12,6 @@ function* getAppSettingSaga(): IterableIterator<AnyAction> {
     }
   } catch (e) {
     yield put(appActions.setAppStack(RouteKey.AuthStack))
-  } finally {
   }
 }
 

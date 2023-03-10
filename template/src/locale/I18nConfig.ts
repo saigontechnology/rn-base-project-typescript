@@ -1,5 +1,5 @@
 import i18n from 'i18next'
-import {getI18n, initReactI18next} from 'react-i18next'
+import {initReactI18next} from 'react-i18next'
 
 import en from './en'
 
@@ -25,8 +25,6 @@ i18n.use(initReactI18next).init({
   },
 })
 
-export const getString = (key: string, params?: any): string => {
-  return i18n.t(key, params)
-}
+export const getString = (key: string, params?: any): string => i18n.t(key, params)
 
 export default i18n
