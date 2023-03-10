@@ -6,9 +6,7 @@ interface IRowProps {
   style?: StyleProp<ViewStyle>
 }
 
-const Row = ({style, children}: IRowProps) => {
-  return <View style={[styles.row, style]}>{children}</View>
-}
+const Row = ({style, children}: IRowProps) => <View style={[styles.row, style]}>{children}</View>
 
 const styles = StyleSheet.create({
   row: {

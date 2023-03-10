@@ -47,9 +47,9 @@ const logout = () => {
 const handleRefreshToken = async (
   refreshToken: string,
   originalConfig: AxiosRequestConfig,
-): Promise<AxiosRequestConfig | void> => {
+): Promise<AxiosRequestConfig | void> =>
   // Call RefreshToken API
-  return instance
+  instance
     .post(AUTH_API.refreshToken, refreshToken)
     .then((response: AxiosResponse) => {
       // Save new Token and RefreshToken
@@ -63,24 +63,20 @@ const handleRefreshToken = async (
       clearAllKeys()
       logout()
     })
-}
 
 instance.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  (config: AxiosRequestConfig) =>
     // Do something before request is sent
-    return config
-  },
-  (error: AxiosError) => {
+    config,
+  (error: AxiosError) =>
     // Do something with request error
-    return Promise.reject(error)
-  },
+    Promise.reject(error),
 )
 
 const interceptor = instance.interceptors.response.use(
-  (response: AxiosResponse) => {
+  (response: AxiosResponse) =>
     // Do something with response data
-    return response
-  },
+    response,
   async (error: AxiosError) => {
     const originalConfig = error?.config
     const token = await getString(TOKEN.token)
