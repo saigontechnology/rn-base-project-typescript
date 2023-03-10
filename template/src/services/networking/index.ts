@@ -1,12 +1,4 @@
-import {
-  AxiosError,
-  AxiosHeaders,
-  AxiosRequestConfig,
-  AxiosRequestHeaders,
-  AxiosResponse,
-  MethodsHeaders,
-  RawAxiosRequestHeaders,
-} from 'axios'
+import {AxiosError, AxiosResponse} from 'axios'
 import {IAxiosMethod, IAxiosError, IParams} from '../../constants/interface/services/axios'
 import {isObject} from '../../utilities/utils'
 import instance from './axios'
@@ -32,12 +24,8 @@ async function axiosAPI<T>(params: IParams<T>): Promise<AxiosResponse<T>> {
     data,
     headers: {...config},
   })
-    .then((response: AxiosResponse) => {
-      return {...response.data, status: response.status}
-    })
-    .catch((error: AxiosError<T>) => {
-      return {error: error?.response?.data, status: error?.response?.status}
-    })
+    .then((response: AxiosResponse) => ({...response.data, status: response.status}))
+    .catch((error: AxiosError<T>) => ({error: error?.response?.data, status: error?.response?.status}))
 }
 
 export function getRequest<T>(params: IParams<T>): Promise<AxiosResponse<T>> {

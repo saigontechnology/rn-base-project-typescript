@@ -3,4 +3,4 @@ module.exports = {
   plugins: [
     'react-native-reanimated/plugin', // this has to be list last
   ],
-};
+}

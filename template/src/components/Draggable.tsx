@@ -15,9 +15,7 @@ import {
   LayoutChangeEvent,
 } from 'react-native'
 
-const clamp = (number: number, min: number, max: number) => {
-  return Math.max(min, Math.min(number, max))
-}
+const clamp = (number: number, min: number, max: number) => Math.max(min, Math.min(number, max))
 
 interface IProps {
   /**** props that should probably be removed in favor of "children" */
@@ -103,9 +101,7 @@ export default function Draggable(props: IProps) {
   }, [x, y])
 
   const shouldStartDrag = React.useCallback(
-    (gs: PanResponderGestureState) => {
-      return !disabled && (Math.abs(gs.dx) > 2 || Math.abs(gs.dy) > 2)
-    },
+    (gs: PanResponderGestureState) => !disabled && (Math.abs(gs.dx) > 2 || Math.abs(gs.dy) > 2),
     [disabled],
   )
 
@@ -165,15 +161,17 @@ export default function Draggable(props: IProps) {
     [maxX, maxY, minX, minY, onDrag],
   )
 
-  const panResponder = React.useMemo(() => {
-    return PanResponder.create({
-      onMoveShouldSetPanResponder: (_, gestureState) => shouldStartDrag(gestureState),
-      onMoveShouldSetPanResponderCapture: (_, gestureState) => shouldStartDrag(gestureState),
-      onPanResponderGrant,
-      onPanResponderMove: handleOnDrag,
-      onPanResponderRelease,
-    })
-  }, [handleOnDrag, onPanResponderGrant, onPanResponderRelease, shouldStartDrag])
+  const panResponder = React.useMemo(
+    () =>
+      PanResponder.create({
+        onMoveShouldSetPanResponder: (_, gestureState) => shouldStartDrag(gestureState),
+        onMoveShouldSetPanResponderCapture: (_, gestureState) => shouldStartDrag(gestureState),
+        onPanResponderGrant,
+        onPanResponderMove: handleOnDrag,
+        onPanResponderRelease,
+      }),
+    [handleOnDrag, onPanResponderGrant, onPanResponderRelease, shouldStartDrag],
+  )
 
   // TODO Figure out a way to destroy and remove offsetFromStart entirely
   React.useEffect(() => {

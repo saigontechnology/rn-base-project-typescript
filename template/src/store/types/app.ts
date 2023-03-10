@@ -9,17 +9,8 @@ export interface IApp {
 }
 
 export interface IAppActions {
-  setSettingAppHandle: IActionDispatch
-  setSettingAppSuccess: IActionDispatch
-  setSettingAppFailure: IActionDispatch
-  loginHandle: IActionDispatch
-  loginSuccess: IActionDispatch
-  loginFailure: IActionDispatch
   getSettings: IActionDispatch
-  getSettingsSuccess: IActionDispatch
   setAppStack: IActionDispatch
+  getSettingsSuccess: IActionDispatch
   setShowGlobalIndicator: IActionDispatch
-  setCodePushKey: IActionDispatch
-  setApiUrl: IActionDispatch
-
 }
