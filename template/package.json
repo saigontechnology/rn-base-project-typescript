@@ -42,7 +42,7 @@
     "redux-saga": "^1.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.9",
+    "@babel/core": "^7.21.0",
     "@babel/runtime": "^7.21.0",
     "@react-native-community/eslint-config": "^2.0.0",
     "@tsconfig/react-native": "^2.0.2",
