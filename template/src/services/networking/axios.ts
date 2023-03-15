@@ -79,8 +79,8 @@ const interceptor = instance.interceptors.response.use(
     response,
   async (error: AxiosError) => {
     const originalConfig = error?.config
-    const token = await getData(TOKEN.token)
-    const refreshToken = await getData(TOKEN.refreshToken)
+    const token = await getData<string>(TOKEN.token)
+    const refreshToken = await getData<string>(TOKEN.refreshToken)
     const isTokenExpired = token && RESPONSE_CODE.unauthorized.includes(error?.response?.status as number)
 
     if (isTokenExpired) {
