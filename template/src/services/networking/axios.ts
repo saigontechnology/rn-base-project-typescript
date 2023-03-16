@@ -1,5 +1,5 @@
 import {AnyAction, Store} from '@reduxjs/toolkit'
-import axios, {AxiosError, AxiosRequestConfig, AxiosResponse} from 'axios'
+import axios, {AxiosError, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig} from 'axios'
 import Config from 'react-native-config'
 import {AXIOS_TIMEOUT, RESPONSE_CODE, TOKEN, TOKEN_TYPE} from '../../constants'
 import {userActions} from '../../store/reducers'
@@ -46,7 +46,7 @@ const logout = () => {
 
 const handleRefreshToken = async (
   refreshToken: string,
-  originalConfig: AxiosRequestConfig,
+  originalConfig: InternalAxiosRequestConfig,
 ): Promise<AxiosRequestConfig | void> =>
   // Call RefreshToken API
   instance
@@ -65,7 +65,7 @@ const handleRefreshToken = async (
     })
 
 instance.interceptors.request.use(
-  (config: AxiosRequestConfig) =>
+  (config: InternalAxiosRequestConfig) =>
     // Do something before request is sent
     config,
   (error: AxiosError) =>
@@ -78,7 +78,7 @@ const interceptor = instance.interceptors.response.use(
     // Do something with response data
     response,
   async (error: AxiosError) => {
-    const originalConfig = error?.config
+    const originalConfig = error?.config as InternalAxiosRequestConfig
     const token = await getData<string>(TOKEN.token)
     const refreshToken = await getData<string>(TOKEN.refreshToken)
     const isTokenExpired = token && RESPONSE_CODE.unauthorized.includes(error?.response?.status as number)
