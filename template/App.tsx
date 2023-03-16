@@ -5,8 +5,9 @@ import {Provider} from 'react-redux'
 import './src/locale/I18nConfig'
 import MainLayout from './src/MainLayout'
 import {injectStore} from './src/services/networking/axios'
-import {store} from './src/store/store'
+import {store, persistor} from './src/store/store'
 import {configureLocalization} from './src/locale/I18nConfig'
+import {PersistGate} from 'redux-persist/integration/react'
 
 interface TextWithDefaultProps extends Text {
   defaultProps?: {
@@ -28,9 +29,11 @@ configureLocalization('en')
 function App() {
   return (
     <Provider store={store}>
-      <SafeAreaProvider>
-        <MainLayout />
-      </SafeAreaProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <SafeAreaProvider>
+          <MainLayout />
+        </SafeAreaProvider>
+      </PersistGate>
     </Provider>
   )
 }
