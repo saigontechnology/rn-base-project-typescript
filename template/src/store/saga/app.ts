@@ -1,12 +1,13 @@
 import {AnyAction} from 'redux'
 import {call, put, takeLatest} from 'redux-saga/effects'
 import RouteKey from '../../navigation/RouteKey'
-import {getData} from '../../utilities/storage'
 import {appActions} from '../reducers'
+import {getData} from '../../utilities/storage'
+import {TOKEN} from '../../constants'
 
 function* getAppSettingSaga(): IterableIterator<AnyAction> {
   try {
-    const token = yield call(getData, 'token')
+    const token = yield call(getData, TOKEN.token)
     if (!token) {
       throw new Error('Token does not existed!')
     }
