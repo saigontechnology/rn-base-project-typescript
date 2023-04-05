@@ -6,13 +6,13 @@
 
 This project is a template for [React Native](https://reactnative.dev/) that can be used to build mobile application.
 
-[![React Native Base Typescript STS License](https://img.shields.io/github/license/saigon-technology/rn-base-project-typescript)](https://choosealicense.com/licenses/mit/)
+[![React Native Base Typescript STS License](https://img.shields.io/github/license/saigontechnology/rn-base-project-typescript)](https://choosealicense.com/licenses/mit/)
 ![React Native Base Typescript STS NPM](https://img.shields.io/npm/v/rn-base-project-typescript)
-![React Native Base Typescript STS Downloads](https://img.shields.io/github/downloads/saigon-technology/rn-base-project-typescript/total)
-![React Native Base Typescript STS Release Date](https://img.shields.io/github/release-date/saigon-technology/rn-base-project-typescript)
-![React Native Base Typescript STS Stars](https://img.shields.io/github/stars/saigon-technology/rn-base-project-typescript)
-![React Native Base Typescript STS Top Language](https://img.shields.io/github/languages/top/saigon-technology/rn-base-project-typescript)
-![React Native Base Typescript STS Contributors](https://img.shields.io/github/contributors/saigon-technology/rn-base-project-typescript)
+![React Native Base Typescript STS Downloads](https://img.shields.io/github/downloads/saigontechnology/rn-base-project-typescript/total)
+![React Native Base Typescript STS Release Date](https://img.shields.io/github/release-date/saigontechnology/rn-base-project-typescript)
+![React Native Base Typescript STS Stars](https://img.shields.io/github/stars/saigontechnology/rn-base-project-typescript)
+![React Native Base Typescript STS Top Language](https://img.shields.io/github/languages/top/saigontechnology/rn-base-project-typescript)
+![React Native Base Typescript STS Contributors](https://img.shields.io/github/contributors/saigontechnology/rn-base-project-typescript)
 
 ## Requirements
 
