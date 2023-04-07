@@ -6,6 +6,7 @@ import './src/locale/I18nConfig'
 import MainLayout from './src/MainLayout'
 import {injectStore} from './src/services/networking/axios'
 import {store, persistor} from './src/store/store'
+import {configureLocalization} from './src/locale/I18nConfig'
 import {PersistGate} from 'redux-persist/integration/react'
 
 interface TextWithDefaultProps extends Text {
@@ -23,6 +24,7 @@ interface TextWithDefaultProps extends Text {
 LogBox.ignoreAllLogs(true)
 
 injectStore(store)
+configureLocalization('en')
 
 function App() {
   return (
