@@ -1,0 +1,21 @@
+import {PayloadAction, createSlice} from '@reduxjs/toolkit'
+import { {{constantCase name}}_CONSTANTS_ACTIONS } from '../constants/{{camelCase name}}'
+import {I{{properCase name}} } from '../types/{{camelCase name}}'
+
+export const initialState: I{{properCase name}} = {}
+
+export const {{camelCase name}}Slice = createSlice({
+  name: '{{camelCase name}}',
+  initialState,
+  reducers: {
+    [{{constantCase name}}_CONSTANTS_ACTIONS.{{constantCase name}}_ACTIONS.HANDLER]: (state, action: PayloadAction<any>): void => {},
+    [{{constantCase name}}_CONSTANTS_ACTIONS.{{constantCase name}}_ACTIONS.SUCCESS]: (state, action: PayloadAction<any>): void => {},
+    [{{constantCase name}}_CONSTANTS_ACTIONS.{{constantCase name}}_ACTIONS.FAILURE]: (state, action: PayloadAction<any>): void => {},
+    getAction: (state, action: PayloadAction<any>): void => {}
+  },
+  extraReducers: builder => {},
+})
+
+export const {{camelCase name}}Actions = {{camelCase name}}Slice.actions
+
+export default {{camelCase name}}Slice.reducer

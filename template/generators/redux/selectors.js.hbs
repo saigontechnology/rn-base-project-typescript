@@ -1,0 +1,5 @@
+import {I{{properCase name}}, IInitialState} from '../types'
+
+const get{{properCase name}}Data = (state: IInitialState): I{{properCase name}} => state.{{camelCase name}}
+
+export const get{{properCase name}}StateData = (state: IInitialState): I{{properCase name}} => get{{properCase name}}Data(state).data

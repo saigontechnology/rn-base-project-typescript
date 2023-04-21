@@ -1,7 +1,11 @@
 import {combineReducers} from '@reduxjs/toolkit'
+
+// Reducer Imports
 import app from './app'
 import loading from './loading'
 import user from './user'
+
+// Reducer Export
 export * from './app'
 export * from './user'
 import {persistReducer} from 'redux-persist'
@@ -20,6 +24,7 @@ const userPersistConfig = {
 }
 
 export default combineReducers({
+  // Reducers
   user: persistReducer(userPersistConfig, user),
   app,
   loading,
