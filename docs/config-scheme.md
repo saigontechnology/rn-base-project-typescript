@@ -87,7 +87,7 @@ android {
         versionCode 1
         versionName "1.0"
         buildConfigField "boolean", "IS_NEW_ARCHITECTURE_ENABLED", isNewArchitectureEnabled().toString()
-        resValue "string", "build_config_package", "com.saigontechnolgy.rnbaseproject" // add this line
+        resValue "string", "build_config_package", "com.saigontechnology.rnbaseprojecttypescript" // add this line
 
         if (isNewArchitectureEnabled()) {
             // We configure the CMake build only if you decide to opt-in for the New Architecture.
@@ -119,7 +119,7 @@ API_URL=
 APP_ENV=dev
 CODEPUSH_KEY_IOS=
 CODEPUSH_KEY_ANDROID=
-APP_ID=com.saigontechnolgy.rnbaseproject.development // this line
+APP_ID=com.saigontechnology.rnbaseprojecttypescript.development // this line
 APP_NAME=BaseDev
 ```
 
@@ -163,7 +163,7 @@ API_URL=
 APP_ENV=dev
 CODEPUSH_KEY_IOS=
 CODEPUSH_KEY_ANDROID=
-APP_ID=com.saigontechnolgy.rnbaseproject.development
+APP_ID=com.saigontechnology.rnbaseprojecttypescript.development
 APP_NAME=BaseDev // this line
 ```
 
