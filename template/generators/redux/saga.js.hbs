@@ -1,0 +1,19 @@
+import {AnyAction} from 'redux'
+import {takeLatest, call, put} from 'redux-saga/effects'
+import {appActions, {{camelCase name}}Actions} from '../reducers'
+import Toast from '../../components/Toast'
+
+function* {{camelCase name}}Saga(action: any): IterableIterator<AnyAction> {
+  try {
+    yield put(appActions.setShowGlobalIndicator(true))
+    //  TODO:
+  } catch (e) {
+    if (e instanceof Error) {
+      Toast.error(e.message)
+    }
+  } finally {
+    yield put(appActions.setShowGlobalIndicator(false))
+  }
+}
+
+export default [takeLatest({{camelCase name}}Actions.getAction.type, {{camelCase name}}Saga)]

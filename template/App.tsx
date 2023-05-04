@@ -1,28 +1,30 @@
-import React from 'react';
-import {LogBox, Text} from 'react-native';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {Provider} from 'react-redux';
-import {PersistGate} from 'redux-persist/integration/react';
-import MainLayout from './src/MainLayout';
-import {persistor, store} from './src/store/store';
+import React from 'react'
+import {LogBox, Text} from 'react-native'
+import {SafeAreaProvider} from 'react-native-safe-area-context'
+import {Provider} from 'react-redux'
+import './src/locale/I18nConfig'
+import MainLayout from './src/MainLayout'
+import {injectStore} from './src/services/networking/axios'
+import {store, persistor} from './src/store/store'
+import {configureLocalization} from './src/locale/I18nConfig'
+import {PersistGate} from 'redux-persist/integration/react'
 
 interface TextWithDefaultProps extends Text {
   defaultProps?: {
-    allowFontScaling?: boolean;
-    underlineColorAndroid?: 'transparent';
-  };
+    allowFontScaling?: boolean
+    underlineColorAndroid?: 'transparent'
+  }
 }
 
-(Text as unknown as TextWithDefaultProps).defaultProps =
-  (Text as unknown as TextWithDefaultProps).defaultProps || {};
-(Text as unknown as TextWithDefaultProps).defaultProps!.allowFontScaling =
-  false;
-(Text as unknown as TextWithDefaultProps).defaultProps = {
+;(Text as unknown as TextWithDefaultProps).defaultProps = {
   ...(Text as unknown as TextWithDefaultProps).defaultProps,
   allowFontScaling: false,
   underlineColorAndroid: 'transparent',
-};
-LogBox.ignoreAllLogs(true);
+}
+LogBox.ignoreAllLogs(true)
+
+injectStore(store)
+configureLocalization('en')
 
 function App() {
   return (
@@ -33,7 +35,7 @@ function App() {
         </SafeAreaProvider>
       </PersistGate>
     </Provider>
-  );
+  )
 }
 
-export default App;
+export default App

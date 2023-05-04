@@ -1,8 +1,7 @@
-
 # Quickstart
 ```
 yarn add redux-persist
-
+// or
 npm install redux-persist
 ```
 

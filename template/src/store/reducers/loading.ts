@@ -1,7 +1,7 @@
-import {IAction} from '../../constants/interface/redux/ActionInterface'
-import {ILoading} from '../../constants/interface/redux/LoadingInterface'
+import {PayloadAction} from '@reduxjs/toolkit'
+import {ILoading} from '../types'
 
-const loadingReducer = (state: ILoading = {}, action: IAction): ILoading => {
+const loadingReducer = (state: ILoading = {}, action: PayloadAction<any>): ILoading => {
   const {type} = action
   // remove module name when create from createSlice
   // cause by create type by createSlice it auto add prefix module
@@ -9,7 +9,9 @@ const loadingReducer = (state: ILoading = {}, action: IAction): ILoading => {
   const removeModule = type.slice(type.indexOf('/') + 1)
   const matches = /(.*)_(REQUEST|SUCCESS|FAILURE)/.exec(removeModule)
   // not a *_REQUEST / *_SUCCESS /  *_FAILURE actions, so we ignore them
-  if (!matches) return state
+  if (!matches) {
+    return state
+  }
 
   const [, requestName, requestState] = matches
   return {
