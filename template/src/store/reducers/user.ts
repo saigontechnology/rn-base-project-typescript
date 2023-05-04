@@ -1,7 +1,7 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit'
 import {IUser, IUserInfo} from '../types'
 
-const initialState: IUser = {
+export const userInitialState: IUser = {
   userInfo: {},
   isEndUser: false,
   tokenData: {},
@@ -10,7 +10,7 @@ const initialState: IUser = {
 
 export const userSlice = createSlice({
   name: 'auth',
-  initialState,
+  initialState: userInitialState,
   reducers: {
     userLogin: () => {
       // TODO: add action when user login

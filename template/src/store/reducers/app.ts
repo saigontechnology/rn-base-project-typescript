@@ -3,7 +3,7 @@ import RouteKey from '../../navigation/RouteKey'
 import {IApp} from '../types/app'
 import Config, {CODEPUSH_KEYS} from '../../constants/configs'
 
-const initialState: IApp = {
+export const appInitialState: IApp = {
   showGlobalIndicator: false,
   appState: RouteKey.SplashScreen,
   showSearchBar: false,
@@ -13,7 +13,7 @@ const initialState: IApp = {
 
 const appSlice = createSlice({
   name: 'app',
-  initialState,
+  initialState: appInitialState,
   reducers: {
     getSettings: () => {
       // TODO: add action when user get settings

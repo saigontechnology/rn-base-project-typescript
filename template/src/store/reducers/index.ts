@@ -23,6 +23,22 @@ const userPersistConfig = {
   storage: AsyncStorage,
 }
 
+export const InitialState = {
+  user: userInitialState,
+  app: appInitialState,
+}
+
+export const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage,
+  blacklist: Object.keys(InitialState),
+}
+
+const userPersistConfig = {
+  key: 'user',
+  storage: AsyncStorage,
+}
+
 export default combineReducers({
   // Reducers
   user: persistReducer(userPersistConfig, user),
