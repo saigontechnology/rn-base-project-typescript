@@ -44,7 +44,7 @@ cd android && fastlane init
 Config Appfile:
 `json_key_file("") # Path to the json secret file`
 Follow https://docs.fastlane.tools/actions/supply/#setup to get one
-`package_name("com.saigontechnolgy.rnbaseproject") # e.g. com.krausefx.app`
+`package_name("com.saigontechnology.rnbaseprojecttypescript") # e.g. com.krausefx.app`
 
 ### To run fastlane on android
 
