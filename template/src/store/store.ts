@@ -1,9 +1,9 @@
 import {applyMiddleware, configureStore} from '@reduxjs/toolkit'
 import {useDispatch, useSelector as useReduxSelector} from 'react-redux'
 import type {TypedUseSelectorHook} from 'react-redux'
-import createSagaMiddleware from 'redux-saga'
-import reducers, {persistConfig} from './reducers'
 import {persistReducer, persistStore} from 'redux-persist'
+import reducers, {persistConfig} from './reducers'
+import createSagaMiddleware from 'redux-saga'
 import rootSaga from './saga'
 
 const sagaMiddleware = createSagaMiddleware()

@@ -1,6 +1,7 @@
 # Quickstart
 ```
 yarn add redux-persist
+// or
 npm install redux-persist
 ```
 
@@ -11,6 +12,7 @@ npm install redux-persist
 ## Basic Usage
 ```
 Basic usage involves adding persistReducer and persistStore to your setup. IMPORTANT Every app needs to decide how many levels of state they want to "merge". The default is 1 level. Please read through the state reconciler docs for more information.
+
 import { PersistGate } from 'redux-persist/integration/react'
  
 // ... normal setup, create store and persistor, import components etc.

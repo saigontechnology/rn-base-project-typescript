@@ -116,6 +116,26 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/tuledu/"><img src="https://avatars.githubusercontent.com/u/111717882?v=4" width="100px;" alt="Tung Le" style="border-radius: 10%;"/><br /><sub><b>Tung Le</b></sub></a><br /></td>
   </tr>
 </table>
+## Documents
+- [Config redux persist](docs/config-redux-persist.md)
+## Libraries used:
+```text
+    - redux-persist
+    - @react-native-async-storage/async-storage
+    - @react-navigation/bottom-tabs
+    - @react-navigation/native
+    - @react-navigation/native-stack
+    - react-native-code-push
+    - react-native-fast-image
+    - react-native-gesture-handler
+    - react-native-progress
+    - react-native-reanimated
+    - react-native-safe-area-context
+    - react-native-screens
+    - react-redux
+    - redux-saga
+    - i18n-js
+```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
