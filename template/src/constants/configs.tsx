@@ -5,8 +5,8 @@ import {getBundleId} from 'react-native-device-info'
 
 const AppEnv = {
   DEV: 'dev',
-  STAGING: 'stg',
-  PRODUCTION: 'prd',
+  STAGING: 'staging',
+  PRODUCTION: 'production',
 }
 
 const configs = {
