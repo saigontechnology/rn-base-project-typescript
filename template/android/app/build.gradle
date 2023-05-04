@@ -250,18 +250,6 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
-    flavorDimensions "default"
-    productFlavors {
-        development {
-          applicationIdSuffix '.development'
-        }
-        staging {
-            applicationIdSuffix '.staging'
-        }
-        production {
-            applicationIdSuffix '.production'
-        }
-    }
 
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->

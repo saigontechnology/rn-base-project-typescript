@@ -205,6 +205,28 @@ then
 fi
 ```
 
+## NOTE
+
+If you choose different environment base on "Active Build Variant" from "Android Studio" you may need additional configuration
+
+```bash
+     productFlavors {
+        development {
+            applicationId ${Your Development Id}
+            resValue "string", "build_config_package", "com.saigontechnology.rnbaseprojecttypescript"
+        }
+        staging {
+            applicationId ${Your Staging Id}
+            resValue "string", "build_config_package", "com.saigontechnology.rnbaseprojecttypescript"
+        }
+        production {
+            applicationId ${Your Production Id}
+            resValue "string", "build_config_package", "com.saigontechnology.rnbaseprojecttypescript"
+        }
+    }
+```
+
+
 ## Setup for iOS
 
 When you create a new project, Xcode automatically generates two types of schemes for you, and they are **Debug** and **Release**.
