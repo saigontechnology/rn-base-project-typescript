@@ -1,9 +1,9 @@
 import {combineReducers} from '@reduxjs/toolkit'
 
 // Reducer Imports
-import app from './app'
+import app, {appInitialState} from './app'
 import loading from './loading'
-import user from './user'
+import user, {userInitialState} from './user'
 
 // Reducer Export
 export * from './app'
@@ -26,33 +26,6 @@ const userPersistConfig = {
 export const InitialState = {
   user: userInitialState,
   app: appInitialState,
-}
-
-export const persistConfig = {
-  key: 'root',
-  storage: AsyncStorage,
-  blacklist: Object.keys(InitialState),
-}
-
-const userPersistConfig = {
-  key: 'user',
-  storage: AsyncStorage,
-}
-
-export const InitialState = {
-  user: userInitialState,
-  app: appInitialState,
-}
-
-export const persistConfig = {
-  key: 'root',
-  storage: AsyncStorage,
-  blacklist: Object.keys(InitialState),
-}
-
-const userPersistConfig = {
-  key: 'user',
-  storage: AsyncStorage,
 }
 
 export default combineReducers({
