@@ -141,7 +141,7 @@ Thanks goes to these wonderful people
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
-This project follows the [all-contributors](https://github.com/saigon-technology/rn-base-project-typescript/graphs/contributors) specification. Contributions of any kind welcome!
+This project follows the [all-contributors](https://github.com/saigontechnology/rn-base-project-typescript/graphs/contributors) specification. Contributions of any kind welcome!
 
 ## About Us
 
