@@ -260,7 +260,7 @@ const styles = StyleSheet.create({
     borderRadius: metrics.xs,
   },
   h3: {
-    fontFamily: fonts.RobotoBold,
+    fontFamily: fonts.bold,
   },
   environmentText: {color: colors.black, fontWeight: 'normal'},
   active: {color: colors.primary, fontWeight: 'bold'},
