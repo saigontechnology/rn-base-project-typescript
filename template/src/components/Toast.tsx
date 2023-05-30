@@ -34,7 +34,7 @@ enum EToastType {
   INFO,
 }
 
-class Toast extends React.PureComponent<IToastProps, IToastState> {
+export class Toast extends React.PureComponent<IToastProps, IToastState> {
   frameID(frameID: any) {
     throw new Error('Method not implemented.')
   }
@@ -197,5 +197,3 @@ const styles = StyleSheet.create<IStyleSheet | any>({
     textAlign: 'center',
   },
 })
-
-export default Toast

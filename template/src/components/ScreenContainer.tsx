@@ -6,7 +6,7 @@ interface IRowProps {
   style?: StyleProp<ViewStyle>
 }
 
-const ScreenContainer = ({children, style, ...rest}: IRowProps) => (
+export const ScreenContainer = ({children, style, ...rest}: IRowProps) => (
   <View style={[styles.container, style]} {...rest}>
     {children}
   </View>
@@ -17,5 +17,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 })
-
-export default ScreenContainer

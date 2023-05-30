@@ -470,7 +470,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.saigontechnology.rnbaseprojecttypescript.development";
+				PRODUCT_BUNDLE_IDENTIFIER = com.saigontechnology.rnbaseprojecttypescript.development;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RNBaseProjectTypeScript.app/RNBaseProjectTypeScript";
 			};
@@ -494,7 +494,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.saigontechnology.rnbaseprojecttypescript";
+				PRODUCT_BUNDLE_IDENTIFIER = com.saigontechnology.rnbaseprojecttypescript;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RNBaseProjectTypeScript.app/RNBaseProjectTypeScript";
 			};
@@ -678,7 +678,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.saigontechnology.rnbaseprojecttypescript.staging";
+				PRODUCT_BUNDLE_IDENTIFIER = com.saigontechnology.rnbaseprojecttypescript.staging;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RNBaseProjectTypeScript.app/RNBaseProjectTypeScript";
 			};
