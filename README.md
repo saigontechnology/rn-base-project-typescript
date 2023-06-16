@@ -88,7 +88,6 @@ Our template is ship with the following rock-solid technical decisions out of th
 ## Table of scripts
 | Script | Description | Syntax |
 | ------ | ----------- | ------ |
-| [Generate fonts](template/scripts/fonts.js)| Get all fonts name from [src/assets/fonts](template/src/assets/fonts/) and store in [src/themes/fonts](template/src/themes/fonts.js) | ```yarn generatefonts``` |
 | [Generate images](template/scripts/genimg.js) | Get all images from [src/assets/images](template/src/assets/images/) and require images in [src/themes/images](template/src/themes/images.js) | ```yarn generateimages``` |
 | [Run App](template/scripts/run-app.sh) | Run app in Android or iOS with selected variants | ```yarn android```<br /> ```yarn ios ``` |
 

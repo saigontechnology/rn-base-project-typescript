@@ -13,7 +13,7 @@ import {
   ListRenderItemInfo,
 } from 'react-native'
 import {getApplicationName, getBuildNumber, getDeviceId} from 'react-native-device-info'
-import Draggable from './Draggable'
+import {Draggable} from './Draggable'
 
 import Config, {BOTTOM_SHEET_TYPE, CODEPUSH_KEYS, EXTRA_QA_ENVS} from '../constants/configs'
 
@@ -73,7 +73,7 @@ const EnvironmentSection: FC<Props> = ({title, children}) => (
   </View>
 )
 
-const DebugMenu: FC = () => {
+export const DebugMenu: FC = () => {
   const {t} = useTranslation()
   const [modalVisible, setModalVisible] = useState(false)
   const openModal = useCallback(() => setModalVisible(true), [])
@@ -260,10 +260,8 @@ const styles = StyleSheet.create({
     borderRadius: metrics.xs,
   },
   h3: {
-    fontFamily: fonts.RobotoBold,
+    fontFamily: fonts.bold,
   },
   environmentText: {color: colors.black, fontWeight: 'normal'},
   active: {color: colors.primary, fontWeight: 'bold'},
 })
-
-export default DebugMenu

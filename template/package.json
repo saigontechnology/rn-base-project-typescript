@@ -16,8 +16,7 @@
     "plop": "plop",
     "codepush": "bash ./scripts/code-push.sh",
     "build": "bash ./scripts/build-app.sh",
-    "generateimages": "node scripts/genimg src/assets/images --output src/themes/images.ts --name Images",
-    "generatefonts": "node scripts/fonts"
+    "generateimages": "node scripts/genimg src/assets/images --output src/themes/images.ts --name Images"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^4.4.5",

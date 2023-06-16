@@ -15,7 +15,7 @@ interface IIndicatorDialogProps {
 }
 
 const {width, height} = Dimensions.get('screen')
-export default function IndicatorDialog(props: IIndicatorDialogProps) {
+export function IndicatorDialog(props: IIndicatorDialogProps) {
   return (
     <View style={styles.container}>
       <ActivityIndicator size="large" />

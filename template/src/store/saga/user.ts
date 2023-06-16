@@ -1,6 +1,6 @@
 import {AnyAction} from 'redux'
 import {delay, put, takeLatest} from 'redux-saga/effects'
-import Toast from '../../components/Toast'
+import {Toast} from '../../components'
 import RouteKey from '../../navigation/RouteKey'
 import {appActions, userActions} from '../reducers'
 
