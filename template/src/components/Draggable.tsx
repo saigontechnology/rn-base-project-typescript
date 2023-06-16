@@ -49,7 +49,7 @@ interface IProps {
   maxY?: number
 }
 
-export default function Draggable(props: IProps) {
+export function Draggable(props: IProps) {
   const {
     renderText = '＋',
     isCircle,
@@ -72,10 +72,10 @@ export default function Draggable(props: IProps) {
     x = 0,
     y = 0,
     z = 1,
-    minX,
-    minY,
-    maxX,
-    maxY,
+    minX = 0,
+    minY = 0,
+    maxX = 0,
+    maxY = 0,
   } = props
 
   // The Animated object housing our xy value so that we can spring back

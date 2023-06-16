@@ -6,13 +6,13 @@
 
 This project is a template for [React Native](https://reactnative.dev/) that can be used to build mobile application.
 
-[![React Native Base Typescript STS License](https://img.shields.io/github/license/saigontechnology/rn-base-project-typescript)](https://choosealicense.com/licenses/mit/)
-![React Native Base Typescript STS NPM](https://img.shields.io/npm/v/rn-base-project-typescript)
-![React Native Base Typescript STS Downloads](https://img.shields.io/github/downloads/saigontechnology/rn-base-project-typescript/total)
-![React Native Base Typescript STS Release Date](https://img.shields.io/github/release-date/saigontechnology/rn-base-project-typescript)
-![React Native Base Typescript STS Stars](https://img.shields.io/github/stars/saigontechnology/rn-base-project-typescript)
-![React Native Base Typescript STS Top Language](https://img.shields.io/github/languages/top/saigontechnology/rn-base-project-typescript)
-![React Native Base Typescript STS Contributors](https://img.shields.io/github/contributors/saigontechnology/rn-base-project-typescript)
+[![React Native Base STS License](https://img.shields.io/github/license/saigon-technology/rn-base-project-typescript)](https://choosealicense.com/licenses/mit/)
+![React Native Base STS NPM](https://img.shields.io/npm/v/rn-base-project-ts)
+[![React Native Base STS Downloads](https://img.shields.io/npm/dm/rn-base-project-ts)](https://www.npmjs.com/package/rn-base-project-ts)
+![React Native Base STS Release Date](https://img.shields.io/github/release-date/saigon-technology/rn-base-project-typescript)
+![React Native Base STS Stars](https://img.shields.io/github/stars/saigon-technology/rn-base-project-typescript)
+![React Native Base STS Top Language](https://img.shields.io/github/languages/top/saigon-technology/rn-base-project-typescript)
+![React Native Base STS Contributors](https://img.shields.io/github/contributors/saigon-technology/rn-base-project-typescript)
 
 ## Requirements
 
@@ -88,7 +88,6 @@ Our template is ship with the following rock-solid technical decisions out of th
 ## Table of scripts
 | Script | Description | Syntax |
 | ------ | ----------- | ------ |
-| [Generate fonts](template/scripts/fonts.js)| Get all fonts name from [src/assets/fonts](template/src/assets/fonts/) and store in [src/themes/fonts](template/src/themes/fonts.js) | ```yarn generatefonts``` |
 | [Generate images](template/scripts/genimg.js) | Get all images from [src/assets/images](template/src/assets/images/) and require images in [src/themes/images](template/src/themes/images.js) | ```yarn generateimages``` |
 | [Run App](template/scripts/run-app.sh) | Run app in Android or iOS with selected variants | ```yarn android```<br /> ```yarn ios ``` |
 

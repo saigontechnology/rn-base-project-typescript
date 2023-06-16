@@ -21,9 +21,6 @@ export const userSlice = createSlice({
     logout(state) {
       // TODO: add action when user logout
     },
-    updateUserInfo(state, action: PayloadAction<IUserInfo>) {
-      // TODO: add action when update user info
-    },
   },
   extraReducers: builder => {},
 })
