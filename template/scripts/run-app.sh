@@ -1,10 +1,10 @@
 prompt_android="Please select variant for android: "
 OPTIONS_ANDROID=(
-    "developmentDebug" 
+    "developmentDebug"
     "developmentRelease"
-    "stagingDebug" 
-    "stagingRelease" 
-    "productionDebug" 
+    "stagingDebug"
+    "stagingRelease"
+    "productionDebug"
     "productionRelease"
     "quit"
 )
@@ -16,7 +16,7 @@ then
         if [ "$opt" == "quit" ]
         then
             break
-        fi 
+        fi
         if [ "$opt" == "" ]
         then
             echo "Invalid"
@@ -24,26 +24,26 @@ then
              echo "Variant: $opt"
              npx react-native run-android --variant=$opt
             break
-        fi 
+        fi
     done
 fi
 
 prompt_ios="Please select variant for ios: "
 OPTIONS_IOS=(
-    "RNBaseProjectTypeScriptDev" 
-    "RNBaseProjectTypeScriptStg" 
-    "RNBaseProjectTypeScript" 
+    "RNBaseProjectTypeScriptDev"
+    "RNBaseProjectTypeScriptStg"
+    "RNBaseProjectTypeScript"
     "quit"
 )
 
 if [ "$1" == "ios" ]
-then 
+then
     PS3="$prompt_ios"
     select opt in "${OPTIONS_IOS[@]}"; do
         if [ "$opt" == "quit" ]
         then
             break
-        fi 
+        fi
         if [ "$opt" == "" ]
         then
             echo "Invalid"
@@ -51,6 +51,6 @@ then
             echo "Scheme: $opt"
             npx react-native run-ios --scheme "$opt"
             break
-        fi    
+        fi
     done
 fi
