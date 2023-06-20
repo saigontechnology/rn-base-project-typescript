@@ -6,5 +6,5 @@
 
     /* Completeness */
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
-  }
+  },
 }
