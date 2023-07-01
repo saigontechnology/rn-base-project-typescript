@@ -19,7 +19,7 @@
     "generateimages": "node scripts/genimg src/assets/images --output src/themes/images.ts --name Images"
   },
   "dependencies": {
-    "@gorhom/bottom-sheet": "^4.4.5",
+    "@gorhom/bottom-sheet": "^4.4.7",
     "@react-native-async-storage/async-storage": "^1.18.1",
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",
