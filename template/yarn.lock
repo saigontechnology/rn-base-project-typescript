@@ -7691,10 +7691,10 @@ react-native-config@^1.5.0:
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-1.5.0.tgz#ff5a78fbbc2c2a0525788e5f3c86101110651ba4"
   integrity sha512-slecooA/0tCwhb+RuWEbwLqtKirGh9vWPRpgDfH7uPAraCciqHNH2XjS9ylW+Spn4FUrHg5KWTqUGs9BdBADHg==
 
-react-native-device-info@^10.6.0:
-  version "10.6.0"
-  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-10.6.0.tgz#51f1b2ec98abc32747149b0a5b7fb662b44d50e4"
-  integrity sha512-/MmINdojWdw2/9rwYpH/dX+1gFP0o78p8yYPjwxiPhoySSL2rZaNi+Mq9VwC+zFi/yQmJUvHntkKSw2KUc7rFw==
+react-native-device-info@^10.7.0:
+  version "10.7.0"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-10.7.0.tgz#f97f6f0da5d5a8775191566a667437c6ffc60417"
+  integrity sha512-8PiuGwKFB/56mjl5uVuCFoBLZJonerJRS/CTPAsT1rbyrc9vDGAj93FmzYW9GBroKUtQwF2gSP2scQzMHB/rVg==
 
 react-native-gesture-handler@^2.9.0:
   version "2.9.0"
