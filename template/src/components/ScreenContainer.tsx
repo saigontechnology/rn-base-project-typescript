@@ -1,8 +1,7 @@
-import React, {ReactElement} from 'react'
+import React, {PropsWithChildren} from 'react'
 import {StyleSheet, View, ViewStyle, StyleProp} from 'react-native'
 
-interface IRowProps {
-  children: ReactElement | null
+interface IRowProps extends PropsWithChildren {
   style?: StyleProp<ViewStyle>
 }
 
