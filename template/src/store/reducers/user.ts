@@ -1,5 +1,5 @@
-import {PayloadAction, createSlice} from '@reduxjs/toolkit'
-import {IUser, IUserInfo} from '../types'
+import {createSlice} from '@reduxjs/toolkit'
+import {IUser} from '../types'
 
 export const userInitialState: IUser = {
   userInfo: {},
@@ -18,11 +18,10 @@ export const userSlice = createSlice({
     userSignUp: () => {
       // TODO: add action when user sign up
     },
-    logout(state) {
+    logout: () => {
       // TODO: add action when user logout
     },
   },
-  extraReducers: builder => {},
 })
 
 export const userActions = {

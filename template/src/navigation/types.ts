@@ -5,8 +5,8 @@ import RouteKey from './RouteKey'
 type HomeScreenParams = {
   userId: ''
 }
-type LoginScreenParams = {}
-type SignUpScreenParams = {}
+type LoginScreenParams = object
+type SignUpScreenParams = object
 
 export interface AppStackParamList extends ParamListBase {
   /** Params */

@@ -15,7 +15,7 @@ import {getStatusBarHeight} from '../utilities/utils'
 
 const HEIGHT = getStatusBarHeight() + metrics.marginVertical
 
-type IToastProps = {}
+type IToastProps = object
 
 interface IToastState {
   message: string
@@ -78,11 +78,13 @@ export class Toast extends React.PureComponent<IToastProps, IToastState> {
   }
 
   displayMessage = ({message, type}: IToastState): void => {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     window.cancelAnimationFrame(this.frameID)
 
     this.offset.setValue(HEIGHT * -1)
     this.setState({message, type})
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     this.frameID = window.requestAnimationFrame(() => {
       this.animated = Animated.sequence([

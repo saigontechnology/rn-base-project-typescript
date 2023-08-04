@@ -62,13 +62,27 @@ export function Draggable(props: IProps) {
     debug = false,
     animatedViewProps,
     touchableOpacityProps,
-    onDrag = () => {},
-    onShortPressRelease = () => {},
-    onDragRelease = () => {},
-    onLongPress = () => {},
-    onPressIn = () => {},
-    onPressOut = () => {},
-    onRelease = () => {},
+    onDrag = () => {
+      //do something
+    },
+    onShortPressRelease = () => {
+      //do something
+    },
+    onDragRelease = () => {
+      //do something
+    },
+    onLongPress = () => {
+      //do something
+    },
+    onPressIn = () => {
+      //do something
+    },
+    onPressOut = () => {
+      //do something
+    },
+    onRelease = () => {
+      //do something
+    },
     x = 0,
     y = 0,
     z = 1,
