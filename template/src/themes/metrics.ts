@@ -1,5 +1,5 @@
 import {Dimensions, Platform} from 'react-native'
-import {IFontSize, IHitSlop, IMetrics, IShadow} from './types'
+import {IFontSize, IHitSlop, IShadow} from './types'
 
 const DESIGN_WIDTH = 375
 const DESIGN_HEIGHT = 812
