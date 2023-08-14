@@ -20,7 +20,8 @@
   ],
   "bugs": "https://github.com/saigontechnology/rn-base-project-typescript/issues",
   "scripts": {
-    "release": "yarn publish"
+    "release": "yarn publish",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@tsconfig/react-native": "^2.0.2",
@@ -28,6 +29,7 @@
     "@types/react": "^18.0.25",
     "@types/react-native": "^0.70.7",
     "@types/react-test-renderer": "^18.0.0",
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.3",
+    "husky": "^8.0.0"
   }
 }

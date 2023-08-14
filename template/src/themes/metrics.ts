@@ -1,20 +1,20 @@
 import {Dimensions, Platform} from 'react-native'
-import {IFontSize, IHitSlop, IMetrics, IShadow} from './types'
+import {IFontSize, IHitSlop, IShadow} from './types'
 
 const DESIGN_WIDTH = 375
 const DESIGN_HEIGHT = 812
 const {width, height} = Dimensions.get('window')
 
-function responsiveWidth(value = 0): number {
-  return (width * value) / DESIGN_WIDTH
+function responsiveWidth<T extends number>(value: T) {
+  return ((width * value) / DESIGN_WIDTH) as T
 }
 
-function responsiveHeight(value = 0): number {
-  return (height * value) / DESIGN_HEIGHT
+function responsiveHeight<T extends number>(value: T) {
+  return ((height * value) / DESIGN_HEIGHT) as T
 }
 
-function responsiveFont(value = 0): number {
-  return (width * value) / DESIGN_WIDTH
+function responsiveFont<T extends number>(value: T) {
+  return ((width * value) / DESIGN_WIDTH) as T
 }
 
 function deviceWidth(): number {
@@ -41,7 +41,7 @@ const hitSlop: IHitSlop = {
   left: 10,
 }
 
-const metrics: IMetrics = {
+const metrics = {
   // Text Size
   title: responsiveFont(20),
   span: responsiveFont(14),
@@ -72,7 +72,7 @@ const metrics: IMetrics = {
   logoWidth: responsiveWidth(300),
   logoHeight: responsiveHeight(70),
   icon: responsiveHeight(30),
-}
+} as const
 
 const FontSizes: IFontSize = {
   small: responsiveFont(12),

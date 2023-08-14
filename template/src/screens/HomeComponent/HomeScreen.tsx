@@ -1,14 +1,11 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack'
-import React from 'react'
+import React, {PropsWithChildren} from 'react'
 import {ScreenContainer} from '../../components'
 import RouteKey from '../../navigation/RouteKey'
 import {AppStackParamList} from '../../navigation/types'
 
-type Props = NativeStackScreenProps<AppStackParamList, RouteKey.HomeScreen>
+type Props = NativeStackScreenProps<AppStackParamList, RouteKey.HomeScreen> & PropsWithChildren
 
-const HomeScreen: React.FC<Props> = props => {
-  const {navigation, route} = props
-  return <ScreenContainer children={<></>} />
-}
+const HomeScreen: React.FC<Props> = props => <ScreenContainer>{props.children}</ScreenContainer>
 
 export default HomeScreen
