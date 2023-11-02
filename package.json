@@ -1,6 +1,6 @@
 {
   "name": "rn-base-project-ts",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "index.js",
   "repository": "https://github.com/saigontechnology/rn-base-project-typescript.git",
   "author": "React Native Team <SaiGon Technology Solutions>",
@@ -29,7 +29,7 @@
     "@types/react": "^18.0.25",
     "@types/react-native": "^0.70.7",
     "@types/react-test-renderer": "^18.0.0",
-    "typescript": "^4.9.3",
-    "husky": "^8.0.0"
+    "husky": "^8.0.0",
+    "typescript": "^4.9.3"
   }
 }
