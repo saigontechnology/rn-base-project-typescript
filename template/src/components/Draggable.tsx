@@ -86,10 +86,10 @@ export function Draggable(props: IProps) {
     x = 0,
     y = 0,
     z = 1,
-    minX = 0,
-    minY = 0,
-    maxX = 0,
-    maxY = 0,
+    minX,
+    minY,
+    maxX,
+    maxY,
   } = props
 
   // The Animated object housing our xy value so that we can spring back
