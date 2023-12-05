@@ -19,7 +19,7 @@ type IToastProps = object
 
 interface IToastState {
   message: string
-  type: string
+  type: EToastType
 }
 
 interface IStyleSheet {
@@ -29,9 +29,9 @@ interface IStyleSheet {
 }
 
 enum EToastType {
-  SUCCESS = 1,
-  ERROR,
-  INFO,
+  SUCCESS = 'success',
+  ERROR = 'error',
+  INFO = 'info',
 }
 
 export class Toast extends React.PureComponent<IToastProps, IToastState> {
@@ -47,18 +47,18 @@ export class Toast extends React.PureComponent<IToastProps, IToastState> {
   }
 
   static error(text: string) {
-    Emitter.emit('SHOW_TOAST_ERROR', {message: text, type: 'error'})
+    Emitter.emit('SHOW_TOAST_ERROR', {message: text, type: EToastType.ERROR})
   }
 
   static info(text: string) {
-    Emitter.emit('SHOW_TOAST_INFO', {message: text, type: 'info'})
+    Emitter.emit('SHOW_TOAST_INFO', {message: text, type: EToastType.INFO})
   }
 
   constructor(props: IToastProps, IState: IToastState, offset: any) {
     super(props)
     this.state = {
       message: '',
-      type: 'success',
+      type: EToastType.SUCCESS,
     }
     this.offset = new Animated.Value(-HEIGHT)
     this.opacity = new Animated.Value(0)
@@ -142,10 +142,10 @@ export class Toast extends React.PureComponent<IToastProps, IToastState> {
   messageColor = (): string => {
     const {type} = this.state
 
-    if (type === 'success') {
+    if (type === EToastType.SUCCESS) {
       return colors.primary
     }
-    if (type === 'info') {
+    if (type === EToastType.INFO) {
       return colors.primary
     }
     return colors.primary
