@@ -18,4 +18,4 @@ export default {
   toggleLanguages: 'Toggle Languages',
   currentLanguage: 'Current Language',
   codePush: 'CodePush Environment',
-}
+} as const

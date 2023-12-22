@@ -26,7 +26,19 @@ export const configureLocalization = (locale: string, fallback = 'en') =>
     },
   })
 
-export const getString = (key: keyof typeof en, params: object = {}) =>
+type TranslateRecord = typeof en
+
+type TranslateKey = keyof TranslateRecord
+
+type TranslateStr<O extends Record<string, any>, Key extends keyof O> = Key extends string
+  ? O[Key] extends string
+    ? Key
+    : `${Key}${TranslateStr<O[Key], keyof O[Key]> extends string
+        ? `.${TranslateStr<O[Key], keyof O[Key]>}`
+        : never}`
+  : Key
+
+export const getString = (key: TranslateStr<TranslateRecord, TranslateKey>, params: object = {}) =>
   getI18n() ? getI18n().t(key, params) : ''
 
 export default i18n
