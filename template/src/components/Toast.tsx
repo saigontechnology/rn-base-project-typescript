@@ -143,12 +143,12 @@ export class Toast extends React.PureComponent<IToastProps, IToastState> {
     const {type} = this.state
 
     if (type === EToastType.SUCCESS) {
-      return colors.primary
+      return colors.success
     }
     if (type === EToastType.INFO) {
-      return colors.primary
+      return colors.info
     }
-    return colors.primary
+    return colors.error
   }
 
   render() {
@@ -169,7 +169,7 @@ export class Toast extends React.PureComponent<IToastProps, IToastState> {
           onPress={() => {
             this.dismiss()
           }}>
-          <Text style={[styles.textStyle, {color: type === 'error' ? colors.red : colors.primary}]}>
+          <Text style={styles.textStyle}>
             {message}
           </Text>
         </TouchableOpacity>
@@ -197,5 +197,6 @@ const styles = StyleSheet.create<IStyleSheet | any>({
     fontSize: FontSizes.span,
     marginBottom: metrics.marginVertical,
     textAlign: 'center',
+    colors: colors.white,
   },
 })
