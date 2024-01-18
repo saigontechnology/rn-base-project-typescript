@@ -1,18 +1,43 @@
-<div>
-    <img src="docs/images/Logo.png" alt="Logo">
-</div>
+<h1 align="center">
+  <br>
+  <a href="http://www.amitmerchant.com/electron-markdownify"><img src="docs/images/Logo.png" alt="Markdownify" width="100%"></a>
+  <br>
+    Template Typescript
+  <br>
+</h1>
 
-# rn-base-project-typescript
+<h4 align="center">This project is a template for <a href="http://electron.atom.io" target="_blank">React Native</a> that can be used to build mobile application.</h4>
 
-This project is a template for [React Native](https://reactnative.dev/) that can be used to build mobile application.
+<p align="center">
+  <a href="https://choosealicense.com/licenses/mit/">
+    <img src="https://img.shields.io/github/license/saigon-technology/rn-base-project-typescript"
+         alt="MIT">
+  </a>
+  <img src="https://img.shields.io/npm/v/rn-base-project-ts">
+  <a href="https://www.npmjs.com/package/rn-base-project-ts">
+      <img src="https://img.shields.io/npm/dm/rn-base-project-ts">
+  </a>
+  <img src="https://img.shields.io/github/release-date/saigon-technology/rn-base-project-typescript">
+  <img src="https://img.shields.io/github/stars/saigon-technology/rn-base-project-typescript">
+  <img src="https://img.shields.io/github/languages/top/saigon-technology/rn-base-project-typescript">
+  <img src="https://img.shields.io/github/contributors/saigon-technology/rn-base-project-typescript">
+</p>
 
-[![React Native Base STS License](https://img.shields.io/github/license/saigon-technology/rn-base-project-typescript)](https://choosealicense.com/licenses/mit/)
-![React Native Base STS NPM](https://img.shields.io/npm/v/rn-base-project-ts)
-[![React Native Base STS Downloads](https://img.shields.io/npm/dm/rn-base-project-ts)](https://www.npmjs.com/package/rn-base-project-ts)
-![React Native Base STS Release Date](https://img.shields.io/github/release-date/saigon-technology/rn-base-project-typescript)
-![React Native Base STS Stars](https://img.shields.io/github/stars/saigon-technology/rn-base-project-typescript)
-![React Native Base STS Top Language](https://img.shields.io/github/languages/top/saigon-technology/rn-base-project-typescript)
-![React Native Base STS Contributors](https://img.shields.io/github/contributors/saigon-technology/rn-base-project-typescript)
+<p align="center">
+  <a href="#requirements">Requirements</a> •
+  <a href="#quick-start">Quick Start</a> •
+  <a href="#features">Features</a> •
+  <a href="#dependencies">Dependencies</a> •
+  <a href="#documents">Documents</a> •
+  <a href="#scripts">Scripts</a> •
+  <a href="#contributors">Contributors</a> •
+  <a href="#about-us">About Us</a> •
+  <a href="#mission">Mission</a> •
+  <a href="#history">History</a> •
+  <a href="#contact-us">Contact Us</a> •
+  <a href="#license">License</a>
+</p>
+
 
 ## Requirements
 
@@ -25,21 +50,40 @@ $ npm -v && node -v
 v16.19.0
 ```
 
-You also need to install the dependencies required by React Native.  
+> **Note**
+> You also need to install the dependencies required by React Native.  
 Go to the [React Native environment setup](https://reactnative.dev/docs/environment-setup), then select `React Native CLI Quickstart` tab.  
 Follow instructions for your given `development OS` and `target OS`.
 
-## Getting Started
+
+> **Note**
+> If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
+
+
 
 ## Quick Start
 
-- Init project
+1. Init project
+    ```sh
+      npx react-native init YourProjectName --template rn-base-project-ts
+    ```
+2. Install node_modules
+   ```sh
+    yarn install
+   ```
+3. Run script install pod via package.json
+   ```sh
+    yarn postinstall
+   ```
 
-  ```bash
-  npx react-native init YourProjectName --template rn-base-project-ts
-  ```
+4. Run `Android` or `Ios` via package.json
+   ```sh
+    # Run android
+    yarn android
 
-  [Check out the full documentation!](#documents)
+    # Run ios
+    yarn ios
+   ```
 
 ## ⭐ Features
 
@@ -84,8 +128,10 @@ Our template is ship with the following rock-solid technical decisions out of th
 - [Networking](docs/networking.md)
 - [Multiple schemes](docs/config-scheme.md)
 - [Redux persist](docs/config-redux-persist.md)
+- [Config redux persist](docs/config-redux-persist.md)
+- [Check out the full documentation!](#documents)
 
-## Table of scripts
+## Scripts
 | Script | Description | Syntax |
 | ------ | ----------- | ------ |
 | [Generate images](template/scripts/genimg.js) | Get all images from [src/assets/images](template/src/assets/images/) and require images in [src/themes/images](template/src/themes/images.js) | ```yarn generateimages``` |
@@ -115,26 +161,21 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/tuledu/"><img src="https://avatars.githubusercontent.com/u/111717882?v=4" width="100px;" alt="Tung Le" style="border-radius: 10%;"/><br /><sub><b>Tung Le</b></sub></a><br /></td>
   </tr>
 </table>
-## Documents
-- [Config redux persist](docs/config-redux-persist.md)
+
 ## Libraries used:
-```text
-    - redux-persist
-    - @react-native-async-storage/async-storage
-    - @react-navigation/bottom-tabs
-    - @react-navigation/native
-    - @react-navigation/native-stack
-    - react-native-code-push
-    - react-native-fast-image
-    - react-native-gesture-handler
-    - react-native-progress
-    - react-native-reanimated
-    - react-native-safe-area-context
-    - react-native-screens
-    - react-redux
-    - redux-saga
-    - i18n-js
-```
+- [Redux Persist](https://github.com/rt2zz/redux-persist) 
+- [React Native Async Storage](https://github.com/react-native-async-storage/async-storage)
+- [React Navigation](https://github.com/react-navigation/react-navigation?tab=readme-ov-file)
+- [React Native Code Push](https://github.com/microsoft/react-native-code-push)
+- [React Native Fast Image](https://github.com/DylanVann/react-native-fast-image)
+- [React Native Gesture handle](https://github.com/software-mansion/react-native-gesture-handler)
+- [React Native Progress](https://github.com/oblador/react-native-progress)
+- [React Native Reanimated](https://github.com/software-mansion/react-native-reanimated)
+- [React Native Safe Area Context](https://github.com/th3rdwave/react-native-safe-area-context)
+- [React Native Screens](https://github.com/software-mansion/react-native-screens)
+- [React Redux](https://github.com/reduxjs/react-redux)
+- [React Saga](https://github.com/redux-saga/redux-saga)
+- [I18n JS](https://github.com/fnando/i18n-js)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
@@ -159,3 +200,4 @@ My library was founded on Oct 2022 with the goal of making productivity library 
 If you have any questions or feedback, we'd love to hear from you! You can reach us at reactnativeststeam@gmail.com
 
 ## License
+[MIT](https://choosealicense.com/licenses/mit/)
