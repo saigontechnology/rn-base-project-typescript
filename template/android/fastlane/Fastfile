@@ -31,7 +31,11 @@ platform :android do
     gradle(
       task: "assemble",
       flavor: "#{env.capitalize}",
-      build_type: "Release"
+      build_type: "Release",
+      properties: {
+        "VERSION_NAME" => version,
+        "versionCode" => options[:buildNumber]
+      }
     )
     appcenter_upload(
       api_token: ENV["APPCENTER_TOKEN_UPLOAD_APP"],
@@ -63,7 +67,7 @@ platform :android do
       codepush env:options[:env]
     elsif type === 'build'
       upload env:options[:env]
-    else 
+    else
       printf "\nPlease enter type is [codepush, build]\n"
     end
   end

@@ -15,18 +15,28 @@
 
 require 'dotenv'
 
+package_json_content = File.read('../../package.json')
+package_json = JSON.parse(package_json_content)
+version = package_json['version']
+
 default_platform(:ios)
 
-platform :ios do
+owner_name = "STS-ReactNative" # Update this value if you are not work on Saigon Technology Solutions
+projectName = ENV["PROJECT_NAME"]
+workspace = projectName + ".xcworkspace"
+xcodeproj = projectName + ".xcodeproj"
+my_app = ENV["APPCENTER_APP_NAME_IOS"]
+teamId = ENV["APPLE_TEAM_ID"]
 
-  owner_name = "Saigontechnology" #Replace owner name here
-  my_app = "ReactNativeBaseTypeScriptIos" #Replace my app here
-  platform = 'ios'
+platform :ios do
+  before_all do |lane, options|
+      env = options[:env].downcase
+      Dotenv.load("../../.env.#{env}")
+  end
 
   desc "Build and upload to TestFlight"
   lane :upload do |options|
     env = options[:env].downcase
-    projectName = "RNBaseProjectTypeScript"
     workspace = projectName + ".xcworkspace"
     scheme = case env
     when "development"
@@ -39,21 +49,65 @@ platform :ios do
       raise "Invalid environment: #{env}"
     end
     Dotenv.load("../../.env.#{env}")
-    build_app(workspace: workspace, scheme: scheme) # enter your prod scheme
+    increment_version_number(xcodeproj: xcodeproj, version_number: version)
+    if options[:ci]
+      increment_build_number(xcodeproj: xcodeproj, build_number: options[:buildNumber])
+      cert
+      sigh(
+        force: true,
+        app_identifier: ENV["APP_ID"],
+        team_id: teamId,
+      )
+      update_code_signing_settings(
+        use_automatic_signing: false,
+        team_id: teamId,
+        bundle_identifier: ENV["APP_ID"],
+        profile_name: ENV["APP_ID"] + " AppStore",
+        targets: [projectName],
+        code_sign_identity: 'Apple Distribution'
+      )
+  # Uncomment the line if your app have OneSignalNotificationServiceExtension
+  #       sigh(
+  #         force: true,
+  #         app_identifier: ENV["APP_ID"] + ".OneSignalNotificationServiceExtension",
+  #         team_id: teamId,
+  #       )
+  #       update_code_signing_settings(
+  #         use_automatic_signing: false,
+  #         team_id: teamId,
+  #         bundle_identifier: ENV["APP_ID"] + ".OneSignalNotificationServiceExtension",
+  #         profile_name: ENV["APP_ID"] + ".OneSignalNotificationServiceExtension AppStore",
+  #         targets: ["OneSignalNotificationServiceExtension"]
+  #       )
+      unlock_keychain(
+        password: ENV["KEYCHAIN_PASSWORD"]
+      )
+    end
+    build_app(
+    workspace: workspace,
+    scheme: scheme,
+    clean: true,
+    xcargs: "-allowProvisioningUpdates",
+    export_method: "app-store",
+    export_options: {
+      uploadBitcode: false,
+      compileBitcode: false,
+      provisioningProfiles: {
+        ENV["APP_ID"] => ENV["APP_ID"] + " AppStore"
+      }
+    })
+
     upload_to_testflight(
         skip_waiting_for_build_processing: true,
-        changelog: "#{ENV["APPCENTER_RELEASE_NOTE"]}"
+        app_identifier: ENV["APP_ID"],
+        changelog: "#{ENV["APPCENTER_RELEASE_NOTE"]}",
+        itc_provider: teamId
     )
   end
 
   desc "====CODE PUSH===="
   lane :codepush do |options|
-    appcenter_codepush(
-      env: options[:env],
-      owner_name: owner_name,
-      my_app: my_app,
-      platform: platform
-    )
+    sh "cd .. && cd .. && appcenter codepush release-react --token #{ENV["APPCENTER_TOKEN_IOS"]} -a #{owner_name}/#{my_app} -d #{options[:env]} -t #{version} --mandatory true"
   end
 
   desc "Build or codepush" #type = [codepush, build]
@@ -63,7 +117,7 @@ platform :ios do
       codepush env:options[:env]
     elsif type === 'build'
       upload env:options[:env]
-    else 
+    else
       printf "\nPlease enter type is [codepush, build]\n"
     end
   end

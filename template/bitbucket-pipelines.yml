@@ -1,0 +1,51 @@
+pipelines:
+  branches:
+    develop:
+      - step:
+          name: "Build"
+          runs-on:
+            - 'self.hosted'
+            - 'macos'
+          condition:
+            changesets:
+              includePaths:
+                - "ios/**"
+                - "android/**"
+                - "package.json"
+                - "*.env.*"
+          script:
+            - yarn install
+            - cd android && fastlane build type:build env:Development buildNumber:$BITBUCKET_BUILD_NUMBER
+            - cd ..
+            - cd ios && fastlane build type:build env:Development ci:true buildNumber:$BITBUCKET_BUILD_NUMBER
+      - step:
+          name: "CodePush"
+          runs-on:
+            - 'self.hosted'
+            - 'macos'
+          deployment: Test
+          script:
+            - yarn install
+            - yarn codepush:qa
+    staging:
+      - step:
+          name: "Build"
+          runs-on:
+            - 'self.hosted'
+            - 'macos'
+          script:
+            - yarn install
+            - cd android && fastlane build type:build env:Staging buildNumber:$BITBUCKET_BUILD_NUMBER
+            - cd ..
+            - cd ios && fastlane build type:build env:Staging ci:true buildNumber:$BITBUCKET_BUILD_NUMBER
+    production:
+      - step:
+          name: "Build"
+          runs-on:
+            - 'self.hosted'
+            - 'macos'
+          script:
+            - yarn install
+            - cd android && fastlane build type:build env:Production buildNumber:$BITBUCKET_BUILD_NUMBER
+            - cd ..
+            - cd ios && fastlane build type:build env:Production ci:true buildNumber:$BITBUCKET_BUILD_NUMBER
