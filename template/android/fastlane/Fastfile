@@ -14,20 +14,24 @@
 # update_fastlane
 
 require 'dotenv'
-
+package_json_content = File.read('../../package.json')
+package_json = JSON.parse(package_json_content)
+version = package_json['version']
+owner_name = "Saigontechnology" #Replace owner name here
+my_app = "ReactNativeBaseTypeScriptAndroid" #Replace my app here
+env = ""
 default_platform(:android)
 
 platform :android do
 
-  owner_name = "Saigontechnology" #Replace owner name here
-  my_app = "ReactNativeBaseTypeScriptAndroid" #Replace my app here
-  platform = 'android'
+  before_all do |lane, options|
+      env = options[:env].downcase
+      Dotenv.load("../../.env.#{env}")
+  end
 
   desc "Build file apk and upload to appcenter"
   lane :upload do |options|
-    env = options[:env].downcase
     file = "app/build/outputs/apk/#{env}/release/app-#{env}-release.apk" #You can change this path to get file apk
-    Dotenv.load("../../.env.#{env}")
     gradle(
       task: "assemble",
       flavor: "#{env.capitalize}",
@@ -52,12 +56,7 @@ platform :android do
 
   desc "====CODE PUSH===="
   lane :codepush do |options|
-    appcenter_codepush(
-      env: options[:env],
-      owner_name: owner_name,
-      my_app: my_app,
-      platform: platform
-    )
+    sh "cd .. && cd .. && appcenter codepush release-react --token #{ENV["APPCENTER_TOKEN_ANDROID"]} -a #{owner_name}/#{my_app} -d #{options[:env]} -t #{version} --mandatory true"
   end
 
   desc "Build or codepush" #type = [codepush, build]

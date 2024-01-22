@@ -1,4 +1,5 @@
-## fastlane documentation
+fastlane documentation
+----
 
 # Installation
 
@@ -14,18 +15,10 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## Android
 
-### android test
+### android upload
 
 ```sh
-[bundle exec] fastlane android test
-```
-
-Runs all the tests
-
-### android build
-
-```sh
-[bundle exec] fastlane android build
+[bundle exec] fastlane android upload
 ```
 
 Build file apk and upload to appcenter
@@ -38,15 +31,15 @@ Build file apk and upload to appcenter
 
 ====CODE PUSH====
 
-### android testif
+### android build
 
 ```sh
-[bundle exec] fastlane android testif
+[bundle exec] fastlane android build
 ```
 
 Build or codepush
 
----
+----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
 

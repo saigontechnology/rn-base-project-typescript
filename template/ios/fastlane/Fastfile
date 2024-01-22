@@ -27,6 +27,7 @@ workspace = projectName + ".xcworkspace"
 xcodeproj = projectName + ".xcodeproj"
 my_app = ENV["APPCENTER_APP_NAME_IOS"]
 teamId = ENV["APPLE_TEAM_ID"]
+env = ""
 
 platform :ios do
   before_all do |lane, options|
@@ -36,8 +37,6 @@ platform :ios do
 
   desc "Build and upload to TestFlight"
   lane :upload do |options|
-    env = options[:env].downcase
-    workspace = projectName + ".xcworkspace"
     scheme = case env
     when "development"
       "#{projectName}Dev"
@@ -48,7 +47,6 @@ platform :ios do
     else
       raise "Invalid environment: #{env}"
     end
-    Dotenv.load("../../.env.#{env}")
     increment_version_number(xcodeproj: xcodeproj, version_number: version)
     if options[:ci]
       increment_build_number(xcodeproj: xcodeproj, build_number: options[:buildNumber])

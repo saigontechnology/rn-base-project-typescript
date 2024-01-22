@@ -112,7 +112,7 @@ android {
         production {}
     }
 
-    namespace project.env.get("APP_ID")
+    namespace "com.saigontechnology.rnbaseprojecttypescript"
     defaultConfig {
         applicationId project.env.get("APP_ID")
         minSdkVersion rootProject.ext.minSdkVersion
@@ -120,7 +120,6 @@ android {
         versionCode project.hasProperty('versionCode') ? Integer.parseInt(project.versionCode) : 1
         versionName VERSION_NAME
         resValue "string", "build_config_package", "com.saigontechnology.rnbaseprojecttypescript"
-        resValue "string", "build_config_package", project.env.get("APP_ID")
     }
 
     splits {
