@@ -105,7 +105,7 @@ platform :ios do
 
   desc "====CODE PUSH===="
   lane :codepush do |options|
-    sh "cd .. && cd .. && appcenter codepush release-react --token #{ENV["APPCENTER_TOKEN_IOS"]} -a #{owner_name}/#{my_app} -d #{options[:env]} -t #{version} --mandatory true"
+    sh "cd ../.. && appcenter codepush release-react --token #{ENV["APPCENTER_TOKEN_IOS"]} -a #{owner_name}/#{my_app} -d #{options[:env]} -t #{version} --mandatory true"
   end
 
   desc "Build or codepush" #type = [codepush, build]
