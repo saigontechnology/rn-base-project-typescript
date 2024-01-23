@@ -71,7 +71,7 @@ Follow instructions for your given `development OS` and `target OS`.
     > **Note**
     > Pod install automatically after run `yarn install`  
 
-4. Run `Android` or `Ios` via package.json
+3. Run `Android` or `Ios` via package.json
    ```sh
     # Run android
     yarn android
