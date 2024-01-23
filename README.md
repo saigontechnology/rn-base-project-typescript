@@ -55,11 +55,8 @@ v16.19.0
 Go to the [React Native environment setup](https://reactnative.dev/docs/environment-setup), then select `React Native CLI Quickstart` tab.  
 Follow instructions for your given `development OS` and `target OS`.
 
-
 > **Note**
 > If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
-
-
 
 ## Quick Start
 
@@ -71,10 +68,8 @@ Follow instructions for your given `development OS` and `target OS`.
    ```sh
     yarn install
    ```
-3. Run script install pod via package.json
-   ```sh
-    yarn postinstall
-   ```
+    > **Note**
+    > Pod install automatically after run `yarn install`  
 
 4. Run `Android` or `Ios` via package.json
    ```sh
@@ -161,21 +156,6 @@ Thanks goes to these wonderful people
     <td align="center"><a href="https://github.com/tuledu/"><img src="https://avatars.githubusercontent.com/u/111717882?v=4" width="100px;" alt="Tung Le" style="border-radius: 10%;"/><br /><sub><b>Tung Le</b></sub></a><br /></td>
   </tr>
 </table>
-
-## Libraries used:
-- [Redux Persist](https://github.com/rt2zz/redux-persist) 
-- [React Native Async Storage](https://github.com/react-native-async-storage/async-storage)
-- [React Navigation](https://github.com/react-navigation/react-navigation?tab=readme-ov-file)
-- [React Native Code Push](https://github.com/microsoft/react-native-code-push)
-- [React Native Fast Image](https://github.com/DylanVann/react-native-fast-image)
-- [React Native Gesture handle](https://github.com/software-mansion/react-native-gesture-handler)
-- [React Native Progress](https://github.com/oblador/react-native-progress)
-- [React Native Reanimated](https://github.com/software-mansion/react-native-reanimated)
-- [React Native Safe Area Context](https://github.com/th3rdwave/react-native-safe-area-context)
-- [React Native Screens](https://github.com/software-mansion/react-native-screens)
-- [React Redux](https://github.com/reduxjs/react-redux)
-- [React Saga](https://github.com/redux-saga/redux-saga)
-- [I18n JS](https://github.com/fnando/i18n-js)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
