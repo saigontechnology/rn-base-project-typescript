@@ -6,6 +6,10 @@ const colors: IColor = {
   white: '#ffffff',
   gray: '#454545',
   red: '#ff0009',
+  error: '#FF5247',
+  success: '#23C16B',
+  warning: '#FFB323',
+  info: '#48A7F8',
 }
 
 const getColorOpacity = (color: string, opacity: number): string => {

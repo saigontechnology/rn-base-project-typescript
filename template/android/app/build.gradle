@@ -117,8 +117,9 @@ android {
         applicationId project.env.get("APP_ID")
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode project.hasProperty('versionCode') ? Integer.parseInt(project.versionCode) : 1
+        versionName VERSION_NAME
+        resValue "string", "build_config_package", "com.saigontechnology.rnbaseprojecttypescript"
     }
 
     splits {
@@ -148,18 +149,6 @@ android {
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-        }
-    }
-    flavorDimensions "default"
-    productFlavors {
-        development {
-          applicationIdSuffix '.development'
-        }
-        staging {
-            applicationIdSuffix '.staging'
-        }
-        production {
-            applicationIdSuffix '.production'
         }
     }
 

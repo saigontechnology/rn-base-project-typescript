@@ -1,0 +1,63 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  - develop
+  - staging
+  - master
+
+pool:
+  name: 'Mobile Pipeline'
+
+stages:
+  - stage: Codepush
+    condition: eq(variables['Build.SourceBranchName'], 'develop')
+    jobs:
+      - job: Codepush
+        steps:
+          - script: yarn install
+            displayName: Install Dependencies
+          - script: yarn codepush:qa
+            displayName: Codepush
+  - stage: Build_Development
+    condition: and(eq(variables['Build.SourceBranchName'], 'develop'), contains(variables['Build.SourceVersionMessage'], '[BUILD]'))
+    jobs:
+      - job: Build
+        steps:
+          - script: yarn install
+            displayName: Install Dependencies
+          - script: cd android && fastlane build type:build env:Development buildNumber:variables['Build.BuildNumber']
+            displayName: Build Android
+          - script: cd ..
+            displayName: cd to root
+          - script: cd ios && fastlane build type:build env:Development ci:true buildNumber:variables['Build.BuildNumber']
+            displayName: Build iOS
+  - stage: Build_Staging
+    condition: eq(variables['Build.SourceBranchName'], 'staging')
+    jobs:
+      - job: Build
+        steps:
+          - script: yarn install
+            displayName: Install Dependencies
+          - script: cd android && fastlane build type:build env:Staging buildNumber:variables['Build.BuildNumber']
+            displayName: Build Android
+          - script: cd ..
+            displayName: cd to root
+          - script: cd ios && fastlane build type:build env:Staging ci:true buildNumber:variables['Build.BuildNumber']
+            displayName: Build iOS
+  - stage: Build_Production
+    condition: eq(variables['Build.SourceBranchName'], 'master')
+    jobs:
+      - job: Build
+        steps:
+          - script: yarn install
+            displayName: Install Dependencies
+          - script: cd android && fastlane build type:build env:Production buildNumber:variables['Build.BuildNumber']
+            displayName: Build Android
+          - script: cd ..
+            displayName: cd to root
+          - script: cd ios && fastlane build type:build env:Production ci:true buildNumber:variables['Build.BuildNumber']
+            displayName: Build iOS
+
