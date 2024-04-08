@@ -70,7 +70,7 @@
     "plop": "^3.1.2",
     "prettier": "^2.8.8",
     "react-test-renderer": "18.1.0",
-    "typescript": "^5.0.3"
+    "typescript": "^5.4.4"
   },
   "jest": {
     "preset": "react-native",
