@@ -38,7 +38,9 @@ export function postRequest<S, Q = any>(params: IParams<Q>): Promise<AxiosRespon
   return axiosAPI<S>({url, method: AxiosMethod.post, body, config})
 }
 
-export function postFormDataRequest<S, Q = any>(params: IParams<Q>): Promise<AxiosResponse<S, Q>> | IAxiosError {
+export function postFormDataRequest<S, Q = any>(
+  params: IParams<Q>,
+): Promise<AxiosResponse<S, Q>> | IAxiosError {
   const {url, body, config} = params
   try {
     if (body?.constructor !== FormData) {
@@ -66,7 +68,7 @@ export function patchRequest<S, Q = any>(params: IParams<Q>): Promise<AxiosRespo
   return axiosAPI<S>({url, method: AxiosMethod.patch, body, config})
 }
 
-export function deleteRequest<S, Q = any>(params: IParams<Q>) : Promise<AxiosResponse<S, Q>> {
+export function deleteRequest<S, Q = any>(params: IParams<Q>): Promise<AxiosResponse<S, Q>> {
   const {url, config} = params
   return axiosAPI<S>({url, method: AxiosMethod.delete, config})
 }
