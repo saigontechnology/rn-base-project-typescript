@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react'
-import {Animated, LayoutAnimation, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
-import {FontSizes, colors, hitSlop, metrics} from '../themes'
+import {Animated, Image, LayoutAnimation, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
+import {FontSizes, Images, colors, hitSlop, metrics} from '../themes'
 import Emitter from '../utilities/Emitter'
 import {useSafeAreaInsets} from 'react-native-safe-area-context'
 
@@ -10,11 +10,20 @@ export const TOAST_TYPE = {
   INFO: 'INFO',
   WARNING: 'WARNING',
 } as const
+const TOAST_EVENTS = {
+  showToastMessage: 'SHOW_TOAST_MESSAGE',
+}
+const DEFAULT_DELAY = 5000
+const DEFAULT_DURATION = 300
 
 interface IToastState {
   message: string
   type: keyof typeof TOAST_TYPE
   subMessage?: string
+  option?: {
+    delay?: number
+    duration?: number
+  }
 }
 
 const messageContent = {
@@ -62,14 +71,14 @@ export const Toast: React.FC = () => {
         // Fade In
         Animated.timing(animation, {
           toValue: 1,
-          duration: 300,
+          duration: args.option?.duration || DEFAULT_DURATION,
           useNativeDriver: true,
         }),
-        Animated.delay(5000),
+        Animated.delay(args.option?.delay || DEFAULT_DELAY),
         // Fade Out
         Animated.timing(animation, {
           toValue: 0,
-          duration: 300,
+          duration: args.option?.duration || DEFAULT_DURATION,
           useNativeDriver: true,
         }),
       ])
@@ -84,15 +93,15 @@ export const Toast: React.FC = () => {
     setState(initState)
     Animated.timing(animation, {
       toValue: 0,
-      duration: 300,
+      duration: DEFAULT_DURATION,
       useNativeDriver: true,
     }).start()
   }
 
   useEffect(() => {
-    Emitter.on('SHOW_TOAST_MESSAGE', displayMessage)
+    Emitter.on(TOAST_EVENTS.showToastMessage, displayMessage)
     return () => {
-      Emitter.rm('SHOW_TOAST_MESSAGE')
+      Emitter.rm(TOAST_EVENTS.showToastMessage)
     }
   }, [])
 
@@ -113,12 +122,13 @@ export const Toast: React.FC = () => {
             backgroundColor: messageContent[state.type].color,
           },
         ]}>
+        <Image source={Images.info} style={styles.icon} />
         <View style={styles.textContent}>
           <Text style={styles.titleStyle}>{state.message}</Text>
           {!!state.subMessage && <Text style={styles.textStyle}>{state.subMessage}</Text>}
         </View>
         <TouchableOpacity onPress={dismiss} hitSlop={hitSlop}>
-          <Text style={styles.closeText}>X</Text>
+          <Image source={Images.close} style={styles.icon} />
         </TouchableOpacity>
       </View>
     </Animated.View>
@@ -126,7 +136,7 @@ export const Toast: React.FC = () => {
 }
 
 export const showToast = (args: IToastState) => {
-  Emitter.emit('SHOW_TOAST_MESSAGE', args)
+  Emitter.emit(TOAST_EVENTS.showToastMessage, args)
 }
 
 const styles = StyleSheet.create({
@@ -162,7 +172,9 @@ const styles = StyleSheet.create({
     fontSize: FontSizes.body,
     color: colors.white,
   },
-  closeText: {
-    color: colors.white,
+  icon: {
+    width: metrics.icon,
+    aspectRatio: 1,
+    tintColor: colors.white,
   },
 })
