@@ -1,6 +1,4 @@
-import {IColor} from './types'
-
-const colors: IColor = {
+const colors = {
   primary: '#65c8c6',
   black: '#1F1F1F',
   white: '#ffffff',
@@ -10,7 +8,7 @@ const colors: IColor = {
   success: '#23C16B',
   warning: '#FFB323',
   info: '#48A7F8',
-}
+} as const
 
 const getColorOpacity = (color: string, opacity: number): string => {
   if (opacity >= 0 && opacity <= 1 && color.includes('#')) {

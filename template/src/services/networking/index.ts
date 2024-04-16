@@ -11,7 +11,9 @@ const AxiosMethod: IAxiosMethod = {
   patch: 'PATCH',
 }
 
-async function axiosAPI<S, Q = any>(params: IParams<Q>): Promise<AxiosResponse<S, Q>> {
+async function axiosAPI<TResponse, TRequest = any>(
+  params: IParams<TRequest>,
+): Promise<AxiosResponse<TResponse, TRequest>> {
   const {url, method, body, config} = params
   let data = body
 
@@ -25,20 +27,29 @@ async function axiosAPI<S, Q = any>(params: IParams<Q>): Promise<AxiosResponse<S
     headers: {...config},
   })
     .then((response: AxiosResponse) => ({...response.data, status: response.status}))
-    .catch((error: AxiosError<S>) => ({error: error?.response?.data, status: error?.response?.status}))
+    .catch((error: AxiosError<TResponse>) => ({
+      error: error?.response?.data,
+      status: error?.response?.status,
+    }))
 }
 
-export function getRequest<S, Q = any>(params: IParams<Q>): Promise<AxiosResponse<S, Q>> {
+export function getRequest<TResponse, TRequest = any>(
+  params: IParams<TRequest>,
+): Promise<AxiosResponse<TResponse, TRequest>> {
   const {url, config} = params
-  return axiosAPI<S>({url, method: AxiosMethod.get, config})
+  return axiosAPI<TResponse>({url, method: AxiosMethod.get, config})
 }
 
-export function postRequest<S, Q = any>(params: IParams<Q>): Promise<AxiosResponse<S, Q>> {
+export function postRequest<TResponse, TRequest = any>(
+  params: IParams<TRequest>,
+): Promise<AxiosResponse<TResponse, TRequest>> {
   const {url, body, config} = params
-  return axiosAPI<S>({url, method: AxiosMethod.post, body, config})
+  return axiosAPI<TResponse>({url, method: AxiosMethod.post, body, config})
 }
 
-export function postFormDataRequest<S, Q = any>(params: IParams<Q>): Promise<AxiosResponse<S, Q>> | IAxiosError {
+export function postFormDataRequest<TResponse, TRequest = any>(
+  params: IParams<TRequest>,
+): Promise<AxiosResponse<TResponse, TRequest>> | IAxiosError {
   const {url, body, config} = params
   try {
     if (body?.constructor !== FormData) {
@@ -49,24 +60,30 @@ export function postFormDataRequest<S, Q = any>(params: IParams<Q>): Promise<Axi
       ...config,
       'Content-Type': 'multipart/form-data',
     }
-    return axiosAPI<S>({url, method: AxiosMethod.post, body, config: customConfig})
+    return axiosAPI<TResponse>({url, method: AxiosMethod.post, body, config: customConfig})
   } catch (error: unknown) {
     const err = error as AxiosError<Error>
     return {error: err.response?.data.message || err.message}
   }
 }
 
-export function putRequest<S, Q = any>(params: IParams<Q>): Promise<AxiosResponse<S, Q>> {
+export function putRequest<TResponse, TRequest = any>(
+  params: IParams<TRequest>,
+): Promise<AxiosResponse<TResponse, TRequest>> {
   const {url, body, config} = params
-  return axiosAPI<S>({url, method: AxiosMethod.put, body, config})
+  return axiosAPI<TResponse>({url, method: AxiosMethod.put, body, config})
 }
 
-export function patchRequest<S, Q = any>(params: IParams<Q>): Promise<AxiosResponse<S, Q>> {
+export function patchRequest<TResponse, TRequest = any>(
+  params: IParams<TRequest>,
+): Promise<AxiosResponse<TResponse, TRequest>> {
   const {url, body, config} = params
-  return axiosAPI<S>({url, method: AxiosMethod.patch, body, config})
+  return axiosAPI<TResponse>({url, method: AxiosMethod.patch, body, config})
 }
 
-export function deleteRequest<S, Q = any>(params: IParams<Q>) : Promise<AxiosResponse<S, Q>> {
+export function deleteRequest<TResponse, TRequest = any>(
+  params: IParams<TRequest>,
+): Promise<AxiosResponse<TResponse, TRequest>> {
   const {url, config} = params
-  return axiosAPI<S>({url, method: AxiosMethod.delete, config})
+  return axiosAPI<TResponse>({url, method: AxiosMethod.delete, config})
 }

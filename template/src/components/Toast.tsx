@@ -1,202 +1,180 @@
-import React from 'react'
-import {
-  Animated,
-  StyleProp,
-  StyleSheet,
-  Text,
-  TextProps,
-  TouchableOpacity,
-  ViewProps,
-  ViewStyle,
-} from 'react-native'
-import {FontSizes, colors, metrics} from '../themes'
+import React, {useEffect, useRef, useState} from 'react'
+import {Animated, Image, LayoutAnimation, StyleSheet, Text, TouchableOpacity, View} from 'react-native'
+import {FontSizes, Images, colors, hitSlop, metrics} from '../themes'
 import Emitter from '../utilities/Emitter'
-import {getStatusBarHeight} from '../utilities/utils'
+import {useSafeAreaInsets} from 'react-native-safe-area-context'
 
-const HEIGHT = getStatusBarHeight() + metrics.marginVertical
-
-type IToastProps = object
+export const TOAST_TYPE = {
+  SUCCESS: 'SUCCESS',
+  ERROR: 'ERROR',
+  INFO: 'INFO',
+  WARNING: 'WARNING',
+} as const
+const TOAST_EVENTS = {
+  showToastMessage: 'SHOW_TOAST_MESSAGE',
+}
+const DEFAULT_DELAY = 5000
+const DEFAULT_DURATION = 300
 
 interface IToastState {
   message: string
-  type: EToastType
+  type: keyof typeof TOAST_TYPE
+  subMessage?: string
+  option?: {
+    delay?: number
+    duration?: number
+  }
 }
 
-interface IStyleSheet {
-  container: StyleProp<ViewStyle>
-  messageContainer: () => ViewProps
-  textStyle: TextProps
+const messageContent = {
+  [TOAST_TYPE.SUCCESS]: {
+    color: colors.success,
+  },
+  [TOAST_TYPE.ERROR]: {
+    color: colors.error,
+  },
+  [TOAST_TYPE.INFO]: {
+    color: colors.info,
+  },
+  [TOAST_TYPE.WARNING]: {
+    color: colors.warning,
+  },
+} as const
+
+const initState = {
+  message: '',
+  type: TOAST_TYPE.INFO,
+  subMessage: '',
 }
 
-enum EToastType {
-  SUCCESS = 'success',
-  ERROR = 'error',
-  INFO = 'info',
-}
+export const Toast: React.FC = () => {
+  const insets = useSafeAreaInsets()
+  const [state, setState] = useState<IToastState>(initState)
+  const HEIGHT = insets.bottom + metrics.toast
+  const animationRef = useRef<Animated.CompositeAnimation>()
+  const animation = useRef(new Animated.Value(0)).current
+  const offset = animation.interpolate({
+    inputRange: [0, 1],
+    outputRange: [HEIGHT, 0 - metrics.xxs], // padding bottom metrics.xxs
+  })
+  const opacity = animation.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0, 1],
+  })
 
-export class Toast extends React.PureComponent<IToastProps, IToastState> {
-  frameID(frameID: any) {
-    throw new Error('Method not implemented.')
-  }
-  offset: Animated.Value
-  opacity: Animated.Value
-  animated: Animated.AnimatedProps<any> | null
-  // Static methods
-  static success(text: string) {
-    Emitter.emit('SHOW_TOAST_MESSAGE', {message: text, type: EToastType.SUCCESS})
-  }
-
-  static error(text: string) {
-    Emitter.emit('SHOW_TOAST_ERROR', {message: text, type: EToastType.ERROR})
-  }
-
-  static info(text: string) {
-    Emitter.emit('SHOW_TOAST_INFO', {message: text, type: EToastType.INFO})
-  }
-
-  constructor(props: IToastProps, IState: IToastState, offset: any) {
-    super(props)
-    this.state = {
-      message: '',
-      type: EToastType.SUCCESS,
-    }
-    this.offset = new Animated.Value(-HEIGHT)
-    this.opacity = new Animated.Value(0)
-    this.animated = null
-  }
-
-  componentDidMount() {
-    Emitter.on('SHOW_TOAST_MESSAGE', this.displayMessage)
-    Emitter.on('SHOW_TOAST_ERROR', this.displayMessage)
-    Emitter.on('SHOW_TOAST_INFO', this.displayMessage)
-  }
-
-  componentWillUnmount() {
-    Emitter.rm('SHOW_TOAST_MESSAGE')
-    Emitter.rm('SHOW_TOAST_ERROR')
-    Emitter.rm('SHOW_TOAST_INFO')
-  }
-
-  displayMessage = ({message, type}: IToastState): void => {
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    window.cancelAnimationFrame(this.frameID)
-
-    this.offset.setValue(HEIGHT * -1)
-    this.setState({message, type})
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    this.frameID = window.requestAnimationFrame(() => {
-      this.animated = Animated.sequence([
-        Animated.delay(100),
+  const displayMessage = (args: IToastState): void => {
+    animation.setValue(0)
+    setState(args)
+    animationRef.current?.stop()
+    setTimeout(() => {
+      animationRef.current = Animated.sequence([
         // Fade In
-        Animated.parallel([
-          Animated.timing(this.opacity, {
-            toValue: 1,
-            duration: 300,
-            useNativeDriver: true,
-          }),
-          Animated.timing(this.offset, {
-            toValue: 0,
-            duration: 300,
-            useNativeDriver: true,
-          }),
-        ]),
-        Animated.delay(3000),
+        Animated.timing(animation, {
+          toValue: 1,
+          duration: args.option?.duration || DEFAULT_DURATION,
+          useNativeDriver: true,
+        }),
+        Animated.delay(args.option?.delay || DEFAULT_DELAY),
         // Fade Out
-        Animated.parallel([
-          Animated.timing(this.opacity, {
-            toValue: 0,
-            duration: 300,
-            useNativeDriver: true,
-          }),
-          Animated.timing(this.offset, {
-            toValue: HEIGHT * -1,
-            duration: 300,
-            useNativeDriver: true,
-          }),
-        ]),
-      ])
-      this.animated.start()
-    })
-  }
-
-  dismiss = () => {
-    this.animated?.stop()
-    Animated.parallel([
-      Animated.parallel([
-        Animated.timing(this.opacity, {
+        Animated.timing(animation, {
           toValue: 0,
-          duration: 300,
+          duration: args.option?.duration || DEFAULT_DURATION,
           useNativeDriver: true,
         }),
-        Animated.timing(this.offset, {
-          toValue: HEIGHT * -1,
-          duration: 300,
-          useNativeDriver: true,
-        }),
-      ]),
-    ]).start()
+      ])
+      animationRef.current.start(() => {
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
+      })
+    }, 100)
   }
 
-  messageColor = (): string => {
-    const {type} = this.state
-
-    if (type === EToastType.SUCCESS) {
-      return colors.success
-    }
-    if (type === EToastType.INFO) {
-      return colors.info
-    }
-    return colors.error
+  const dismiss = () => {
+    animationRef.current?.stop()
+    setState(initState)
+    Animated.timing(animation, {
+      toValue: 0,
+      duration: DEFAULT_DURATION,
+      useNativeDriver: true,
+    }).start()
   }
 
-  render() {
-    const {message, type} = this.state
-    return (
-      <Animated.View
+  useEffect(() => {
+    Emitter.on(TOAST_EVENTS.showToastMessage, displayMessage)
+    return () => {
+      Emitter.rm(TOAST_EVENTS.showToastMessage)
+    }
+  }, [])
+
+  return (
+    <Animated.View
+      style={[
+        styles.container,
+        {
+          transform: [{translateY: offset}],
+          opacity: opacity,
+          paddingBottom: insets.bottom,
+        },
+      ]}>
+      <View
         style={[
-          styles.container,
+          styles.messageContainer,
           {
-            transform: [{translateY: this.offset}],
-            opacity: this.opacity,
-            backgroundColor: this.messageColor(),
+            backgroundColor: messageContent[state.type].color,
           },
         ]}>
-        <TouchableOpacity
-          activeOpacity={1}
-          style={styles.messageContainer(this.messageColor())}
-          onPress={() => {
-            this.dismiss()
-          }}>
-          <Text style={styles.textStyle}>
-            {message}
-          </Text>
+        <Image source={Images.info} style={styles.icon} />
+        <View style={styles.textContent}>
+          <Text style={styles.titleStyle}>{state.message}</Text>
+          {!!state.subMessage && <Text style={styles.textStyle}>{state.subMessage}</Text>}
+        </View>
+        <TouchableOpacity onPress={dismiss} hitSlop={hitSlop}>
+          <Image source={Images.close} style={styles.icon} />
         </TouchableOpacity>
-      </Animated.View>
-    )
-  }
+      </View>
+    </Animated.View>
+  )
 }
 
-const styles = StyleSheet.create<IStyleSheet | any>({
+export const showToast = (args: IToastState) => {
+  Emitter.emit(TOAST_EVENTS.showToastMessage, args)
+}
+
+const styles = StyleSheet.create({
   container: {
-    height: HEIGHT,
     zIndex: 9999,
     position: 'absolute',
-    top: 0,
+    bottom: 0,
     left: 0,
     right: 0,
+    paddingHorizontal: metrics.paddingHorizontal,
   },
-  messageContainer: (backgroundColor: string): ViewStyle => ({
+  messageContainer: {
     flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    backgroundColor,
-  }),
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    borderRadius: metrics.borderRadius,
+    paddingHorizontal: metrics.xs,
+    paddingVertical: metrics.xxs,
+  },
+  textContent: {
+    flex: 1,
+    paddingHorizontal: metrics.xxs,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+  titleStyle: {
+    fontSize: FontSizes.title,
+    color: colors.white,
+  },
   textStyle: {
-    fontSize: FontSizes.span,
-    marginBottom: metrics.marginVertical,
-    textAlign: 'center',
-    colors: colors.white,
+    fontSize: FontSizes.body,
+    color: colors.white,
+  },
+  icon: {
+    width: metrics.icon,
+    aspectRatio: 1,
+    tintColor: colors.white,
   },
 })

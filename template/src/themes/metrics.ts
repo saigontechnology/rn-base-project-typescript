@@ -1,5 +1,4 @@
 import {Dimensions, Platform} from 'react-native'
-import {IFontSize, IHitSlop, IShadow} from './types'
 
 const DESIGN_WIDTH = 375
 const DESIGN_HEIGHT = 812
@@ -25,21 +24,22 @@ function deviceHeight(): number {
   return height
 }
 
-const isIOS: boolean = Platform.OS === 'ios'
+const isIOS = Platform.OS === 'ios'
 
-const shadow: IShadow = {
+const shadow = {
   shadowColor: '#000',
   shadowRadius: 5,
   elevation: 5,
   shadowOpacity: 0.2,
   shadowOffset: {width: 0, height: 3},
-}
-const hitSlop: IHitSlop = {
+} as const
+
+const hitSlop = {
   top: 10,
   bottom: 10,
   right: 10,
   left: 10,
-}
+} as const
 
 const metrics = {
   // Text Size
@@ -72,15 +72,16 @@ const metrics = {
   logoWidth: responsiveWidth(300),
   logoHeight: responsiveHeight(70),
   icon: responsiveHeight(30),
+  toast: responsiveHeight(44),
 } as const
 
-const FontSizes: IFontSize = {
+const FontSizes = {
   small: responsiveFont(12),
   span: responsiveFont(14),
   body: responsiveFont(16),
   large: responsiveFont(18),
   title: responsiveFont(20),
-}
+} as const
 
 export {
   metrics,
