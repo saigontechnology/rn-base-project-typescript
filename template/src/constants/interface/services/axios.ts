@@ -32,9 +32,10 @@ export interface IAxiosError {
   error: string | undefined
 }
 
-export interface IParams<T = undefined> {
+export interface IParams<TRequest = undefined, TParams = undefined> {
   url: string
   method?: string
-  body?: T | string
+  body?: TRequest | string
+  params?: TParams
   config?: AxiosRequestHeaders | RawAxiosRequestHeaders
 }
