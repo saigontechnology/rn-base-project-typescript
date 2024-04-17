@@ -3,6 +3,7 @@ pipelines:
     develop:
       - step:
           name: "Build"
+          deployment: Development
           runs-on:
             - 'self.hosted'
             - 'macos'
@@ -30,6 +31,7 @@ pipelines:
     staging:
       - step:
           name: "Build"
+          deployment: Staging
           runs-on:
             - 'self.hosted'
             - 'macos'
@@ -41,6 +43,7 @@ pipelines:
     production:
       - step:
           name: "Build"
+          deployment: Production
           runs-on:
             - 'self.hosted'
             - 'macos'

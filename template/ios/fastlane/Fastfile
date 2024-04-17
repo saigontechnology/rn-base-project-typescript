@@ -112,9 +112,9 @@ platform :ios do
   lane :build do |options|
     type = options[:type]
     if type === 'codepush'
-      codepush env:options[:env]
+      codepush(env:options[:env])
     elsif type === 'build'
-      upload env:options[:env]
+      upload(env:options[:env], buildNumber: options[:buildNumber], ci: options[:ci])
     else
       printf "\nPlease enter type is [codepush, build]\n"
     end
