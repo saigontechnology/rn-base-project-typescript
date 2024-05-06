@@ -13,7 +13,8 @@ TYPE=$1
 
 
 function codePush() {
-  cd ios && fastlane build type:codepush env:$1 && cd .. && cd android && fastlane build type:codepush env:$1 && cd ..
+  fastlane ios build type:codepush env:$1
+  fastlane android build type:codepush env:$1
 }
 
 function main() {
