@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     width: metrics.icon,
-    aspectRatio: 1,
+    height: metrics.icon,
     tintColor: colors.white,
   },
 })
