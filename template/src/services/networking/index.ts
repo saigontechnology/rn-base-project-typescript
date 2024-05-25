@@ -11,10 +11,10 @@ const AxiosMethod: IAxiosMethod = {
   patch: 'PATCH',
 }
 
-async function axiosAPI<TResponse, TRequest = any>(
-  params: IParams<TRequest>,
+async function axiosAPI<TResponse, TRequest = any, TParams = any>(
+  request: IParams<TRequest, TParams>,
 ): Promise<AxiosResponse<TResponse, TRequest>> {
-  const {url, method, body, config} = params
+  const {url, method, body, config, params} = request
   let data = body
 
   if (isObject(body)) {
@@ -24,6 +24,7 @@ async function axiosAPI<TResponse, TRequest = any>(
     url,
     method,
     data,
+    params,
     headers: {...config},
   })
     .then((response: AxiosResponse) => ({...response.data, status: response.status}))
@@ -33,24 +34,24 @@ async function axiosAPI<TResponse, TRequest = any>(
     }))
 }
 
-export function getRequest<TResponse, TRequest = any>(
-  params: IParams<TRequest>,
+export function getRequest<TResponse, TRequest = any, TParams = any>(
+  request: IParams<TRequest, TParams>,
 ): Promise<AxiosResponse<TResponse, TRequest>> {
-  const {url, config} = params
-  return axiosAPI<TResponse>({url, method: AxiosMethod.get, config})
+  const {url, config, params} = request
+  return axiosAPI<TResponse>({url, method: AxiosMethod.get, config, params})
 }
 
-export function postRequest<TResponse, TRequest = any>(
-  params: IParams<TRequest>,
+export function postRequest<TResponse, TRequest = any, TParams = any>(
+  request: IParams<TRequest, TParams>,
 ): Promise<AxiosResponse<TResponse, TRequest>> {
-  const {url, body, config} = params
-  return axiosAPI<TResponse>({url, method: AxiosMethod.post, body, config})
+  const {url, body, config, params} = request
+  return axiosAPI<TResponse>({url, method: AxiosMethod.post, body, config, params})
 }
 
 export function postFormDataRequest<TResponse, TRequest = any>(
-  params: IParams<TRequest>,
+  request: IParams<TRequest>,
 ): Promise<AxiosResponse<TResponse, TRequest>> | IAxiosError {
-  const {url, body, config} = params
+  const {url, body, config} = request
   try {
     if (body?.constructor !== FormData) {
       throw new Error('Unrecognized FormData part')
@@ -68,22 +69,22 @@ export function postFormDataRequest<TResponse, TRequest = any>(
 }
 
 export function putRequest<TResponse, TRequest = any>(
-  params: IParams<TRequest>,
+  request: IParams<TRequest>,
 ): Promise<AxiosResponse<TResponse, TRequest>> {
-  const {url, body, config} = params
+  const {url, body, config} = request
   return axiosAPI<TResponse>({url, method: AxiosMethod.put, body, config})
 }
 
 export function patchRequest<TResponse, TRequest = any>(
-  params: IParams<TRequest>,
+  request: IParams<TRequest>,
 ): Promise<AxiosResponse<TResponse, TRequest>> {
-  const {url, body, config} = params
+  const {url, body, config} = request
   return axiosAPI<TResponse>({url, method: AxiosMethod.patch, body, config})
 }
 
 export function deleteRequest<TResponse, TRequest = any>(
-  params: IParams<TRequest>,
+  request: IParams<TRequest>,
 ): Promise<AxiosResponse<TResponse, TRequest>> {
-  const {url, config} = params
-  return axiosAPI<TResponse>({url, method: AxiosMethod.delete, config})
+  const {url, body, config} = request
+  return axiosAPI<TResponse>({url, method: AxiosMethod.delete, body, config})
 }
