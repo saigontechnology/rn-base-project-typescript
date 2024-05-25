@@ -62,23 +62,23 @@ Follow instructions for your given `development OS` and `target OS`.
 
 1. Init project
     ```sh
-      npx react-native init YourProjectName --template rn-base-project-ts
+    npx react-native init YourProjectName --template rn-base-project-ts
     ```
 2. Install node_modules
-   ```sh
+    ```sh
     yarn install
-   ```
+    ```
     > **Note**
     > Pod install automatically after run `yarn install`  
 
 3. Run `Android` or `Ios` via package.json
-   ```sh
+    ```sh
     # Run android
     yarn android
 
     # Run ios
     yarn ios
-   ```
+    ```
 
 ## ⭐ Features
 
