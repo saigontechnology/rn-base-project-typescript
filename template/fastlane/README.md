@@ -1,4 +1,5 @@
-## fastlane documentation
+fastlane documentation
+----
 
 # Installation
 
@@ -38,7 +39,36 @@ Build and upload to TestFlight
 
 Build or codepush
 
----
+----
+
+
+## Android
+
+### android upload
+
+```sh
+[bundle exec] fastlane android upload
+```
+
+Build file apk and upload to appcenter
+
+### android codepush
+
+```sh
+[bundle exec] fastlane android codepush
+```
+
+====CODE PUSH====
+
+### android build
+
+```sh
+[bundle exec] fastlane android build
+```
+
+Build or codepush
+
+----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.
 

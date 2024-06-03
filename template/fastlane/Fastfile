@@ -15,28 +15,35 @@
 
 require 'dotenv'
 
-package_json_content = File.read('../../package.json')
+package_json_content = File.read('../package.json')
 package_json = JSON.parse(package_json_content)
 version = package_json['version']
 
 default_platform(:ios)
 
 owner_name = "STS-ReactNative" # Update this value if you are not work on Saigon Technology Solutions
-projectName = ENV["PROJECT_NAME"]
-workspace = projectName + ".xcworkspace"
-xcodeproj = projectName + ".xcodeproj"
-my_app = ENV["APPCENTER_APP_NAME_IOS"]
+
 teamId = ENV["APPLE_TEAM_ID"]
-env = ""
+envs = ['development', 'staging', 'production']
+env = ''
+
+
+my_ios_app = ENV["APPCENTER_APP_NAME_IOS"]
+my_android_app = ENV["APPCENTER_APP_NAME_ANDROID"]
+
+
 
 platform :ios do
   before_all do |lane, options|
-      env = options[:env].downcase
-      Dotenv.load("../../.env.#{env}")
+      env = assert_environment(**options)
+      Dotenv.load("../.env.#{env}")
   end
 
   desc "Build and upload to TestFlight"
   lane :upload do |options|
+    projectName = ENV["PROJECT_NAME"]
+    workspace ="./ios/#{projectName}.xcworkspace"
+    xcodeproj = "./ios/#{projectName}.xcodeproj"
     scheme = case env
     when "development"
       "#{projectName}Dev"
@@ -105,7 +112,7 @@ platform :ios do
 
   desc "====CODE PUSH===="
   lane :codepush do |options|
-    sh "cd ../.. && appcenter codepush release-react --token #{ENV["APPCENTER_TOKEN_IOS"]} -a #{owner_name}/#{my_app} -d #{options[:env]} -t #{version} --mandatory true"
+    sh "appcenter codepush release-react --token #{ENV["APPCENTER_TOKEN_IOS"]} -a #{owner_name}/#{my_ios_app} -d #{options[:env]} -t #{version} --mandatory true"
   end
 
   desc "Build or codepush" #type = [codepush, build]
@@ -119,4 +126,69 @@ platform :ios do
       printf "\nPlease enter type is [codepush, build]\n"
     end
   end
+end
+
+
+
+platform :android do
+
+  before_all do |lane, options|
+    env = assert_environment(**options)
+    Dotenv.load("../.env.#{env}")
+  end
+
+  desc "Build file apk and upload to appcenter"
+  lane :upload do |options|
+    file = "app/build/outputs/apk/#{env}/release/app-#{env}-release.apk" #You can change this path to get file apk
+    gradle(
+      task: "assemble",
+      flavor: "#{env.capitalize}",
+      build_type: "Release",
+      properties: {
+        "VERSION_NAME" => version,
+        "versionCode" => options[:buildNumber]
+      },
+      project_dir: 'android/'
+    )
+    appcenter_upload(
+      api_token: ENV["APPCENTER_TOKEN_ANDROID"],
+      owner_name: owner_name,
+      app_name: ENV["APPCENTER_APP_NAME"],
+      app_display_name: ENV["APPCENTER_APP_DISPLAY_NAME"],
+      app_os: "Android",
+      file: file,
+      release_notes: ENV["APPCENTER_RELEASE_NOTE"],
+      destinations: ENV["APPCENTER_DISTRIBUTE_DESTINATIONS"],
+      notify_testers: true
+    )
+  end
+
+  desc "====CODE PUSH===="
+  lane :codepush do |options|
+    sh "appcenter codepush release-react --token #{ENV["APPCENTER_TOKEN_ANDROID"]} -a #{owner_name}/#{my_android_app} -d #{options[:env]} -t #{version} --mandatory true"
+  end
+
+  desc "Build or codepush" #type = [codepush, build]
+  lane :build do |options|
+    type = options[:type]
+    if type === 'codepush'
+      codepush(env:options[:env])
+    elsif type === 'build'
+      upload(env:options[:env], buildNumber: options[:buildNumber])
+    else
+      printf "\nPlease enter type is [codepush, build]\n"
+    end
+  end
+end
+
+private_lane :assert_environment do |options|
+  env = if options[:env] != nil
+    options[:env].downcase
+  elsif ENV.key?('RN_ACTIVE_ENV')
+    ENV['RN_ACTIVE_ENV']
+  else
+    UI.user_error!('Whoops, missing environment: Use `fastlane --env VALUE` where VALUE can be: ' + envs.inspect)
+    prompt_for_environment
+  end
+  env
 end
