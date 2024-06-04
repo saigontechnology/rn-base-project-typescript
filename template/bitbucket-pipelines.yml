@@ -84,7 +84,7 @@ pipelines:
             - fastlane ios build type:build env:Staging ci:true buildNumber:$BITBUCKET_BUILD_NUMBER
     buildProduction:
       - step:
-          name: "Build - Staging"
+          name: "Build - Production"
           runs-on:
             - 'self.hosted'
             - 'macos'
