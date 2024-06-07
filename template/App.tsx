@@ -25,7 +25,7 @@ LogBox.ignoreAllLogs(true)
 injectStore(store)
 configureLocalization('en')
 
-function App() {
+function App(): React.JSX.Element {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
