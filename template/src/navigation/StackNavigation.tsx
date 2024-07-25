@@ -1,6 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import React from 'react'
-import {LoginScreen, SignUpScreen} from '../screens'
+import {ChatScreen, ListChatScreen, LoginScreen, SignUpScreen} from '../screens'
 import HomeScreen from '../screens/HomeComponent/HomeScreen'
 import RouteKey from './RouteKey'
 import {optionsMatch} from './ScreenService'
@@ -30,5 +30,7 @@ export const AuthNavigator = () => (
       component={SignUpScreen}
       options={optionsMatch(RouteKey.SignUpScreen)}
     />
+    <Stack.Screen name={RouteKey.ListChatScreen} component={ListChatScreen} />
+    <Stack.Screen name={RouteKey.ChatScreen} component={ChatScreen} />
   </Stack.Navigator>
 )

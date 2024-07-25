@@ -4,6 +4,8 @@ export enum RouteKey {
   LoginScreen = 'LoginScreen',
   SignUpScreen = 'SignUpScreen',
   HomeScreen = 'HomeScreen',
+  ListChatScreen = 'ListChatScreen',
+  ChatScreen = 'ChatScreen',
 
   /** Stack */
   AuthStack = 'AuthStack',

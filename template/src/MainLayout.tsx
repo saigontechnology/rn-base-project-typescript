@@ -7,6 +7,7 @@ import {getAppStackState, getLoadingIndicator} from './store/selectors'
 import configs from './constants/configs'
 import {DebugMenu, IndicatorDialog, Toast} from './components'
 import {GestureHandlerRootView} from 'react-native-gesture-handler'
+import {ChatProvider} from 'rn-firebase-chat'
 
 function MainLayout() {
   const appState = useSelector(getAppStackState)
@@ -43,13 +44,21 @@ function MainLayout() {
     }
   }, [appState, handleAppState, handleDeepLink])
 
+  const userInfo = {
+    id: 'Flash',
+    name: 'Flash',
+    avatar: 'https://shorturl.at/ejilU',
+  }
+
   return (
     <GestureHandlerRootView style={styles.container}>
-      <StatusBar barStyle="light-content" />
-      <AppNavigation />
-      {showGlobalIndicator && <IndicatorDialog />}
-      {configs.DEBUG_ENABLED && <DebugMenu />}
-      <Toast />
+      <ChatProvider userInfo={userInfo}>
+        <StatusBar barStyle="light-content" />
+        <AppNavigation />
+        {showGlobalIndicator && <IndicatorDialog />}
+        {configs.DEBUG_ENABLED && <DebugMenu />}
+        <Toast />
+      </ChatProvider>
     </GestureHandlerRootView>
   )
 }
