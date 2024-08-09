@@ -2,7 +2,7 @@ import {getDefaultConfig, mergeConfig} from '@react-native/metro-config'
 
 /**
  * Metro configuration
- * https://facebook.github.io/metro/docs/configuration
+ * https://reactnative.dev/docs/metro
  *
  * @type {import('metro-config').MetroConfig}
  */
