@@ -16,9 +16,8 @@ pipelines:
                 - "*.env.*"
           script:
             - yarn install
-            - cd android && fastlane build type:build env:Development buildNumber:$BITBUCKET_BUILD_NUMBER
-            - cd ..
-            - cd ios && fastlane build type:build env:Development ci:true buildNumber:$BITBUCKET_BUILD_NUMBER
+            - fastlane android build type:build env:Development buildNumber:$BITBUCKET_BUILD_NUMBER
+            - fastlane ios build type:build env:Development ci:true buildNumber:$BITBUCKET_BUILD_NUMBER
       - step:
           name: "CodePush"
           runs-on:
@@ -37,9 +36,8 @@ pipelines:
             - 'macos'
           script:
             - yarn install
-            - cd android && fastlane build type:build env:Staging buildNumber:$BITBUCKET_BUILD_NUMBER
-            - cd ..
-            - cd ios && fastlane build type:build env:Staging ci:true buildNumber:$BITBUCKET_BUILD_NUMBER
+            - fastlane android build type:build env:Staging buildNumber:$BITBUCKET_BUILD_NUMBER
+            - fastlane ios build type:build env:Staging ci:true buildNumber:$BITBUCKET_BUILD_NUMBER
     production:
       - step:
           name: "Build"
@@ -49,6 +47,49 @@ pipelines:
             - 'macos'
           script:
             - yarn install
-            - cd android && fastlane build type:build env:Production buildNumber:$BITBUCKET_BUILD_NUMBER
-            - cd ..
-            - cd ios && fastlane build type:build env:Production ci:true buildNumber:$BITBUCKET_BUILD_NUMBER
+            - fastlane android build type:build env:Production buildNumber:$BITBUCKET_BUILD_NUMBER
+            - fastlane ios build type:build env:Production ci:true buildNumber:$BITBUCKET_BUILD_NUMBER
+  custom:
+    buildDev:
+      - step:
+          name: "Build - Dev"
+          runs-on:
+            - 'self.hosted'
+            - 'macos'
+          deployment: Test
+          script:
+            - yarn install
+            - fastlane android build type:build env:Development buildNumber:$BITBUCKET_BUILD_NUMBER
+            - fastlane ios build type:build env:Development ci:true buildNumber:$BITBUCKET_BUILD_NUMBER
+    codepushDev:
+      - step:
+          name: "CodePush - Dev"
+          runs-on:
+            - 'self.hosted'
+            - 'macos'
+          deployment: Test
+          script:
+            - yarn install
+            - yarn codepush:qa
+    buildStaging:
+      - step:
+          name: "Build - Staging"
+          runs-on:
+            - 'self.hosted'
+            - 'macos'
+          deployment: Staging
+          script:
+            - yarn install
+            - fastlane android build type:build env:Staging buildNumber:$BITBUCKET_BUILD_NUMBER
+            - fastlane ios build type:build env:Staging ci:true buildNumber:$BITBUCKET_BUILD_NUMBER
+    buildProduction:
+      - step:
+          name: "Build - Production"
+          runs-on:
+            - 'self.hosted'
+            - 'macos'
+          deployment: Production
+          script:
+            - yarn install
+            - fastlane android build type:build env:Production buildNumber:$BITBUCKET_BUILD_NUMBER
+            - fastlane ios build type:build env:Production ci:true buildNumber:$BITBUCKET_BUILD_NUMBER

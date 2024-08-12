@@ -1,4 +1,4 @@
-prompt_android="Please select variant for android: "
+prompt_android="Please select mode for android: "
 OPTIONS_ANDROID=(
     "developmentDebug"
     "developmentRelease"
@@ -21,8 +21,8 @@ then
         then
             echo "Invalid"
         else
-             echo "Variant: $opt"
-             npx react-native run-android --variant=$opt
+             echo "Mode: $opt"
+             npx react-native run-android --mode $opt
             break
         fi
     done

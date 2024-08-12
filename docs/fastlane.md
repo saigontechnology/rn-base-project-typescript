@@ -1,5 +1,15 @@
 # Integrate fastlane
 
+```
+fastlane init
+```
+
+update Fastfile:
+`platform :ios do`
+...
+`platform :android do`
+...
+
 ## IOS
 
 ### Setup
@@ -13,9 +23,6 @@ Execute the new ~/.bash_profile by either restarting the terminal window or usin
 `source ~/.bash_profile`
 (if you are using zsh, then ~/.zshrc or ~/.zprofile)
 
-```
-cd ios && fastlane init
-```
 
 Config Appfile:
 `app_identifier("your_bundle_id") # The bundle identifier of your app`
@@ -30,16 +37,10 @@ https://docs.fastlane.tools/advanced/#appfile
 ### To run fastlane on IOS
 
 ```
-cd ios && fastlane |lane|
+fastlane ios |lane|
 ```
 
 ## Android
-
-### Setup
-
-```
-cd android && fastlane init
-```
 
 Config Appfile:
 `json_key_file("") # Path to the json secret file`
@@ -49,7 +50,7 @@ Follow https://docs.fastlane.tools/actions/supply/#setup to get one
 ### To run fastlane on android
 
 ```
-cd android && fastlane |lane|
+fastlane android |lane|
 ```
 
 # CodePush - How to use it
@@ -66,7 +67,7 @@ we will go to file /ios/fastlane/Fastfile and /android/fastlane/Fastfile to chan
 For example: You want to codepush local to appcenter. Follow this code
 
 ```
-fastlane build type:codepush env:Local
+fastlane android|ios build type:codepush env:Local
 ```
 
 # Build App and upload app to store by Fastlane
@@ -87,15 +88,15 @@ You can get more variable through this link (https://github.com/microsoft/fastla
 
 **Step 3**: Run this script
 **Run directly:**
-For android: `cd android && fastlane build env:[your_environment]`
-For ios: `cd ios && fastlane build env:[your_environment]`
+For android: `fastlane android build env:[your_environment]`
+For ios: `fastlane ios build env:[your_environment]`
 **Run by script:**
 `yarn build [your_env]`
 These scripts were created for some sample environment, you can create a own environment if you want, by following with docs.
 
 # Codepush - Using script quickly
 
-If you are too bored to repeat the same work "cd ios or android to run fastlane to codepush ios or android", then you can you this way.
+If you are too bored to repeat the same work "run fastlane to codepush ios or android", then you can you this way.
 You just need run once, and then you can drink a cup of coffee and wait for it to show success.
 from /template folder you run:
 

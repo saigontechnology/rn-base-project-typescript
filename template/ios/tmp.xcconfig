@@ -5,8 +5,6 @@ CODEPUSH_KEY_ANDROID=
 APP_ID=com.saigontechnology.rnbaseprojecttypescript.development
 APP_NAME=BaseDev
 PROJECT_NAME=RNBaseProjectTypeScript
-
-#Config for codepush and build
 APPCENTER_TOKEN_ANDROID=
 APPCENTER_TOKEN_IOS=
 APPCENTER_APP_NAME_ANDROID=
