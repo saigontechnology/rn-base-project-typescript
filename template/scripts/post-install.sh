@@ -1,9 +1,7 @@
 #1/use/bin/env bash
 
-if [[ ! "$CI" = true ]]; then
   # Do not install iOS Pods on CI
   npx pod-install
-fi
 
 echo "Removing temporary files..."
 rm -rf $TMPDIR/react-*
