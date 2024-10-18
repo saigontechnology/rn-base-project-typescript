@@ -12,8 +12,8 @@ Green='\033[0;32m'        # Green
 TYPE=$1
 
 function buildApp() {
-  fastlane ios build type:build env:$1
-  fastlane android build type:build env:$1
+  fastlane ios build type:build --env $1
+  fastlane android build type:build --env $1
 }
 
 function main() {
