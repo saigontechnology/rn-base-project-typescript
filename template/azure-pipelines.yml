@@ -28,9 +28,9 @@ stages:
         steps:
           - script: yarn install
             displayName: Install Dependencies
-          - script: fastlane android build type:build env:Development buildNumber:variables['Build.BuildNumber']
+          - script: fastlane android build type:build buildNumber:variables['Build.BuildNumber'] --env development
             displayName: Build Android
-          - script: fastlane ios build type:build env:Development ci:true buildNumber:variables['Build.BuildNumber']
+          - script: fastlane ios build type:build ci:true buildNumber:variables['Build.BuildNumber'] --env development
             displayName: Build iOS
   - stage: Build_Staging
     condition: eq(variables['Build.SourceBranchName'], 'staging')
@@ -39,9 +39,9 @@ stages:
         steps:
           - script: yarn install
             displayName: Install Dependencies
-          - script: fastlane android build type:build env:Staging buildNumber:variables['Build.BuildNumber']
+          - script: fastlane android build type:build buildNumber:variables['Build.BuildNumber'] --env staging
             displayName: Build Android
-          - script: fastlane ios build type:build env:Staging ci:true buildNumber:variables['Build.BuildNumber']
+          - script: fastlane ios build type:build ci:true buildNumber:variables['Build.BuildNumber'] --env staging
             displayName: Build iOS
   - stage: Build_Production
     condition: eq(variables['Build.SourceBranchName'], 'master')
@@ -50,8 +50,8 @@ stages:
         steps:
           - script: yarn install
             displayName: Install Dependencies
-          - script: fastlane android build type:build env:Production buildNumber:variables['Build.BuildNumber']
+          - script: fastlane android build type:build buildNumber:variables['Build.BuildNumber'] --env production
             displayName: Build Android
-          - script: fastlane ios build type:build env:Production ci:true buildNumber:variables['Build.BuildNumber']
+          - script: fastlane ios build type:build ci:true buildNumber:variables['Build.BuildNumber'] --env production
             displayName: Build iOS
 
