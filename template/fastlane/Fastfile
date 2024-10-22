@@ -69,7 +69,8 @@ platform :ios do
         bundle_identifier: ENV["APP_ID"],
         profile_name: ENV["APP_ID"] + " AppStore",
         targets: [projectName],
-        code_sign_identity: 'Apple Distribution'
+        code_sign_identity: 'Apple Distribution',
+        path: xcodeproj
       )
   # Uncomment the line if your app have OneSignalNotificationServiceExtension
   #       sigh(
@@ -139,7 +140,7 @@ platform :android do
 
   desc "Build file apk and upload to appcenter"
   lane :upload do |options|
-    file = "app/build/outputs/apk/#{env}/release/app-#{env}-release.apk" #You can change this path to get file apk
+    file = "android/app/build/outputs/apk/#{env}/release/app-#{env}-release.apk" #You can change this path to get file apk
     gradle(
       task: "assemble",
       flavor: "#{env.capitalize}",
@@ -153,7 +154,7 @@ platform :android do
     appcenter_upload(
       api_token: ENV["APPCENTER_TOKEN_ANDROID"],
       owner_name: owner_name,
-      app_name: ENV["APPCENTER_APP_NAME"],
+      app_name: ENV["APPCENTER_APP_NAME_ANDROID"],
       app_display_name: ENV["APPCENTER_APP_DISPLAY_NAME"],
       app_os: "Android",
       file: file,
