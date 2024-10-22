@@ -36,7 +36,6 @@ my_android_app = ENV["APPCENTER_APP_NAME_ANDROID"]
 platform :ios do
   before_all do |lane, options|
       env = assert_environment(**options)
-      Dotenv.load("../.env.#{env}")
   end
 
   desc "Build and upload to TestFlight"
@@ -135,7 +134,6 @@ platform :android do
 
   before_all do |lane, options|
     env = assert_environment(**options)
-    Dotenv.load("../.env.#{env}")
   end
 
   desc "Build file apk and upload to appcenter"
@@ -173,9 +171,9 @@ platform :android do
   lane :build do |options|
     type = options[:type]
     if type === 'codepush'
-      codepush(env:options[:env])
+      codepush(env: options[:env])
     elsif type === 'build'
-      upload(env:options[:env], buildNumber: options[:buildNumber])
+      upload(env: options[:env], buildNumber: options[:buildNumber])
     else
       printf "\nPlease enter type is [codepush, build]\n"
     end
@@ -185,8 +183,8 @@ end
 private_lane :assert_environment do |options|
   env = if options[:env] != nil
     options[:env].downcase
-  elsif ENV.key?('RN_ACTIVE_ENV')
-    ENV['RN_ACTIVE_ENV']
+  elsif ENV.key?('APP_ENV')
+    ENV['APP_ENV']
   else
     UI.user_error!('Whoops, missing environment: Use `fastlane --env VALUE` where VALUE can be: ' + envs.inspect)
     prompt_for_environment
