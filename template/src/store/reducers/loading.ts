@@ -1,4 +1,4 @@
-import {PayloadAction} from '@reduxjs/toolkit'
+import {PayloadAction, Reducer} from '@reduxjs/toolkit'
 import {ILoading} from '../types'
 
 const loadingReducer = (state: ILoading = {}, action: PayloadAction<any>): ILoading => {
@@ -20,4 +20,4 @@ const loadingReducer = (state: ILoading = {}, action: PayloadAction<any>): ILoad
   }
 }
 
-export default loadingReducer
+export default loadingReducer as Reducer
