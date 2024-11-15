@@ -1,4 +1,4 @@
-import {applyMiddleware, configureStore} from '@reduxjs/toolkit'
+import {applyMiddleware, configureStore, Reducer} from '@reduxjs/toolkit'
 import {useDispatch, useSelector as useReduxSelector} from 'react-redux'
 import type {TypedUseSelectorHook} from 'react-redux'
 import {persistReducer, persistStore} from 'redux-persist'
@@ -15,7 +15,9 @@ const persistedReducer = persistReducer(persistConfig, reducers)
 const store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware => getDefaultMiddleware({serializableCheck: false, thunk: false}),
-  enhancers: [middlewareEnhancer],
+  enhancers: (getDefaultEnhancers) => {
+    return getDefaultEnhancers().concat(middlewareEnhancer)
+  },
 })
 
 sagaMiddleware.run(rootSaga)
