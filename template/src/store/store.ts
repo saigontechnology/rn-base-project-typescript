@@ -15,9 +15,7 @@ const persistedReducer = persistReducer(persistConfig, reducers)
 const store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware => getDefaultMiddleware({serializableCheck: false, thunk: false}),
-  enhancers: getDefaultEnhancers => {
-    return getDefaultEnhancers().concat(middlewareEnhancer)
-  },
+  enhancers: getDefaultEnhancers => getDefaultEnhancers().concat(middlewareEnhancer),
 })
 
 sagaMiddleware.run(rootSaga)
