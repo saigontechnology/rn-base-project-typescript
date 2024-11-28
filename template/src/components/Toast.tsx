@@ -90,12 +90,11 @@ export const Toast: React.FC = () => {
 
   const dismiss = () => {
     animationRef.current?.stop()
-    setState(initState)
     Animated.timing(animation, {
       toValue: 0,
       duration: DEFAULT_DURATION,
       useNativeDriver: true,
-    }).start()
+    }).start(() => setState(initState))
   }
 
   useEffect(() => {
