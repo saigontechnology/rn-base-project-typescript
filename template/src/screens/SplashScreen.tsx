@@ -5,7 +5,7 @@ import * as Progress from 'react-native-progress'
 import {ScreenContainer} from '../components'
 import configs from '../constants/configs'
 import {appActions} from '../store/reducers/app'
-import {useAppDispatch} from '../store/store'
+import {useDispatch} from 'react-redux'
 import {colors, deviceWidth, metrics, responsiveHeight} from '../themes'
 
 const codePushOptions = {
@@ -20,7 +20,7 @@ const STATUS = {
 }
 
 const SplashScreen = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useDispatch()
   const [updatePercent, setUpdatePercent] = useState(0)
   const [statusText, setStatusText] = useState('')
 

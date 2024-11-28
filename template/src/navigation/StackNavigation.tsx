@@ -1,7 +1,6 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack'
 import React from 'react'
-import {LoginScreen, SignUpScreen} from '../screens'
-import HomeScreen from '../screens/HomeComponent/HomeScreen'
+import {HomeScreen, LoginScreen, SignUpScreen} from '../screens'
 import RouteKey from './RouteKey'
 import {optionsMatch} from './ScreenService'
 import {AppStackParamList} from './types'
