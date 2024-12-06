@@ -1,6 +1,6 @@
 import {AnyAction} from 'redux'
 import {delay, put, takeLatest} from 'redux-saga/effects'
-import {Toast} from '../../components'
+import {showToast} from '../../components'
 import RouteKey from '../../navigation/RouteKey'
 import {appActions, userActions} from '../reducers'
 
@@ -9,10 +9,10 @@ function* userLoginSaga(): IterableIterator<AnyAction> {
     yield put(appActions.setShowGlobalIndicator(true))
     // TODO: login login
     yield delay(1000)
-    yield put(appActions.setAppStack(RouteKey.MainStack))
+    yield put(appActions.setAppStack(RouteKey.HomeStack))
   } catch (e) {
     if (e instanceof Error) {
-      Toast.error(e.message)
+      showToast({type: 'ERROR', message: e.message})
     }
     yield put(appActions.setAppStack(RouteKey.AuthStack))
   } finally {
@@ -25,7 +25,7 @@ function* userSignUpSaga(): IterableIterator<AnyAction> {
     yield put(appActions.setShowGlobalIndicator(true))
   } catch (e) {
     if (e instanceof Error) {
-      Toast.error(e.message)
+      showToast({type: 'ERROR', message: e.message})
     }
   } finally {
     yield put(appActions.setShowGlobalIndicator(false))

@@ -7,7 +7,6 @@ export enum RouteKey {
 
   /** Stack */
   AuthStack = 'AuthStack',
-  MainStack = 'MainStack',
   HomeStack = 'HomeStack',
 
   /** Tab */
