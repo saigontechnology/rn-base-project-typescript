@@ -9,7 +9,7 @@ function* userLoginSaga(): IterableIterator<AnyAction> {
     yield put(appActions.setShowGlobalIndicator(true))
     // TODO: login login
     yield delay(1000)
-    yield put(appActions.setAppStack(RouteKey.MainStack))
+    yield put(appActions.setAppStack(RouteKey.HomeStack))
   } catch (e) {
     if (e instanceof Error) {
       showToast({type: 'ERROR', message: e.message})
