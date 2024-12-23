@@ -4,7 +4,7 @@ import packageJSON from '../../package.json'
 import {getBundleId} from 'react-native-device-info'
 
 const AppEnv = {
-  DEV: 'dev',
+  DEV: 'development',
   STAGING: 'staging',
   PRODUCTION: 'production',
 }
@@ -12,7 +12,7 @@ const AppEnv = {
 const configs = {
   appBundleID: getBundleId(),
   appVersion: packageJSON.version,
-  APP_ENV: RNConfig.APP_ENV || 'dev',
+  APP_ENV: RNConfig.APP_ENV || 'development',
   DEBUG_ENABLED: RNConfig.APP_ENV !== AppEnv.PRODUCTION,
   API_URL: RNConfig.API_URL,
   buildEvn: RNConfig.APP_ENV,

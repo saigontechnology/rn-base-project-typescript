@@ -37,7 +37,7 @@ function MainLayout() {
   }, [])
 
   useEffect(() => {
-    if (appState === RouteKey.MainStack) {
+    if (appState === RouteKey.HomeStack) {
       handleAppState()
       handleDeepLink()
     }
