@@ -19,11 +19,12 @@
     picocolors "^1.0.0"
 
 "@babel/code-frame@^7.25.9":
-  version "7.25.9"
-  resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.25.9.tgz#895b6c7e04a7271a0cbfd575d2e8131751914cc7"
-  integrity sha512-z88xeGxnzehn2sqZ8UdGQEvYErF1odv2CftxInpSYJt6uHuPe9YjahKZITGs3l5LeI9d2ROG+obuDAoSlqbNfQ==
+  version "7.26.2"
+  resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.26.2.tgz#4b5fab97d33338eff916235055f0ebc21e573a85"
+  integrity sha512-RJlIHRueQgwWitWgF8OdFYGZX328Ax5BCemNGlqHfplnRT9ESi8JkFlvaVYbS+UubVY6dpv87Fs2u5M29iNFVQ==
   dependencies:
-    "@babel/highlight" "^7.25.9"
+    "@babel/helper-validator-identifier" "^7.25.9"
+    js-tokens "^4.0.0"
     picocolors "^1.0.0"
 
 "@babel/compat-data@^7.20.5", "@babel/compat-data@^7.22.6":
@@ -62,10 +63,10 @@
     json5 "^2.2.3"
     semver "^6.3.1"
 
-"@babel/eslint-parser@^7.18.2":
-  version "7.24.6"
-  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.24.6.tgz#7f0ecc0f29307b8696e83ff6a9d8b4f3e0421ad2"
-  integrity sha512-Q1BfQX42zXHx732PLW0w4+Y3wJjoZKEMaatFUEAmQ7Z+jCXxinzeqX9bvv2Q8xNPes/H6F0I23oGkcgjaItmLw==
+"@babel/eslint-parser@^7.18.2", "@babel/eslint-parser@^7.25.1":
+  version "7.25.9"
+  resolved "https://registry.yarnpkg.com/@babel/eslint-parser/-/eslint-parser-7.25.9.tgz#603c68a63078796527bc9d0833f5e52dd5f9224c"
+  integrity sha512-5UXfgpK0j0Xr/xIdgdLEhOFxaDZ0bRPWJJchRpqOSur/3rZoPbqqki5mm0p4NE2cs28krBEiSM2MB7//afRSQQ==
   dependencies:
     "@nicolo-ribaudo/eslint-scope-5-internals" "5.1.1-v1"
     eslint-visitor-keys "^2.1.0"
@@ -91,11 +92,12 @@
     jsesc "^2.5.1"
 
 "@babel/generator@^7.25.9":
-  version "7.25.9"
-  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.25.9.tgz#c7e828ebe0c2baba103b712924699c9e8a6e32f0"
-  integrity sha512-omlUGkr5EaoIJrhLf9CJ0TvjBRpd9+AXRG//0GEQ9THSo8wPiTlbpy1/Ow8ZTrbXpjd9FHXfbFQx32I04ht0FA==
+  version "7.26.2"
+  resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.26.2.tgz#87b75813bec87916210e5e01939a4c823d6bb74f"
+  integrity sha512-zevQbhbau95nkoxSq3f/DC/SC+EEOUZd3DYqfSkMhY2/wfSeaHV1Ew4vk8e+x8lja31IbyuUa2uQ3JONqKbysw==
   dependencies:
-    "@babel/types" "^7.25.9"
+    "@babel/parser" "^7.26.2"
+    "@babel/types" "^7.26.0"
     "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.25"
     jsesc "^3.0.2"
@@ -453,6 +455,11 @@
   resolved "https://registry.yarnpkg.com/@babel/helper-string-parser/-/helper-string-parser-7.25.9.tgz#1aabb72ee72ed35789b4bbcad3ca2862ce614e8c"
   integrity sha512-4A/SCr/2KLd5jrtOMFzaKjVtAei3+2r/NChoBNoZ3EyP/+GlhoaEGoWOZUmFmoITP7zOJyHIMm+DYRd8o3PvHA==
 
+"@babel/helper-validator-identifier@^7.24.6":
+  version "7.24.6"
+  resolved "https://registry.yarnpkg.com/@babel/helper-validator-identifier/-/helper-validator-identifier-7.24.6.tgz#08bb6612b11bdec78f3feed3db196da682454a5e"
+  integrity sha512-4yA7s865JHaqUdRbnaxarZREuPTHrjpDT+pXoAZ1yhyo6uFnIEpS8VMu16siFOHDpZNKYv5BObhsB//ycbICyw==
+
 "@babel/helper-validator-identifier@^7.24.7":
   version "7.24.7"
   resolved "https://registry.yarnpkg.com/@babel/helper-validator-identifier/-/helper-validator-identifier-7.24.7.tgz#75b889cfaf9e35c2aaf42cf0d72c8e91719251db"
@@ -529,7 +536,7 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.25.3.tgz#91fb126768d944966263f0657ab222a642b82065"
   integrity sha512-iLTJKDbJ4hMvFPgQwwsVoxtHyWpKKPBrxkANrSYewDPaPpT5py5yeVkgPIJ7XYXhndxJpaA3PyALSXQ7u8e/Dw==
   dependencies:
-    "@babel/types" "^7.25.2"
+    "@babel/types" "^7.26.0"
 
 "@babel/parser@^7.25.9":
   version "7.25.9"
@@ -1668,14 +1675,26 @@
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.25.2.tgz#55fb231f7dc958cd69ea141a4c2997e819646125"
   integrity sha512-YTnYtra7W9e6/oAZEHj0bJehPRUlLH9/fbpT5LfB0NhQXyALCRkRs3zH9v07IYhkgpqX6Z78FnuccZr/l4Fs4Q==
   dependencies:
-    "@babel/helper-string-parser" "^7.24.8"
-    "@babel/helper-validator-identifier" "^7.24.7"
-    to-fast-properties "^2.0.0"
+    "@babel/code-frame" "^7.25.9"
+    "@babel/generator" "^7.25.9"
+    "@babel/parser" "^7.25.9"
+    "@babel/template" "^7.25.9"
+    "@babel/types" "^7.25.9"
+    debug "^4.3.1"
+    globals "^11.1.0"
 
 "@babel/types@^7.25.9":
   version "7.25.9"
   resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.25.9.tgz#620f35ea1f4233df529ec9a2668d2db26574deee"
   integrity sha512-OwS2CM5KocvQ/k7dFJa8i5bNGJP0hXWfVCfDkqRFP1IreH1JDC7wG6eCYCi0+McbfT8OR/kNqsI0UU0xP9H6PQ==
+  dependencies:
+    "@babel/helper-string-parser" "^7.25.9"
+    "@babel/helper-validator-identifier" "^7.25.9"
+
+"@babel/types@^7.25.9", "@babel/types@^7.26.0":
+  version "7.26.0"
+  resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.26.0.tgz#deabd08d6b753bc8e0f198f8709fb575e31774ff"
+  integrity sha512-Z/yiTPj+lDVnF7lWeKCIJzaIkI0vYO87dMpZ4bg4TDrFe4XXLFWL1TbXU27gBP3QccxV9mZICCrnjnYlJjXHOA==
   dependencies:
     "@babel/helper-string-parser" "^7.25.9"
     "@babel/helper-validator-identifier" "^7.25.9"
@@ -2551,6 +2570,18 @@
     redux "^5.0.1"
     redux-thunk "^3.1.0"
     reselect "^5.1.0"
+
+"@rnx-kit/chromium-edge-launcher@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@rnx-kit/chromium-edge-launcher/-/chromium-edge-launcher-1.0.0.tgz#c0df8ea00a902c7a417cd9655aab06de398b939c"
+  integrity sha512-lzD84av1ZQhYUS+jsGqJiCMaJO2dn9u+RTT9n9q6D3SaKVwWqv+7AoRKqBu19bkwyE+iFRl1ymr40QS90jVFYg==
+  dependencies:
+    "@types/node" "^18.0.0"
+    escape-string-regexp "^4.0.0"
+    is-wsl "^2.2.0"
+    lighthouse-logger "^1.0.0"
+    mkdirp "^1.0.4"
+    rimraf "^3.0.2"
 
 "@sideway/address@^4.1.5":
   version "4.1.5"
@@ -5430,15 +5461,27 @@ hermes-eslint@^0.23.1:
     hermes-estree "0.23.1"
     hermes-parser "0.23.1"
 
+hermes-estree@0.19.1:
+  version "0.19.1"
+  resolved "https://registry.yarnpkg.com/hermes-estree/-/hermes-estree-0.19.1.tgz#d5924f5fac2bf0532547ae9f506d6db8f3c96392"
+  integrity sha512-daLGV3Q2MKk8w4evNMKwS8zBE/rcpA800nu1Q5kM08IKijoSnPe9Uo1iIxzPKRkn95IxxsgBMPeYHt3VG4ej2g==
+
 hermes-estree@0.23.1:
   version "0.23.1"
   resolved "https://registry.yarnpkg.com/hermes-estree/-/hermes-estree-0.23.1.tgz#d0bac369a030188120ee7024926aabe5a9f84fdb"
   integrity sha512-eT5MU3f5aVhTqsfIReZ6n41X5sYn4IdQL0nvz6yO+MMlPxw49aSARHLg/MSehQftyjnrE8X6bYregzSumqc6cg==
 
-hermes-estree@0.24.0:
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/hermes-estree/-/hermes-estree-0.24.0.tgz#487dc1ddc0bae698c2d79f34153ac9bf62d7b3c0"
-  integrity sha512-LyoXLB7IFzeZW0EvAbGZacbxBN7t6KKSDqFJPo3Ydow7wDlrDjXwsdiAHV6XOdvEN9MEuWXsSIFN4tzpyrXIHw==
+hermes-estree@0.23.1:
+  version "0.23.1"
+  resolved "https://registry.yarnpkg.com/hermes-estree/-/hermes-estree-0.23.1.tgz#d0bac369a030188120ee7024926aabe5a9f84fdb"
+  integrity sha512-eT5MU3f5aVhTqsfIReZ6n41X5sYn4IdQL0nvz6yO+MMlPxw49aSARHLg/MSehQftyjnrE8X6bYregzSumqc6cg==
+
+hermes-parser@0.19.1:
+  version "0.19.1"
+  resolved "https://registry.yarnpkg.com/hermes-parser/-/hermes-parser-0.19.1.tgz#1044348097165b7c93dc198a80b04ed5130d6b1a"
+  integrity sha512-Vp+bXzxYJWrpEuJ/vXxUsLnt0+y4q9zyi4zUlkLqD8FKv4LjIfOvP69R/9Lty3dCyKh0E2BU7Eypqr63/rKT/A==
+  dependencies:
+    hermes-estree "0.19.1"
 
 hermes-parser@0.23.1:
   version "0.23.1"
@@ -5447,10 +5490,17 @@ hermes-parser@0.23.1:
   dependencies:
     hermes-estree "0.23.1"
 
-hermes-parser@0.24.0:
-  version "0.24.0"
-  resolved "https://registry.yarnpkg.com/hermes-parser/-/hermes-parser-0.24.0.tgz#2ed19d079efc0848eb1f800f0c393a074c4696fb"
-  integrity sha512-IJooSvvu2qNRe7oo9Rb04sUT4omtZqZqf9uq9WM25Tb6v3usmvA93UqfnnoWs5V0uYjEl9Al6MNU10MCGKLwpg==
+hermes-parser@0.23.1:
+  version "0.23.1"
+  resolved "https://registry.yarnpkg.com/hermes-parser/-/hermes-parser-0.23.1.tgz#e5de648e664f3b3d84d01b48fc7ab164f4b68205"
+  integrity sha512-oxl5h2DkFW83hT4DAUJorpah8ou4yvmweUzLJmmr6YV2cezduCdlil1AvU/a/xSsAFo4WUcNA4GoV5Bvq6JffA==
+  dependencies:
+    hermes-estree "0.23.1"
+
+hermes-profile-transformer@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/hermes-profile-transformer/-/hermes-profile-transformer-0.0.6.tgz#bd0f5ecceda80dd0ddaae443469ab26fb38fc27b"
+  integrity sha512-cnN7bQUm65UWOy6cbGcCcZ3rpwW8Q/j4OP5aWRhEry4Z2t2aR1cjrbp0BS+KiBN0smvP1caBgAuxutvyvJILzQ==
   dependencies:
     hermes-estree "0.24.0"
 
