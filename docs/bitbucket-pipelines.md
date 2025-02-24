@@ -1,7 +1,7 @@
 # 📌 Bitbucket Pipelines Guide
 
 ## 📖 Overview
-This project uses **Bitbucket Pipelines** for automating builds, deployments, and **CodePush** updates.  
+This project uses **Bitbucket Pipelines** for automating builds, deployments
 Bitbucket Pipelines is configured with firebase to:  
 
 - **Auto-trigger builds** when pushing code to `develop`, `staging`, or `production`.  
@@ -30,7 +30,6 @@ condition:
 | Branch      | Condition                                         | Action                                |
 |------------|-------------------------------------------------|---------------------------------------|
 | `develop`  | Code changes in `ios/`, `android/`, `package.json`, `.env.*` | Full Build & Upload to TestFlight(iOS)    |
-| `develop`  | No changes in above files                        | Only CodePush update                 |
 | `staging`  | Always builds                                    | Full Build & Upload                  |
 | `production` | Always builds                                  | Full Build & Upload                  |
 
@@ -44,7 +43,6 @@ condition:
 4. Select a **Branch** (e.g., `develop`).
 5. Choose a **Custom Pipeline** from the dropdown:
    - **`buildDev`** → Manually build development version  
-   - **`codepushDev`** → Manually trigger CodePush update  
    - **`buildStaging`** → Manually build staging version  
    - **`buildProduction`** → Manually build production version  
 6. Click **Run**.
