@@ -1,0 +1,143 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+      - staging
+      - production
+
+  workflow_dispatch:
+    inputs:
+      target:
+        description: 'Custom trigger for manual runs'
+        required: true
+        default: 'buildDev'
+        type: choice
+        options:
+          - buildDev
+          - codepushDev
+          - buildStaging
+          - buildProduction
+
+jobs:
+  build_develop:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: [self-hosted, macos]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build Android
+        run: fastlane android build type:build buildNumber:${{ github.run_number }} env:development 
+
+      - name: Build iOS
+        run: fastlane ios build type:build ci:true buildNumber:${{ github.run_number }} env:development 
+
+  codepush_develop:
+    if: github.ref == 'refs/heads/develop'
+    runs-on: [self-hosted, macos]
+    needs: build_develop
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: CodePush QA
+        run: yarn codepush:qa
+
+  build_staging:
+    if: github.ref == 'refs/heads/staging'
+    runs-on: [self-hosted, macos]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build Android
+        run: fastlane android build type:build buildNumber:${{ github.run_number }} env:staging 
+
+      - name: Build iOS
+        run: fastlane ios build type:build ci:true buildNumber:${{ github.run_number }} env:staging
+
+  build_production:
+    if: github.ref == 'refs/heads/production'
+    runs-on: [self-hosted, macos]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build Android
+        run: fastlane android build type:build buildNumber:${{ github.run_number }} env:production 
+
+      - name: Build iOS
+        run: fastlane ios build type:build ci:true buildNumber:${{ github.run_number }} env:production
+
+  build_dev_custom:
+    if: ${{ github.event.inputs.target == 'buildDev' }}
+    runs-on: [self-hosted, macos]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build Android
+        run: fastlane android build type:build buildNumber:${{ github.run_number }} env:development 
+      - name: Build iOS
+        run: fastlane ios build type:build ci:true buildNumber:${{ github.run_number }} env:development 
+
+  codepush_dev_custom:
+    if: ${{ github.event.inputs.target == 'codepushDev' }}
+    runs-on: [self-hosted, macos]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: CodePush QA
+        run: yarn codepush:qa
+
+  build_staging_custom:
+    if: ${{ github.event.inputs.target == 'buildStaging' }}
+    runs-on: [self-hosted, macos]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build Android
+        run: fastlane android build type:build buildNumber:${{ github.run_number }} env:staging 
+      - name: Build iOS
+        run: fastlane ios build type:build ci:true buildNumber:${{ github.run_number }} env:staging
+
+  build_production_custom:
+    if: ${{ github.event.inputs.target == 'buildProduction' }}
+    runs-on: [self-hosted, macos]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build Android
+        run: fastlane android build type:build buildNumber:${{ github.run_number }} env:production 
+
+      - name: Build iOS
+        run: fastlane ios build type:build ci:true buildNumber:${{ github.run_number }} env:production
