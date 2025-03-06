@@ -38,7 +38,9 @@ type TranslateStr<O extends Record<string, any>, Key extends keyof O> = Key exte
         : never}`
   : Key
 
-export const getString = (key: TranslateStr<TranslateRecord, TranslateKey>, params: object = {}) =>
-  getI18n() ? getI18n().t(key, params) : ''
+export const getString = (
+  key: TranslateStr<TranslateRecord, TranslateKey>,
+  params: Record<string, string> = {},
+) => (getI18n() ? getI18n().t(key, params) : '')
 
 export default i18n
