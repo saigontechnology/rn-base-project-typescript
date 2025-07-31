@@ -19,7 +19,7 @@ function buildApp() {
 function main() {
 
   if [ -z $TYPE ]; then
-    read -p 'Enter your environment (dev,staging,production): ' env
+    read -p 'Enter your environment (development,staging,production): ' env
     TYPE=$env
   fi
 

@@ -19,7 +19,7 @@ export const getParent = (): NavigationProp<AppStackParamList> | null =>
 
 export const navigate = (
   name: keyof AppStackParamList,
-  params: AppStackParamList[keyof AppStackParamList],
+  params?: AppStackParamList[keyof AppStackParamList],
 ) => {
   if (navigationRef.isReady()) {
     navigationRef.navigate(name as string, params as object | undefined)

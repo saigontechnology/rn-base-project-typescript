@@ -1,21 +1,28 @@
 import React, {useEffect, useState} from 'react'
-import {StyleSheet, View} from 'react-native'
+import {StyleSheet, Text, View} from 'react-native'
 import CodePush from 'react-native-code-push'
-import Progress from 'react-native-progress'
+import * as Progress from 'react-native-progress'
 import {ScreenContainer} from '../components'
 import configs from '../constants/configs'
 import {appActions} from '../store/reducers/app'
-import {useAppDispatch} from '../store/store'
-import {colors, deviceWidth, responsiveHeight} from '../themes'
+import {useDispatch} from 'react-redux'
+import {colors, deviceWidth, metrics, responsiveHeight} from '../themes'
 
 const codePushOptions = {
   installMode: CodePush.InstallMode.IMMEDIATE,
   deploymentKey: configs.codePushKey,
 }
 
+const STATUS = {
+  check: 'Checking for update',
+  download: 'Downloading...',
+  done: 'Done',
+}
+
 const SplashScreen = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useDispatch()
   const [updatePercent, setUpdatePercent] = useState(0)
+  const [statusText, setStatusText] = useState('')
 
   useEffect(() => {
     CodePush.sync(
@@ -26,11 +33,22 @@ const SplashScreen = () => {
           case CodePush.SyncStatus.UNKNOWN_ERROR:
             dispatch(appActions.getSettings())
             break
+          case CodePush.SyncStatus.DOWNLOADING_PACKAGE:
+          case CodePush.SyncStatus.INSTALLING_UPDATE:
+          case CodePush.SyncStatus.SYNC_IN_PROGRESS:
+            setStatusText(STATUS.download)
+            break
+          default:
+            setStatusText(STATUS.check)
         }
       },
       ({receivedBytes, totalBytes}) => {
+        const percent = receivedBytes / totalBytes
         if (totalBytes > 0) {
-          setUpdatePercent(receivedBytes / totalBytes)
+          setUpdatePercent(percent)
+        }
+        if (percent === 1) {
+          setStatusText(STATUS.done)
         }
       },
     ).catch(() => {
@@ -43,6 +61,7 @@ const SplashScreen = () => {
       {updatePercent > 0 ? (
         <View style={styles.progressBar}>
           <Progress.Bar progress={updatePercent} color={colors.primary} width={deviceWidth() * 0.6} />
+          <Text style={styles.progressText}>{statusText}</Text>
         </View>
       ) : null}
     </ScreenContainer>
@@ -58,6 +77,11 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: responsiveHeight(40),
     alignSelf: 'center',
+    alignItems: 'center',
+  },
+  progressText: {
+    color: colors.primary,
+    paddingTop: metrics.xxs,
   },
 })
 

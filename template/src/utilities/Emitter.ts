@@ -7,7 +7,7 @@ class EventRegister {
     refs: {key: {eventName: '', callback: () => {}}},
   }
 
-  static addEventListener(eventName: string, callback: (param: any) => void): string {
+  static addEventListener(eventName: string, callback: (param?: any) => void): string {
     EventRegister._Listeners.count += 1
     const eventId = `l${EventRegister._Listeners.count}`
     EventRegister._Listeners.refs[eventId] = {
@@ -30,7 +30,7 @@ class EventRegister {
     return !removeError
   }
 
-  static emitEvent(eventName: string, param: any): void {
+  static emitEvent(eventName: string, param?: any): void {
     Object.keys(EventRegister._Listeners.refs).forEach(_id => {
       if (EventRegister._Listeners.refs[_id] && eventName === EventRegister._Listeners.refs[_id].eventName) {
         EventRegister._Listeners.refs[_id].callback(param)
@@ -41,7 +41,7 @@ class EventRegister {
   /*
    * Shorten
    */
-  static on(eventName: string, callback: (param: any) => void): string {
+  static on(eventName: string, callback: (param?: any) => void): string {
     return EventRegister.addEventListener(eventName, callback)
   }
 
@@ -53,7 +53,7 @@ class EventRegister {
     return EventRegister.removeAllListeners()
   }
 
-  static emit(eventName: string, param: any): void {
+  static emit(eventName: string, param?: any): void {
     EventRegister.emitEvent(eventName, param)
   }
 }
